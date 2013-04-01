@@ -24,9 +24,7 @@ namespace memorial
         {
             DataTable dt = new DataTable();
 
-            //Fonte: http://www.codeproject.com/Articles/9258/A-Fast-CSV-Reader            
             using (CachedCsvReader csv = new
-            //CachedCsvReader(new StreamReader(arquivo), true))
             CachedCsvReader(new StreamReader(arquivo), true))
             {
                 dt.Load(csv);
@@ -50,3 +48,8 @@ namespace memorial
         }
     }
 }
+
+//Links:
+// http://stackoverflow.com/questions/8852863/datatable-foreach-row-except-first-one
+// http://stackoverflow.com/questions/5467860/how-to-calculate-an-expression-for-each-row-of-a-datatable-and-add-new-column-to
+// http://www.codeproject.com/Articles/9258/A-Fast-CSV-Reader
