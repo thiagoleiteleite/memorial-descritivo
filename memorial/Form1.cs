@@ -11,11 +11,65 @@ using LumenWorks.Framework.IO.Csv;
 
 namespace memorial
 {
+    public static class RichTextBoxExtensions
+    {
+        const string NewLine = "\r\n";
+
+        public static void AppendLine(this RichTextBox ed)
+        {
+            ed.AppendText(NewLine);
+        }
+
+        public static void AppendLine(this RichTextBox ed, string s)
+        {
+            ed.AppendText(s + NewLine);
+        }
+
+        public static void AppendBold(this RichTextBox ed, string s)
+        {
+            int ss = ed.SelectionStart;
+            ed.AppendText(s);
+            int sl = ed.SelectionStart - ss + 1;
+
+            Font bold = new Font(ed.Font, FontStyle.Bold);
+            ed.Select(ss, sl);
+            ed.SelectionFont = bold;
+            ed.SelectionAlignment = HorizontalAlignment.Left;
+        }
+
+        public static void AppendTitulo(this RichTextBox ed, string s)
+        {
+            int ss = ed.SelectionStart;
+            ed.AppendText(s);
+            int sl = ed.SelectionStart - ss + 1;
+
+            Font bold = new Font(ed.Font, FontStyle.Bold);
+            ed.Select(ss, sl);
+            ed.SelectionFont = bold;
+            ed.SelectionAlignment = HorizontalAlignment.Center;
+            ed.AppendText(NewLine);
+            ed.AppendText(NewLine);
+        }
+
+        public static void AppendRegular(this RichTextBox ed, string s)
+        {
+            int ss = ed.SelectionStart;
+            ed.AppendText(s);
+            int sl = ed.SelectionStart - ss + 1;
+
+            Font regular = new Font(ed.Font, FontStyle.Regular);
+            ed.Select(ss, sl);
+            ed.SelectionFont = regular;
+            ed.SelectionAlignment = HorizontalAlignment.Left;
+        }
+    }
+
     public partial class Form1 : Form
     {
         string arquivo;
         DataTable dt = new DataTable();
         DataTable dt2 = new DataTable();
+        DataTable dt3 = new DataTable();
 
         public Form1()
         {
@@ -105,6 +159,37 @@ namespace memorial
             dataGridView1.DataSource = dt2;            
             dataGridView1.Columns[3].DefaultCellStyle.Format = "0.0000";
             dataGridView1.Columns[4].DefaultCellStyle.Format = "0° .00´ 00','00´´";
+        }
+
+        
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            dt3 = dt.Clone();
+            dt3.Columns[1].DataType = typeof(Decimal);
+            dt3.Columns[2].DataType = typeof(Decimal);
+            foreach (DataRow row in dt2.Rows)
+            {
+                dt3.ImportRow(row);
+            }
+
+            richTextBox1.AppendTitulo("Memorial Descritivo");
+            richTextBox1.AppendRegular("Inicia-se no ponto ");
+            richTextBox1.AppendRegular(Convert.ToString(dt3.Rows[0][0]) + " ");
+            richTextBox1.AppendRegular("definido pelas coordenadas ");
+            richTextBox1.AppendRegular("E: " + Convert.ToString(dt3.Rows[0][1]) + " ");
+            richTextBox1.AppendRegular("e ");
+            richTextBox1.AppendRegular("Y: " + Convert.ToString(dt3.Rows[0][2]) + ", ");
+            for (int i = 1; i < dt2.Rows.Count; i++)
+            {
+                string ponto = Convert.ToString(dt2.Rows[i][0]);
+                string X = Convert.ToString(dt2.Rows[i][1]);
+                string Y = Convert.ToString(dt2.Rows[i][2]);
+                string dist = Convert.ToString(dt2.Rows[i][3]);
+                string azi = Convert.ToString(dt2.Rows[i][4]);
+                richTextBox1.AppendRegular("deste segue até o ponto " + ponto + " definido pelas coordenadas E: " + X + " e Y: " + Y + ", com azimute de " + azi + " e distância de " + dist + "m; ");
+            }
+            
         }
 
     }
