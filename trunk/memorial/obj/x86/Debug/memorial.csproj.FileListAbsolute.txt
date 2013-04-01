@@ -18,3 +18,12 @@ C:\Users\plangeo\Documents\Visual Studio 2010\Projects\memorial-descritivo\memor
 C:\Users\plangeo\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Debug\memorial.Properties.Resources.resources
 C:\Users\plangeo\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Users\plangeo\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\saldanha\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Debug\memorial.exe
+C:\Users\saldanha\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Debug\memorial.pdb
+C:\Users\saldanha\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\bin\Debug\memorial.exe
+C:\Users\saldanha\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\bin\Debug\memorial.pdb
+C:\Users\saldanha\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\saldanha\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Debug\memorial.Form1.resources
+C:\Users\saldanha\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Debug\memorial.Properties.Resources.resources
+C:\Users\saldanha\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\saldanha\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Debug\GenerateResource.write.1.tlog

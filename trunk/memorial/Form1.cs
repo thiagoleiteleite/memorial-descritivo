@@ -54,9 +54,8 @@ namespace memorial
             if (result == DialogResult.OK)
             {
                 arquivo = openFileDialog1.FileName;
+                readCsv(arquivo);
             }
-
-            readCsv(arquivo);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -72,6 +71,8 @@ namespace memorial
                 double Yant = Convert.ToDouble(dt2.Rows[i - 1]["Y"]);
                 double difY = Y - Yant;
                 dt2.Rows[i]["Distância"] =  Math.Sqrt(Math.Pow(difX,2)+Math.Pow(difY,2));
+
+                double rprov1 = Math.Atan(difX / difY) * (180/Math.PI) * Math.Sign(difX/difY);
             }
 
             dataGridView1.DataSource = dt2;            
