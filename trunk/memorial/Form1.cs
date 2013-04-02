@@ -11,59 +11,6 @@ using LumenWorks.Framework.IO.Csv;
 
 namespace memorial
 {
-    public static class RichTextBoxExtensions
-    {
-        const string NewLine = "\r\n";
-
-        public static void AppendLine(this RichTextBox ed)
-        {
-            ed.AppendText(NewLine);
-        }
-
-        public static void AppendLine(this RichTextBox ed, string s)
-        {
-            ed.AppendText(s + NewLine);
-        }
-
-        public static void AppendBold(this RichTextBox ed, string s)
-        {
-            int ss = ed.SelectionStart;
-            ed.AppendText(s);
-            int sl = ed.SelectionStart - ss + 1;
-
-            Font bold = new Font(ed.Font, FontStyle.Bold);
-            ed.Select(ss, sl);
-            ed.SelectionFont = bold;
-            ed.SelectionAlignment = HorizontalAlignment.Left;
-        }
-
-        public static void AppendTitulo(this RichTextBox ed, string s)
-        {
-            int ss = ed.SelectionStart;
-            ed.AppendText(s);
-            int sl = ed.SelectionStart - ss + 1;
-
-            Font bold = new Font(ed.Font, FontStyle.Bold);
-            ed.Select(ss, sl);
-            ed.SelectionFont = bold;
-            ed.SelectionAlignment = HorizontalAlignment.Center;
-            ed.AppendText(NewLine);
-            ed.AppendText(NewLine);
-        }
-
-        public static void AppendRegular(this RichTextBox ed, string s)
-        {
-            int ss = ed.SelectionStart;
-            ed.AppendText(s);
-            int sl = ed.SelectionStart - ss + 1;
-
-            Font regular = new Font(ed.Font, FontStyle.Regular);
-            ed.Select(ss, sl);
-            ed.SelectionFont = regular;
-            ed.SelectionAlignment = HorizontalAlignment.Left;
-        }
-    }
-
     public partial class Form1 : Form
     {
         string arquivo;
@@ -157,7 +104,7 @@ namespace memorial
             }
 
             dataGridView1.DataSource = dt2;            
-            dataGridView1.Columns[3].DefaultCellStyle.Format = "0.0000";
+            dataGridView1.Columns[3].DefaultCellStyle.Format = "0.00";
             dataGridView1.Columns[4].DefaultCellStyle.Format = "0° .00´ 00','00´´";
         }
 
@@ -172,26 +119,122 @@ namespace memorial
             {
                 dt3.ImportRow(row);
             }
+            richTextBox1.Text = "";
+            richTextBox1.Font = new Font("Helvetica", 10);
 
-            richTextBox1.AppendTitulo("Memorial Descritivo");
-            richTextBox1.AppendRegular("Inicia-se no ponto ");
+            richTextBox1.AppendLine();
+            richTextBox1.AppendLine();
+            richTextBox1.AppendTitulo(textBox9.Text);
+
+            if (textBox10.TextLength > 0)
+            {               
+                richTextBox1.AppendRegular("Imóvel: " + textBox10.Text);
+                richTextBox1.AppendLine();
+            }
+            if (textBox12.TextLength > 0)
+            {
+                richTextBox1.AppendRegular("Município: " + textBox12.Text);
+                richTextBox1.AppendLine();
+            }
+            if (textBox13.TextLength > 0)
+            {
+                richTextBox1.AppendRegular("Matrícula: " + textBox13.Text);
+                richTextBox1.AppendLine();
+            }
+            if (textBox14.TextLength > 0)
+            {
+                richTextBox1.AppendRegular("Comarca: " + textBox14.Text);
+                richTextBox1.AppendLine();
+            }
+            if (textBox11.TextLength > 0)
+            {
+                richTextBox1.AppendRegular("Proprietário: " + textBox11.Text);
+                richTextBox1.AppendLine();
+            }
+
+            richTextBox1.AppendLine();
+            richTextBox1.AppendRegular(textBox1.Text + " ");
             richTextBox1.AppendRegular(Convert.ToString(dt3.Rows[0][0]) + " ");
-            richTextBox1.AppendRegular("definido pelas coordenadas ");
-            richTextBox1.AppendRegular("E: " + Convert.ToString(dt3.Rows[0][1]) + " ");
-            richTextBox1.AppendRegular("e ");
-            richTextBox1.AppendRegular("Y: " + Convert.ToString(dt3.Rows[0][2]) + ", ");
+            richTextBox1.AppendRegular(textBox2.Text + " ");
+            richTextBox1.AppendRegular(textBox3.Text + " " + Convert.ToString(dt3.Rows[0][1]) + " ");
+            richTextBox1.AppendRegular(" e ");
+            richTextBox1.AppendRegular(textBox4.Text + " " + Convert.ToString(dt3.Rows[0][2]) + ", ");
             for (int i = 1; i < dt2.Rows.Count; i++)
             {
                 string ponto = Convert.ToString(dt2.Rows[i][0]);
-                string X = Convert.ToString(dt2.Rows[i][1]);
-                string Y = Convert.ToString(dt2.Rows[i][2]);
-                string dist = Convert.ToString(dt2.Rows[i][3]);
-                string azi = Convert.ToString(dt2.Rows[i][4]);
-                richTextBox1.AppendRegular("deste segue até o ponto " + ponto + " definido pelas coordenadas E: " + X + " e Y: " + Y + ", com azimute de " + azi + " e distância de " + dist + "m; ");
+                string X = Convert.ToDecimal(dt2.Rows[i][1]).ToString("0.0000");
+                string Y = Convert.ToDecimal(dt2.Rows[i][2]).ToString("0.0000");
+                string dist = Convert.ToDecimal(dt2.Rows[i][3]).ToString("0.00");
+                string azi = Convert.ToDecimal(dt2.Rows[i][4]).ToString("0° .00´ 00','00´´");
+                richTextBox1.AppendRegular(textBox5.Text + " " + ponto + 
+                    " " + textBox2.Text +
+                    " " + textBox3.Text +
+                    " " + X + " e " +
+                    " " + textBox4.Text +
+                    " " + Y + ", " +
+                    " " + textBox6.Text +
+                    " " + azi +
+                    " " + textBox7.Text +
+                    " " + dist + 
+                    " " + textBox8.Text +"; ");
             }
+            richTextBox1.AppendRegular(" " + textBox15.Text);
             
         }
 
+    }
+
+    public static class RichTextBoxExtensions
+    {
+        const string NewLine = "\r\n";
+
+        public static void AppendLine(this RichTextBox ed)
+        {
+            ed.AppendText(NewLine);
+        }
+
+        public static void AppendLine(this RichTextBox ed, string s)
+        {
+            ed.AppendText(s + NewLine);
+        }
+
+        public static void AppendBold(this RichTextBox ed, string s)
+        {
+            int ss = ed.SelectionStart;
+            ed.AppendText(s);
+            int sl = ed.SelectionStart - ss + 1;
+
+            Font bold = new Font(ed.Font, FontStyle.Bold);
+            ed.Select(ss, sl);
+            ed.SelectionFont = bold;
+            ed.SelectionAlignment = HorizontalAlignment.Left;
+        }
+
+        public static void AppendTitulo(this RichTextBox ed, string s)
+        {
+            int ss = ed.SelectionStart;
+            ed.AppendText(s);
+            int sl = ed.SelectionStart - ss + 1;
+
+            Font bold = new Font(ed.Font, FontStyle.Bold);
+            ed.Select(ss, sl);
+            ed.SelectionFont = bold;
+            ed.SelectionAlignment = HorizontalAlignment.Center;
+            ed.AppendText(NewLine);
+            ed.AppendText(NewLine);
+        }
+
+        public static void AppendRegular(this RichTextBox ed, string s)
+        {
+            int ss = ed.SelectionStart;
+            ed.AppendText(s);
+            int sl = ed.SelectionStart - ss + 1;
+
+            Font regular = new Font(ed.Font, FontStyle.Regular);
+            ed.Select(ss, sl);
+            ed.SelectionFont = regular;
+            ed.SelectionAlignment = HorizontalAlignment.Left;
+        }
     }
 }
 
