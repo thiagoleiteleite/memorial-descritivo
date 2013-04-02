@@ -298,7 +298,7 @@ namespace memorial
                     per = per + Convert.ToDouble(dt2.Rows[i][3]);
                 }
 
-                richTextBox1.AppendRegular(" " + per.ToString("0,000.00") + textBox8.Text + ".");
+                richTextBox1.AppendRegular(" " + per.ToString("0,000.00") + " " + textBox8.Text + ".");
 
                 if (textBox16.TextLength > 0)
                 {
