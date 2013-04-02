@@ -13,3 +13,17 @@ C:\Users\plangeo\Documents\Visual Studio 2010\Projects\memorial-descritivo\memor
 C:\Users\plangeo\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Release\memorial.application
 C:\Users\plangeo\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Release\memorial.exe
 C:\Users\plangeo\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Release\memorial.pdb
+C:\Users\Beraldo\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\bin\Release\memorial.exe.manifest
+C:\Users\Beraldo\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\bin\Release\memorial.application
+C:\Users\Beraldo\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\bin\Release\memorial.exe
+C:\Users\Beraldo\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\bin\Release\memorial.pdb
+C:\Users\Beraldo\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Beraldo\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Release\memorial.Form1.resources
+C:\Users\Beraldo\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Release\memorial.Properties.Resources.resources
+C:\Users\Beraldo\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Release\GenerateResource.read.1.tlog
+C:\Users\Beraldo\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Release\GenerateResource.write.1.tlog
+C:\Users\Beraldo\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Release\memorial.TrustInfo.xml
+C:\Users\Beraldo\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Release\memorial.exe.manifest
+C:\Users\Beraldo\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Release\memorial.application
+C:\Users\Beraldo\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Release\memorial.exe
+C:\Users\Beraldo\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Release\memorial.pdb
