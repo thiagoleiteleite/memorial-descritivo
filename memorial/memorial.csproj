@@ -25,9 +25,9 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>http://memorial-descritivo.googlecode.com/svn/trunk/memorial/publish/</UpdateUrl>
-    <SupportUrl>http://code.google.com/p/memorial-descritivo/</SupportUrl>
+    <SupportUrl>http://code.google.com/p/memorial-descritivo/w/list</SupportUrl>
     <ProductName>Memorial Descritivo</ProductName>
-    <PublisherName>Rapahel Saldanha</PublisherName>
+    <PublisherName>Memorial Descritivo</PublisherName>
     <SuiteName>Memorial Descritivo</SuiteName>
     <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
