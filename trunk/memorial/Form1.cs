@@ -24,7 +24,7 @@ namespace memorial
         }
 
         void readCsv(string arquivo)
-        {           
+        {            
             if(radioButton1.Checked == true)
             {
                 using (CachedCsvReader csv = new
@@ -78,7 +78,8 @@ namespace memorial
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
+        {           
+
             openFileDialog1.Filter = "Arquivo CSV (*.csv)|*.csv|Arquivo TXT (*.txt)|*.txt";
             openFileDialog1.FileName = "";
             DialogResult result = openFileDialog1.ShowDialog();
@@ -101,11 +102,11 @@ namespace memorial
                 
                 if (i == 0)
                 {
-                    double X = Convert.ToDouble(dt2.Rows[i]["X"]);
-                    double Xant = Convert.ToDouble(dt2.Rows[dt2.Rows.Count - 1]["X"]);
+                    double X = Convert.ToDouble(dt2.Rows[i][1]);
+                    double Xant = Convert.ToDouble(dt2.Rows[dt2.Rows.Count - 1][1]);
                     double difX = X - Xant;
-                    double Y = Convert.ToDouble(dt2.Rows[i]["Y"]);
-                    double Yant = Convert.ToDouble(dt2.Rows[dt2.Rows.Count - 1]["Y"]);
+                    double Y = Convert.ToDouble(dt2.Rows[i][2]);
+                    double Yant = Convert.ToDouble(dt2.Rows[dt2.Rows.Count - 1][2]);
                     double difY = Y - Yant;
 
                     dt2.Rows[i]["Distância"] = Math.Sqrt(Math.Pow(difX, 2) + Math.Pow(difY, 2));
@@ -140,11 +141,11 @@ namespace memorial
                 else
                 {
                     //Cálculo da distância
-                    double X = Convert.ToDouble(dt2.Rows[i]["X"]);
-                    double Xant = Convert.ToDouble(dt2.Rows[i - 1]["X"]);
+                    double X = Convert.ToDouble(dt2.Rows[i][1]);
+                    double Xant = Convert.ToDouble(dt2.Rows[i - 1][1]);
                     double difX = X - Xant;
-                    double Y = Convert.ToDouble(dt2.Rows[i]["Y"]);
-                    double Yant = Convert.ToDouble(dt2.Rows[i - 1]["Y"]);
+                    double Y = Convert.ToDouble(dt2.Rows[i][2]);
+                    double Yant = Convert.ToDouble(dt2.Rows[i - 1][2]);
                     double difY = Y - Yant;
                     dt2.Rows[i]["Distância"] = Math.Sqrt(Math.Pow(difX, 2) + Math.Pow(difY, 2));
 
@@ -229,9 +230,9 @@ namespace memorial
                 richTextBox1.AppendRegular(textBox1.Text + " ");
                 richTextBox1.AppendRegular(Convert.ToString(dt2.Rows[0][0]) + " ");
                 richTextBox1.AppendRegular(textBox2.Text + " ");
-                richTextBox1.AppendRegular(textBox3.Text + " " + Convert.ToString(dt2.Rows[0][1]) + " ");
+                richTextBox1.AppendRegular(textBox3.Text + " " + Convert.ToString(dt2.Rows[0][1]) + " " + textBox8.Text);
                 richTextBox1.AppendRegular(" e ");
-                richTextBox1.AppendRegular(textBox4.Text + " " + Convert.ToString(dt2.Rows[0][2]) + ", ");
+                richTextBox1.AppendRegular(textBox4.Text + " " + Convert.ToString(dt2.Rows[0][2]) + " " + textBox8.Text + ", ");
                 if (Convert.ToString(dt2.Rows[0][5]).Length > 0)
                 {
                     richTextBox1.AppendRegular("confrontanto com " + dt2.Rows[0][5] + ", ");
@@ -252,9 +253,9 @@ namespace memorial
                     richTextBox1.AppendRegular(textBox5.Text + " " + ponto +
                         " " + textBox2.Text +
                         " " + textBox3.Text +
-                        " " + X + " e " +
+                        " " + X + " " + textBox8.Text + " e " +
                         " " + textBox4.Text +
-                        " " + Y + ", " +
+                        " " + Y + " " + textBox8.Text + ", " +
                         " " + textBox6.Text +
                         " " + azi +
                         " " + textBox7.Text +
@@ -269,16 +270,16 @@ namespace memorial
                 richTextBox1.AppendRegular(textBox5.Text + " " + pontof +
                         " " + textBox2.Text +
                         " " + textBox3.Text +
-                        " " + Xf + " e " +
+                        " " + Xf + " " + textBox8.Text + " e " +
                         " " + textBox4.Text +
-                        " " + Yf + ", " +
+                        " " + Yf + " " + textBox8.Text + ", " +
                         " " + textBox6.Text +
                         " " + azif +
                         " " + textBox7.Text +
                         " " + distf +
                         " " + textBox8.Text + "; ");
 
-                richTextBox1.AppendRegular(" " + textBox15.Text);
+                richTextBox1.AppendRegular(textBox15.Text);
 
                 //Cálculo perímetro
                 double per = 0;
@@ -291,6 +292,7 @@ namespace memorial
 
                 if (textBox16.TextLength > 0)
                 {
+                    richTextBox1.AppendLine();
                     richTextBox1.AppendLine();
                     richTextBox1.AppendLine();
                     richTextBox1.AppendLine();
@@ -338,7 +340,7 @@ namespace memorial
 
         private void button4_Click(object sender, EventArgs e)
         {
-            saveFileDialog1.Filter = "Rich Text Formatting (*.rtf)|*.rtf";
+            saveFileDialog1.Filter = "Formato Rich Text (*.rtf)|*.rtf";
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 richTextBox1.SaveFile(saveFileDialog1.FileName);
@@ -363,6 +365,46 @@ namespace memorial
 
             linkLabel2.Text = "- LumenWorks.Framework.IO.Csv";
             linkLabel2.Links.Add(0, 100, "http://www.codeproject.com/Articles/9258/A-Fast-CSV-Reader");
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            saveFileDialog2.Filter = "CSV separado por ponto e vírgula|*.csv";
+            if (saveFileDialog2.ShowDialog() == DialogResult.OK)
+            {
+                System.IO.StreamWriter streamWriter = new System.IO.StreamWriter(saveFileDialog2.FileName);
+
+                string strHeader = "";
+
+                for (int i = 0; i < dataGridView1.Columns.Count; i++)
+                {
+
+                    strHeader += dataGridView1.Columns[i].HeaderText + ";";
+
+                }
+
+                streamWriter.WriteLine(strHeader);
+
+                for (int m = 0; m < dataGridView1.Rows.Count; m++)
+                {
+
+                    string strRowValue = "";
+
+                    for (int n = 0; n < dataGridView1.Columns.Count; n++)
+                    {
+
+                        strRowValue += dataGridView1.Rows[m].Cells[n].Value + ";";
+
+                    }
+
+                    streamWriter.WriteLine(strRowValue);
+
+                }
+
+                streamWriter.Close();
+            }
+
+            
         }
 
         
