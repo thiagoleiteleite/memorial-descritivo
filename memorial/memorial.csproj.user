@@ -3,7 +3,7 @@
   <PropertyGroup>
     <PublishUrlHistory>publish\</PublishUrlHistory>
     <InstallUrlHistory />
-    <SupportUrlHistory>http://code.google.com/p/memorial-descritivo/</SupportUrlHistory>
+    <SupportUrlHistory>http://code.google.com/p/memorial-descritivo/w/list|http://code.google.com/p/memorial-descritivo/</SupportUrlHistory>
     <UpdateUrlHistory />
     <BootstrapperUrlHistory />
     <ErrorReportUrlHistory />

@@ -34,6 +34,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button6 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -83,6 +84,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label23 = new System.Windows.Forms.Label();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.label22 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
@@ -90,7 +92,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.label23 = new System.Windows.Forms.Label();
+            this.saveFileDialog2 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -105,6 +107,9 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(5, 64);
             this.dataGridView1.Name = "dataGridView1";
@@ -129,7 +134,7 @@
             // button2
             // 
             this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(504, 6);
+            this.button2.Location = new System.Drawing.Point(326, 6);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(244, 52);
             this.button2.TabIndex = 2;
@@ -152,6 +157,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button6);
             this.tabPage1.Controls.Add(this.groupBox4);
             this.tabPage1.Controls.Add(this.dataGridView1);
             this.tabPage1.Controls.Add(this.button2);
@@ -164,6 +170,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Arquivo CSV";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(633, 7);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(115, 52);
+            this.button6.TabIndex = 4;
+            this.button6.Text = "Exportar tabela CSV";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // groupBox4
             // 
@@ -626,10 +642,10 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(351, 5);
+            this.button5.Location = new System.Drawing.Point(559, 5);
             this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(189, 31);
+            this.button5.Size = new System.Drawing.Size(190, 31);
             this.button5.TabIndex = 3;
             this.button5.Text = "Copiar para área de transferência";
             this.button5.UseVisualStyleBackColor = true;
@@ -637,10 +653,10 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(173, 5);
+            this.button4.Location = new System.Drawing.Point(365, 5);
             this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(174, 31);
+            this.button4.Size = new System.Drawing.Size(190, 31);
             this.button4.TabIndex = 2;
             this.button4.Text = "Gravar arquivo RTF";
             this.button4.UseVisualStyleBackColor = true;
@@ -651,7 +667,7 @@
             this.button3.Location = new System.Drawing.Point(4, 5);
             this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(165, 31);
+            this.button3.Size = new System.Drawing.Size(190, 31);
             this.button3.TabIndex = 1;
             this.button3.Text = "Gerar memorial";
             this.button3.UseVisualStyleBackColor = true;
@@ -683,6 +699,16 @@
             this.tabPage4.Text = "Sobre";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(282, 340);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(211, 15);
+            this.label23.TabIndex = 7;
+            this.label23.Text = "Envie suas críticas e sugestões!";
+            // 
             // linkLabel2
             // 
             this.linkLabel2.AutoSize = true;
@@ -708,7 +734,7 @@
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.Location = new System.Drawing.Point(219, 298);
+            this.linkLabel1.Location = new System.Drawing.Point(212, 309);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(326, 20);
             this.linkLabel1.TabIndex = 4;
@@ -745,16 +771,6 @@
             this.label19.Size = new System.Drawing.Size(238, 17);
             this.label19.TabIndex = 0;
             this.label19.Text = "Gerador de Memorial Descritivo";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(289, 329);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(211, 15);
-            this.label23.TabIndex = 7;
-            this.label23.Text = "Envie suas críticas e sugestões!";
             // 
             // Form1
             // 
@@ -849,6 +865,8 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog2;
     }
 }
 
