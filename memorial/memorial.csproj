@@ -24,12 +24,12 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <UpdateUrl>http://code.google.com/p/memorial-descritivo/source/browse/trunk/memorial/publish/</UpdateUrl>
+    <UpdateUrl>http://memorial-descritivo.googlecode.com/svn/trunk/memorial/publish/</UpdateUrl>
     <SupportUrl>http://code.google.com/p/memorial-descritivo/</SupportUrl>
     <ProductName>Memorial Descritivo</ProductName>
     <PublisherName>Rapahel Saldanha</PublisherName>
     <SuiteName>Memorial Descritivo</SuiteName>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
