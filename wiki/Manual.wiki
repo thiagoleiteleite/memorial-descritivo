@@ -10,12 +10,12 @@ Este software visa atender uma demanda crescente de geração de memoriais descr
 Atualmente, o software opera importando uma tabela contendo os pontos e suas coordenadas, e gerando por fim o memorial descritivo dos mesmos.
 
 *A tabela contendo os pontos deve obedecer as seguintes características*
-  * A primeira linha da tabela deve conter os cabeçalhos da tabela;
+  * A primeira linha da tabela deve conter o cabeçalho da tabela (nome dos campos);
   * Colunas separadas por ponto-e-virgula ou tabulação (tab);
-  * A tabela deve ter três colunas (não menos e não mais);
+  * A tabela deve ter exatamente três colunas (não menos e não mais);
   * A primeira coluna deve ter os nomes dos pontos, nenhuma célula pode estar em branco;
   * A segunda coluna deve ter as coordenadas X (este), nenhuma célula pode estar em branco;
-  * A terceira coluna deve ter as coordenadas U (norte), nenhuma célula pode estar em branco.
+  * A terceira coluna deve ter as coordenadas Y (norte), nenhuma célula pode estar em branco.
 
 = Instruções de uso =
 
