@@ -24,7 +24,7 @@ Atualmente, o software opera importando uma tabela contendo os pontos e suas coo
   # Clique em *Abrir arquivo CSV*, navegue até o arquivo desejado e clique em *Abrir*. A tabela será carregada na janela do programa;
   # Clique em *Calcular distância e azimute entre pontos e adicionar confrontantes*;
   # Cadastre os confrontantes, no mesmo sentido dos pontos. Exemplo: se o confrontante A está entre os pontos 01 a 03, digite "A" na célula correspondente do ponto 01. Na célula correspondente do ponto 03, digite o nome do próximo confrontante;
-  # Caso queira exporar a tabela, clique em *Exportar tabela CSV*;
+  # Caso queira exporar a tabela, clique em *Exportar tabela CSV*. Uma outra forma de copiar a tabela é selecionar todas as linhas, pressionar Ctrl + C, e colar em algun editor de planilhas;;
   # Clique na aba *Definições*;
   # Caso deseje, complete as informações sobre o imóvel e proprietário, redefina os padrões de ligação do texto do memorial, e informe os detalhes do profissional responsável técnico;
   # Clique na aba *Memorial Descritivo*;
