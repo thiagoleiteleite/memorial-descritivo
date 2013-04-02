@@ -30,10 +30,14 @@ namespace memorial
                 using (CachedCsvReader csv = new
                 CachedCsvReader(new StreamReader(arquivo), true, ';'))
                 {
+                    dt.Clear();
+                    dt.Columns.Clear();
                     dt.Load(csv);
 
                     if (dt.Columns.Count == 3)
                     {
+                        dt2.Clear();
+                        dt2.Columns.Clear();
                         dt2 = dt.Clone();
                         dt2.Columns[1].DataType = typeof(Decimal);
                         dt2.Columns[2].DataType = typeof(Decimal);
@@ -55,10 +59,14 @@ namespace memorial
                 using (CachedCsvReader csv = new
                 CachedCsvReader(new StreamReader(arquivo), true, '\t'))
                 {
+                    dt.Clear();
+                    dt.Columns.Clear();
                     dt.Load(csv);
 
                     if (dt.Columns.Count == 3)
                     {
+                        dt2.Clear();
+                        dt2.Columns.Clear();
                         dt2 = dt.Clone();
                         dt2.Columns[1].DataType = typeof(Decimal);
                         dt2.Columns[2].DataType = typeof(Decimal);
@@ -78,7 +86,9 @@ namespace memorial
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {           
+        {
+            button2.Enabled = false;
+            button6.Enabled = false;
 
             openFileDialog1.Filter = "Arquivo CSV (*.csv)|*.csv|Arquivo TXT (*.txt)|*.txt";
             openFileDialog1.FileName = "";
@@ -176,9 +186,9 @@ namespace memorial
                         dt2.Rows[i]["Azimute"] = azprov4b;
                     }
                 }
-                
 
-                
+                button6.Enabled = true;
+                               
             }
 
             dt2.Columns.Add(new DataColumn("Confrontante", typeof(string)));
@@ -194,7 +204,7 @@ namespace memorial
             if (dt2.Columns.Count == 6)
             {
                 richTextBox1.Text = "";
-                richTextBox1.Font = new Font("Helvetica", 10);
+                richTextBox1.Font = new Font("Times", 12);
 
                 richTextBox1.AppendLine();
                 richTextBox1.AppendLine();
@@ -227,7 +237,7 @@ namespace memorial
                 }
 
                 richTextBox1.AppendLine();
-                richTextBox1.AppendRegular(textBox1.Text + " ");
+                richTextBox1.AppendRegular("\t" + textBox1.Text + " ");
                 richTextBox1.AppendRegular(Convert.ToString(dt2.Rows[0][0]) + " ");
                 richTextBox1.AppendRegular(textBox2.Text + " ");
                 richTextBox1.AppendRegular(textBox3.Text + " " + Convert.ToString(dt2.Rows[0][1]) + " " + textBox8.Text);

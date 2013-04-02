@@ -134,7 +134,7 @@
             // button2
             // 
             this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(326, 6);
+            this.button2.Location = new System.Drawing.Point(383, 7);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(244, 52);
             this.button2.TabIndex = 2;
@@ -173,6 +173,7 @@
             // 
             // button6
             // 
+            this.button6.Enabled = false;
             this.button6.Location = new System.Drawing.Point(633, 7);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(115, 52);
@@ -248,7 +249,7 @@
             this.textBox18.Margin = new System.Windows.Forms.Padding(2);
             this.textBox18.Name = "textBox18";
             this.textBox18.Size = new System.Drawing.Size(409, 20);
-            this.textBox18.TabIndex = 33;
+            this.textBox18.TabIndex = 32;
             this.textBox18.Text = "____________________________________________";
             // 
             // label18
@@ -285,7 +286,7 @@
             this.textBox16.Margin = new System.Windows.Forms.Padding(2);
             this.textBox16.Name = "textBox16";
             this.textBox16.Size = new System.Drawing.Size(409, 20);
-            this.textBox16.TabIndex = 31;
+            this.textBox16.TabIndex = 30;
             // 
             // label16
             // 
@@ -332,7 +333,7 @@
             this.textBox9.Margin = new System.Windows.Forms.Padding(2);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(230, 20);
-            this.textBox9.TabIndex = 17;
+            this.textBox9.TabIndex = 10;
             this.textBox9.Text = "Memorial descritivo";
             // 
             // label9
@@ -351,7 +352,7 @@
             this.textBox8.Margin = new System.Windows.Forms.Padding(2);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(90, 20);
-            this.textBox8.TabIndex = 15;
+            this.textBox8.TabIndex = 18;
             this.textBox8.Text = "m";
             // 
             // textBox15
@@ -360,7 +361,7 @@
             this.textBox15.Margin = new System.Windows.Forms.Padding(2);
             this.textBox15.Name = "textBox15";
             this.textBox15.Size = new System.Drawing.Size(227, 20);
-            this.textBox15.TabIndex = 29;
+            this.textBox15.TabIndex = 19;
             this.textBox15.Text = "encerrando este perímetro com";
             // 
             // label8
@@ -379,7 +380,7 @@
             this.textBox7.Margin = new System.Windows.Forms.Padding(2);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(256, 20);
-            this.textBox7.TabIndex = 13;
+            this.textBox7.TabIndex = 17;
             this.textBox7.Text = "e distância de";
             // 
             // label15
@@ -408,7 +409,7 @@
             this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(257, 20);
-            this.textBox1.TabIndex = 1;
+            this.textBox1.TabIndex = 11;
             this.textBox1.Text = "Inicia-se no ponto";
             // 
             // label1
@@ -427,7 +428,7 @@
             this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(230, 20);
-            this.textBox2.TabIndex = 3;
+            this.textBox2.TabIndex = 12;
             this.textBox2.Text = "definido pelas coordenadas";
             // 
             // label2
@@ -446,7 +447,7 @@
             this.textBox3.Margin = new System.Windows.Forms.Padding(2);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(110, 20);
-            this.textBox3.TabIndex = 5;
+            this.textBox3.TabIndex = 13;
             this.textBox3.Text = "E:";
             // 
             // label3
@@ -465,7 +466,7 @@
             this.textBox6.Margin = new System.Windows.Forms.Padding(2);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(230, 20);
-            this.textBox6.TabIndex = 11;
+            this.textBox6.TabIndex = 16;
             this.textBox6.Text = "com azimute de";
             // 
             // label6
@@ -484,7 +485,7 @@
             this.textBox4.Margin = new System.Windows.Forms.Padding(2);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(113, 20);
-            this.textBox4.TabIndex = 7;
+            this.textBox4.TabIndex = 14;
             this.textBox4.Text = "N:";
             // 
             // label4
@@ -503,7 +504,7 @@
             this.textBox5.Margin = new System.Windows.Forms.Padding(2);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(257, 20);
-            this.textBox5.TabIndex = 9;
+            this.textBox5.TabIndex = 15;
             this.textBox5.Text = "deste segue até o ponto";
             // 
             // label5
@@ -541,7 +542,7 @@
             this.textBox10.Margin = new System.Windows.Forms.Padding(2);
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(329, 20);
-            this.textBox10.TabIndex = 19;
+            this.textBox10.TabIndex = 0;
             // 
             // label10
             // 
@@ -559,7 +560,7 @@
             this.textBox12.Margin = new System.Windows.Forms.Padding(2);
             this.textBox12.Name = "textBox12";
             this.textBox12.Size = new System.Drawing.Size(390, 20);
-            this.textBox12.TabIndex = 23;
+            this.textBox12.TabIndex = 1;
             // 
             // textBox11
             // 
@@ -567,7 +568,7 @@
             this.textBox11.Margin = new System.Windows.Forms.Padding(2);
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(725, 20);
-            this.textBox11.TabIndex = 21;
+            this.textBox11.TabIndex = 4;
             // 
             // label11
             // 
@@ -585,7 +586,7 @@
             this.textBox14.Margin = new System.Windows.Forms.Padding(2);
             this.textBox14.Name = "textBox14";
             this.textBox14.Size = new System.Drawing.Size(391, 20);
-            this.textBox14.TabIndex = 27;
+            this.textBox14.TabIndex = 3;
             // 
             // label12
             // 
@@ -623,7 +624,7 @@
             this.textBox13.Margin = new System.Windows.Forms.Padding(2);
             this.textBox13.Name = "textBox13";
             this.textBox13.Size = new System.Drawing.Size(329, 20);
-            this.textBox13.TabIndex = 25;
+            this.textBox13.TabIndex = 2;
             // 
             // tabPage2
             // 
@@ -675,6 +676,7 @@
             // 
             // richTextBox1
             // 
+            this.richTextBox1.BackColor = System.Drawing.Color.White;
             this.richTextBox1.Location = new System.Drawing.Point(4, 40);
             this.richTextBox1.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBox1.Name = "richTextBox1";
