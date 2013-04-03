@@ -27,3 +27,5 @@ C:\Users\Beraldo\Documents\Visual Studio 2010\Projects\memorial-descritivo\memor
 C:\Users\Beraldo\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Release\memorial.application
 C:\Users\Beraldo\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Release\memorial.exe
 C:\Users\Beraldo\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Release\memorial.pdb
+C:\Users\saldanha\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Release\memorial.exe
+C:\Users\saldanha\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Release\memorial.pdb
