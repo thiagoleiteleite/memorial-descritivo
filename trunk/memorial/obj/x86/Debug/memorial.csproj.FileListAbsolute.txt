@@ -46,3 +46,8 @@ C:\Users\Beraldo\Documents\Visual Studio 2010\Projects\memorial-descritivo\memor
 C:\Users\Beraldo\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Debug\memorial.TrustInfo.xml
 C:\Users\Beraldo\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Debug\memorial.exe.manifest
 C:\Users\Beraldo\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Debug\memorial.application
+C:\Users\saldanha\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\bin\Debug\memorial.exe.manifest
+C:\Users\saldanha\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\bin\Debug\memorial.application
+C:\Users\saldanha\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Debug\memorial.TrustInfo.xml
+C:\Users\saldanha\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Debug\memorial.exe.manifest
+C:\Users\saldanha\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Debug\memorial.application
