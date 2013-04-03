@@ -54,14 +54,22 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+<<<<<<< .mine
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="memorial.exe" size="33280">
+=======
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="memorial.exe" size="47104">
+>>>>>>> .r27
       <assemblyIdentity name="memorial" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+<<<<<<< .mine
+        <dsig:DigestValue>zBhjAlBzaERqAAQKfipckquvQIA=</dsig:DigestValue>
+=======
         <dsig:DigestValue>ajYmMx864J4fwrgC0EBQOGM4MSg=</dsig:DigestValue>
+>>>>>>> .r27
       </hash>
     </dependentAssembly>
   </dependency>
