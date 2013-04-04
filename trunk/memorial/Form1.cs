@@ -156,6 +156,34 @@ namespace memorial
             }
         }
 
+        //Função para converter Grau decimal para grau sexagesimal - Meio tosco!
+        private string dd2dms(double valor)
+        {
+            string CasaDec = Convert.ToString(numericUpDown3.Value);
+            
+            switch (CasaDec)
+            {
+                case "0":
+                    return valor.ToString("0° .00´ 00´´").Replace("° ,", "° ");
+                    break;
+                case "1":
+                    return valor.ToString("0° .00´ 00','0´´").Replace("° ,", "° ");
+                    break;
+                case "2":
+                    return valor.ToString("0° .00´ 00','00´´").Replace("° ,", "° ");
+                    break;
+                case "3":
+                    return valor.ToString("0° .00´ 00','000´´").Replace("° ,", "° ");
+                    break;
+                case "4":
+                    return valor.ToString("0° .00´ 00','0000´´").Replace("° ,", "° ");
+                    break;
+                default:
+                    return valor.ToString("0° .00´ 00´´").Replace("° ,", "° ");
+                    break;
+            }
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             if (dt2.Columns.Contains("Distância") == true)
@@ -171,17 +199,15 @@ namespace memorial
             if (dt2.Columns.Contains("Azimute") == true)
             {
                 dt2.Columns.Remove("Azimute");
-                dt2.Columns.Add(new DataColumn("Azimute", typeof(decimal)));
+                dt2.Columns.Add(new DataColumn("Azimute", typeof(string)));
                 
             }
             else if (dt2.Columns.Contains("Azimute") == false)
             {
-                dt2.Columns.Add(new DataColumn("Azimute", typeof(decimal)));
+                dt2.Columns.Add(new DataColumn("Azimute", typeof(string)));
             }
 
-            
-
-            //dt2.Columns.Add(new DataColumn("Distância", typeof(decimal)));
+                        //dt2.Columns.Add(new DataColumn("Distância", typeof(decimal)));
             //dt2.Columns.Add(new DataColumn("Azimute", typeof(decimal)));
 
             for (int i = 0; i < dt2.Rows.Count; i++)
@@ -209,21 +235,29 @@ namespace memorial
                     double azprov2b = ((Math.Truncate(azprov2 * Math.Sign(azprov2)) + (Math.Truncate((azprov2 - (Math.Truncate(azprov2 * Math.Sign(azprov2)) * Math.Sign(azprov2))) * 60 * Math.Sign(azprov2))) / 100) + (((azprov2 - (Math.Truncate(azprov2 * Math.Sign(azprov2)) * Math.Sign(azprov2))) * 60 * Math.Sign(azprov2) - Math.Truncate((azprov2 - (Math.Truncate(azprov2 * Math.Sign(azprov2)) * Math.Sign(azprov2))) * 60 * Math.Sign(azprov2))) * 60 / 10000)) * Math.Sign(azprov2);
                     double azprov3b = ((Math.Truncate(azprov3 * Math.Sign(azprov3)) + (Math.Truncate((azprov3 - (Math.Truncate(azprov3 * Math.Sign(azprov3)) * Math.Sign(azprov3))) * 60 * Math.Sign(azprov3))) / 100) + (((azprov3 - (Math.Truncate(azprov3 * Math.Sign(azprov3)) * Math.Sign(azprov3))) * 60 * Math.Sign(azprov3) - Math.Truncate((azprov3 - (Math.Truncate(azprov3 * Math.Sign(azprov3)) * Math.Sign(azprov3))) * 60 * Math.Sign(azprov3))) * 60 / 10000)) * Math.Sign(azprov3);
                     double azprov4b = ((Math.Truncate(azprov4 * Math.Sign(azprov4)) + (Math.Truncate((azprov4 - (Math.Truncate(azprov4 * Math.Sign(azprov4)) * Math.Sign(azprov4))) * 60 * Math.Sign(azprov4))) / 100) + (((azprov4 - (Math.Truncate(azprov4 * Math.Sign(azprov4)) * Math.Sign(azprov4))) * 60 * Math.Sign(azprov4) - Math.Truncate((azprov4 - (Math.Truncate(azprov4 * Math.Sign(azprov4)) * Math.Sign(azprov4))) * 60 * Math.Sign(azprov4))) * 60 / 10000)) * Math.Sign(azprov4);
+                    
+                    //formatação do azimute
+                    //format(azprov2b, "0° .00´ 00','00´´").ToString.Replace(",", "");
+                    string azprov1bf = dd2dms(azprov1b);
+                    string azprov2bf = dd2dms(azprov2b);
+                    string azprov3bf = dd2dms(azprov3b);
+                    string azprov4bf = dd2dms(azprov4b);
+
                     if (difY > 0 && difX > 0)
                     {
-                        dt2.Rows[i]["Azimute"] = azprov1b;
+                        dt2.Rows[i]["Azimute"] = azprov1bf;
                     }
                     if (difY < 0 && difX > 0)
                     {
-                        dt2.Rows[i]["Azimute"] = azprov2b;
+                        dt2.Rows[i]["Azimute"] = azprov2bf;
                     }
                     if (difY < 0 && difX < 0)
                     {
-                        dt2.Rows[i]["Azimute"] = azprov3b;
+                        dt2.Rows[i]["Azimute"] = azprov3bf;
                     }
                     if (difY > 0 && difX < 0)
                     {
-                        dt2.Rows[i]["Azimute"] = azprov4b;
+                        dt2.Rows[i]["Azimute"] = azprov4bf;
                     }
                 }
                 else
@@ -247,21 +281,28 @@ namespace memorial
                     double azprov2b = ((Math.Truncate(azprov2 * Math.Sign(azprov2)) + (Math.Truncate((azprov2 - (Math.Truncate(azprov2 * Math.Sign(azprov2)) * Math.Sign(azprov2))) * 60 * Math.Sign(azprov2))) / 100) + (((azprov2 - (Math.Truncate(azprov2 * Math.Sign(azprov2)) * Math.Sign(azprov2))) * 60 * Math.Sign(azprov2) - Math.Truncate((azprov2 - (Math.Truncate(azprov2 * Math.Sign(azprov2)) * Math.Sign(azprov2))) * 60 * Math.Sign(azprov2))) * 60 / 10000)) * Math.Sign(azprov2);
                     double azprov3b = ((Math.Truncate(azprov3 * Math.Sign(azprov3)) + (Math.Truncate((azprov3 - (Math.Truncate(azprov3 * Math.Sign(azprov3)) * Math.Sign(azprov3))) * 60 * Math.Sign(azprov3))) / 100) + (((azprov3 - (Math.Truncate(azprov3 * Math.Sign(azprov3)) * Math.Sign(azprov3))) * 60 * Math.Sign(azprov3) - Math.Truncate((azprov3 - (Math.Truncate(azprov3 * Math.Sign(azprov3)) * Math.Sign(azprov3))) * 60 * Math.Sign(azprov3))) * 60 / 10000)) * Math.Sign(azprov3);
                     double azprov4b = ((Math.Truncate(azprov4 * Math.Sign(azprov4)) + (Math.Truncate((azprov4 - (Math.Truncate(azprov4 * Math.Sign(azprov4)) * Math.Sign(azprov4))) * 60 * Math.Sign(azprov4))) / 100) + (((azprov4 - (Math.Truncate(azprov4 * Math.Sign(azprov4)) * Math.Sign(azprov4))) * 60 * Math.Sign(azprov4) - Math.Truncate((azprov4 - (Math.Truncate(azprov4 * Math.Sign(azprov4)) * Math.Sign(azprov4))) * 60 * Math.Sign(azprov4))) * 60 / 10000)) * Math.Sign(azprov4);
+
+                    //formatação do azimute
+                    string azprov1bf = dd2dms(azprov1b);
+                    string azprov2bf = dd2dms(azprov2b);
+                    string azprov3bf = dd2dms(azprov3b);
+                    string azprov4bf = dd2dms(azprov4b);
+                                        
                     if (difY > 0 && difX > 0)
                     {
-                        dt2.Rows[i]["Azimute"] = azprov1b;
+                        dt2.Rows[i]["Azimute"] = azprov1bf;
                     }
                     if (difY < 0 && difX > 0)
                     {
-                        dt2.Rows[i]["Azimute"] = azprov2b;
+                        dt2.Rows[i]["Azimute"] = azprov2bf;
                     }
                     if (difY < 0 && difX < 0)
                     {
-                        dt2.Rows[i]["Azimute"] = azprov3b;
+                        dt2.Rows[i]["Azimute"] = azprov3bf;
                     }
                     if (difY > 0 && difX < 0)
                     {
-                        dt2.Rows[i]["Azimute"] = azprov4b;
+                        dt2.Rows[i]["Azimute"] = azprov4bf;
                     }
                 }
 
@@ -303,32 +344,32 @@ namespace memorial
                 dataGridView1.Columns[3].DefaultCellStyle.Format = "0.0000";
             }
 
-            //Azimute
-            if (numericUpDown3.Value == 0)
-            {
-                dataGridView1.Columns[4].DefaultCellStyle.Format = "0° .00´ 00´´";           
-            }
-            if (numericUpDown3.Value == 1)
-            {
-                dataGridView1.Columns[4].DefaultCellStyle.Format = "0° .00´ 00','0´´";
-            }
-            if (numericUpDown3.Value == 2)
-            {
-                dataGridView1.Columns[4].DefaultCellStyle.Format = "0° .00´ 00','00´´";
-            }
-            if (numericUpDown3.Value == 3)
-            {
-                dataGridView1.Columns[4].DefaultCellStyle.Format = "0° .00´ 00','000´´";
-            }
-            if (numericUpDown3.Value == 4)
-            {
-                dataGridView1.Columns[4].DefaultCellStyle.Format = "0° .00´ 00','0000´´";
-            }
-
-            
+            //Azimute - Não precisa mais
+            //if (numericUpDown3.Value == 0)
+            //{
+            //  //  dataGridView1.Columns[4].DefaultCellStyle.Format = "0° .00´ 00´´";           
+            //}
+            //if (numericUpDown3.Value == 1)
+            //{
+            ////    dataGridView1.Columns[4].DefaultCellStyle.Format = "0° .00´ 00','0´´";
+            //}
+            //if (numericUpDown3.Value == 2)
+            //{
+            //  //  dataGridView1.Columns[4].DefaultCellStyle.Format = "0° .00´ 00','00´´";
+            //}
+            //if (numericUpDown3.Value == 3)
+            //{
+            //   // dataGridView1.Columns[4].DefaultCellStyle.Format = "0° .00´ 00','000´´";
+            //}
+            //if (numericUpDown3.Value == 4)
+            //{
+            ////    dataGridView1.Columns[4].DefaultCellStyle.Format = "0° .00´ 00','0000´´";
+            //}
+          
         }
 
-     
+        
+                  
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -700,28 +741,28 @@ namespace memorial
 
                     //Azimute
                     string azi = null;
-                    if (numericUpDown3.Value == 0)
-                    {
-                        azi = Convert.ToDecimal(dt2.Rows[i][4]).ToString("0° .00´ 00´´");
-                    }
-                    if (numericUpDown3.Value == 1)
-                    {
-                        azi = Convert.ToDecimal(dt2.Rows[i][4]).ToString("0° .00´ 00','0´´");
-                    }
-                    if (numericUpDown3.Value == 2)
-                    {
-                        azi = Convert.ToDecimal(dt2.Rows[i][4]).ToString("0° .00´ 00','00´´");
-                    }
-                    if (numericUpDown3.Value == 3)
-                    {
-                        azi = Convert.ToDecimal(dt2.Rows[i][4]).ToString("0° .00´ 00','000´´");
-                    }
-                    if (numericUpDown3.Value == 4)
-                    {
-                        azi = Convert.ToDecimal(dt2.Rows[i][4]).ToString("0° .00´ 00','0000´´");
-                    }                    
+                    //if (numericUpDown3.Value == 0)
+                    //{
+                    ////azi = Convert.ToString(dt2.Rows[i][4]);
+                    //}
+                    //if (numericUpDown3.Value == 1)
+                    //{
+                    // //   azi = Convert.ToDecimal(dt2.Rows[i][4]).ToString("0° .00´ 00','0´´");
+                    //}
+                    //if (numericUpDown3.Value == 2)
+                    //{
+                    // //   azi = Convert.ToDecimal(dt2.Rows[i][4]).ToString("0° .00´ 00','00´´");
+                    //}
+                    //if (numericUpDown3.Value == 3)
+                    //{
+                    ////    azi = Convert.ToDecimal(dt2.Rows[i][4]).ToString("0° .00´ 00','000´´");
+                    //}
+                    //if (numericUpDown3.Value == 4)
+                    //{
+                    ////    azi = Convert.ToDecimal(dt2.Rows[i][4]).ToString("0° .00´ 00','0000´´");
+                    //}
 
-                    
+                    azi = Convert.ToString(dt2.Rows[i][4]);
 
                     richTextBox1.AppendRegular(
                         //Ligação
@@ -803,7 +844,6 @@ namespace memorial
                     Yf = Convert.ToDecimal(dt2.Rows[0][2]).ToString("0.0000");
                 }
 
-
                 //Distância
                 string distf = null;
                 if (numericUpDown1.Value == 0)
@@ -829,27 +869,28 @@ namespace memorial
 
                 //Azimute
                 string azif = null;
-                if (numericUpDown3.Value == 0)
-                {
-                    azif = Convert.ToDecimal(dt2.Rows[0][4]).ToString("0° .00´ 00','00´´");
-                }
-                if (numericUpDown3.Value == 1)
-                {
-                    azif = Convert.ToDecimal(dt2.Rows[0][4]).ToString("0° .00´ 00','0´´");
-                }
-                if (numericUpDown3.Value == 2)
-                {
-                    azif = Convert.ToDecimal(dt2.Rows[0][4]).ToString("0° .00´ 00','00´´");
-                }
-                if (numericUpDown3.Value == 3)
-                {
-                    azif = Convert.ToDecimal(dt2.Rows[0][4]).ToString("0° .00´ 00','000´´");
-                }
-                if (numericUpDown3.Value == 4)
-                {
-                    azif = Convert.ToDecimal(dt2.Rows[0][4]).ToString("0° .00´ 00','0000´´");
-                }
+                //if (numericUpDown3.Value == 0)
+                //{
+                //azif = Convert.ToString(dt2.Rows[0][4]);
+                //}
+                //if (numericUpDown3.Value == 1)
+                //{
+                //azif = Convert.ToString(dt2.Rows[0][4]);
+                //}
+                //if (numericUpDown3.Value == 2)
+                //{
+                //azif = Convert.ToString(dt2.Rows[0][4]);
+                //}
+                //if (numericUpDown3.Value == 3)
+                //{
+                //azif = Convert.ToString(dt2.Rows[0][4]);
+                //}
+                //if (numericUpDown3.Value == 4)
+                //{
+                //azif = Convert.ToString(dt2.Rows[0][4]);
+                //}
 
+                azif = Convert.ToString(dt2.Rows[0][4]);
 
                 //string Xf = Convert.ToDecimal(dt2.Rows[0][1]).ToString("0.0000");
                 //string Yf = Convert.ToDecimal(dt2.Rows[0][2]).ToString("0.0000");
