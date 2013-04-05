@@ -55,7 +55,21 @@ namespace memorial
                 separador = '\t';
                 }
 
-            using (CachedCsvReader csv = new CachedCsvReader(new StreamReader(arquivo), true, separador))
+            System.Text.Encoding codificacao = null;
+            if (radioButton6.Checked == true)
+            {
+                codificacao = Encoding.Default;
+            }
+            else if (radioButton5.Checked == true)
+            {
+                codificacao = Encoding.UTF8;
+            }
+            else if (radioButton7.Checked == true)
+            {
+                codificacao = System.Text.Encoding.GetEncoding("iso-8859-1");
+            }
+
+            using (CachedCsvReader csv = new CachedCsvReader(new StreamReader(arquivo, codificacao), true, separador))
                 {
                 dt.Clear();
                 dt.Columns.Clear();
@@ -67,8 +81,8 @@ namespace memorial
                     dt2.Clear();
                     dt2.Columns.Clear();
                     dt2 = dt.Clone();
-                    dt2.Columns[1].DataType = typeof(Decimal);
-                    dt2.Columns[2].DataType = typeof(Decimal);
+                    dt2.Columns[1].DataType = typeof(Double);
+                    dt2.Columns[2].DataType = typeof(Double);
                     foreach (DataRow row in dt.Rows)
                         {
                         dt2.ImportRow(row);
@@ -119,14 +133,10 @@ namespace memorial
 
                     //formata as casas decimais das coordenadas
                     formataCoordenadaTabela();
-                    }
-                else
-                    {
-                    MessageBox.Show("Tabela fora da especificação");
-                    }
+                    }                
 
                 //Caso o arquivo seja apenas com Ponto;X;Y;Distância;Azimute;Confrontante;Divisa
-                if (dt.Columns.Count == 7)
+                else if (dt.Columns.Count == 7)
                     {
                     dt2.Clear();
                     dt2.Columns.Clear();
@@ -139,18 +149,28 @@ namespace memorial
                         }
 
                     //Deixando as coluas editáveis - Parei aqui, não descobri como deixar a coluna editável
+                    
                         foreach (DataGridViewColumn column in dataGridView1.Columns)
                         {
-                        if (column.Name == "Distância")
-                            {
-                            column.ReadOnly = false;
-                            }
+                            if ((column.Name == "Distância") || (column.Name == "Azimute") || (column.Name == "Confrontante") || (column.Name == "Divisa"))
+                                {
+                                column.ReadOnly = false;
+                                }                            
                         }
 
-                    dataGridView1.DataSource = dt2;
-
+                        dt2.Columns["Distância"].ReadOnly = false;
+                        dt2.Columns["Azimute"].ReadOnly = false;
+                        dt2.Columns["Confrontante"].ReadOnly = false;
+                        dt2.Columns["Divisa"].ReadOnly = false;
+                    
+                        dataGridView1.DataSource = dt2;
+                    
                     //formata as casas decimais das coordenadas
                     formataCoordenadaTabela();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Tabela fora da especificação");
                     }
                 }
             }
@@ -485,7 +505,7 @@ namespace memorial
         //Gerar memorial descritivo
         private void button3_Click(object sender, EventArgs e)
             {
-            if (dt2.Columns.Count == 6)
+            if (dt2.Columns.Count == 7)
                 {
                 richTextBox1.Text = "";
                 richTextBox1.Font = new Font("Times", 12);
@@ -758,12 +778,23 @@ namespace memorial
                 //Começo do texto do memorial
 
                 richTextBox1.AppendLine();
+                
                 //Parágrafo
                 richTextBox1.AppendRegular("\t" + textBox1.Text + " ");
+                
                 //Ponto
-                richTextBox1.AppendRegular(Convert.ToString(dt2.Rows[0][0]) + " ");
+                if (checkBox24.Checked == true)
+                {
+                    richTextBox1.AppendBold(Convert.ToString(dt2.Rows[0][0]) + " ");
+                }
+                else
+                {
+                    richTextBox1.AppendRegular(Convert.ToString(dt2.Rows[0][0]) + " ");
+                }
+                
                 //Texto coordenada
                 richTextBox1.AppendRegular(textBox2.Text + " ");
+                
                 //Coord X
                 if (checkBox17.Checked == true)
                     {
@@ -774,6 +805,7 @@ namespace memorial
                     richTextBox1.AppendRegular(textBox3.Text + " " + X1 + " " + textBox8.Text);
                     }
                 richTextBox1.AppendRegular(" e ");
+                
                 //Coord Y
                 if (checkBox17.Checked == true)
                     {
@@ -801,142 +833,215 @@ namespace memorial
                         }
                     }
 
-                //Percorre os pontos
+                //Divisa
+                if (Convert.ToString(dt2.Rows[0][6]).Length > 0)
+                {
+                    richTextBox1.AppendRegular(textBox24.Text);
+
+                    if (checkBox25.Checked == true)
+                    {
+                        richTextBox1.AppendBold(" " + dt2.Rows[0][6]);
+                        richTextBox1.AppendRegular(", ");
+                    }
+                    else
+                    {
+                        richTextBox1.AppendRegular(" " + dt2.Rows[0][6] + ", ");
+                    }
+                }
+
+                //Reseta barra de progresso
+                progressBar1.Value = 0;
+                
+                //Percorre os pontos                
                 for (int i = 1; i < dt2.Rows.Count; i++)
                     {
-                    string ponto = Convert.ToString(dt2.Rows[i][0]);
+                        string ponto = Convert.ToString(dt2.Rows[i][0]);
 
-                    //Coodernadas
-                    decimal X = 0;
-                    decimal Y = 0;
-                    X = formataCoordenada(Convert.ToDecimal(dt2.Rows[i][1]));
-                    Y = formataCoordenada(Convert.ToDecimal(dt2.Rows[i][2]));
+                        //Coodernadas
+                        decimal X = 0;
+                        decimal Y = 0;
+                        X = formataCoordenada(Convert.ToDecimal(dt2.Rows[i][1]));
+                        Y = formataCoordenada(Convert.ToDecimal(dt2.Rows[i][2]));
 
-                    //if (numericUpDown2.Value == 0)
-                    //    {
-                    //    X = Convert.ToDecimal(dt2.Rows[i][1]).ToString("0");
-                    //    Y = Convert.ToDecimal(dt2.Rows[i][2]).ToString("0");
-                    //    }
-                    //if (numericUpDown2.Value == 1)
-                    //    {
-                    //    X = Convert.ToDecimal(dt2.Rows[i][1]).ToString("0.0");
-                    //    Y = Convert.ToDecimal(dt2.Rows[i][2]).ToString("0.0");
-                    //    }
-                    //if (numericUpDown2.Value == 2)
-                    //    {
-                    //    X = Convert.ToDecimal(dt2.Rows[i][1]).ToString("0.00");
-                    //    Y = Convert.ToDecimal(dt2.Rows[i][2]).ToString("0.00");
-                    //    }
-                    //if (numericUpDown2.Value == 3)
-                    //    {
-                    //    X = Convert.ToDecimal(dt2.Rows[i][1]).ToString("0.000");
-                    //    Y = Convert.ToDecimal(dt2.Rows[i][2]).ToString("0.000");
-                    //    }
-                    //if (numericUpDown2.Value == 4)
-                    //    {
-                    //    X = Convert.ToDecimal(dt2.Rows[i][1]).ToString("0.0000");
-                    //    Y = Convert.ToDecimal(dt2.Rows[i][2]).ToString("0.0000");
-                    //    }
-
-
-                    //Distância
-                    string dist = null;
-                    dist = Convert.ToString(dt2.Rows[i][3]);
-                    //if (numericUpDown1.Value == 0)
-                    //{
-                    //    dist = Convert.ToDecimal(dt2.Rows[i][3]).ToString("0");
-                    //}
-                    //if (numericUpDown1.Value == 1)
-                    //{
-                    //    dist = Convert.ToDecimal(dt2.Rows[i][3]).ToString("0.0");
-                    //}
-                    //if (numericUpDown1.Value == 2)
-                    //{
-                    //    dist = Convert.ToDecimal(dt2.Rows[i][3]).ToString("0.00");
-                    //}
-                    //if (numericUpDown1.Value == 3)
-                    //{
-                    //    dist = Convert.ToDecimal(dt2.Rows[i][3]).ToString("0.000");
-                    //}
-                    //if (numericUpDown1.Value == 4)
-                    //{
-                    //    dist = Convert.ToDecimal(dt2.Rows[i][3]).ToString("0.0000");
-                    //}
-
-                    //Azimute
-                    string azi = null;
-                    azi = Convert.ToString(dt2.Rows[i][4]);
-                    //if (numericUpDown3.Value == 0)
-                    //{
-                    ////azi = Convert.ToString(dt2.Rows[i][4]);
-                    //}
-                    //if (numericUpDown3.Value == 1)
-                    //{
-                    // //   azi = Convert.ToDecimal(dt2.Rows[i][4]).ToString("0° .00´ 00','0´´");
-                    //}
-                    //if (numericUpDown3.Value == 2)
-                    //{
-                    // //   azi = Convert.ToDecimal(dt2.Rows[i][4]).ToString("0° .00´ 00','00´´");
-                    //}
-                    //if (numericUpDown3.Value == 3)
-                    //{
-                    ////    azi = Convert.ToDecimal(dt2.Rows[i][4]).ToString("0° .00´ 00','000´´");
-                    //}
-                    //if (numericUpDown3.Value == 4)
-                    //{
-                    ////    azi = Convert.ToDecimal(dt2.Rows[i][4]).ToString("0° .00´ 00','0000´´");
-                    //}
+                        //if (numericUpDown2.Value == 0)
+                        //    {
+                        //    X = Convert.ToDecimal(dt2.Rows[i][1]).ToString("0");
+                        //    Y = Convert.ToDecimal(dt2.Rows[i][2]).ToString("0");
+                        //    }
+                        //if (numericUpDown2.Value == 1)
+                        //    {
+                        //    X = Convert.ToDecimal(dt2.Rows[i][1]).ToString("0.0");
+                        //    Y = Convert.ToDecimal(dt2.Rows[i][2]).ToString("0.0");
+                        //    }
+                        //if (numericUpDown2.Value == 2)
+                        //    {
+                        //    X = Convert.ToDecimal(dt2.Rows[i][1]).ToString("0.00");
+                        //    Y = Convert.ToDecimal(dt2.Rows[i][2]).ToString("0.00");
+                        //    }
+                        //if (numericUpDown2.Value == 3)
+                        //    {
+                        //    X = Convert.ToDecimal(dt2.Rows[i][1]).ToString("0.000");
+                        //    Y = Convert.ToDecimal(dt2.Rows[i][2]).ToString("0.000");
+                        //    }
+                        //if (numericUpDown2.Value == 4)
+                        //    {
+                        //    X = Convert.ToDecimal(dt2.Rows[i][1]).ToString("0.0000");
+                        //    Y = Convert.ToDecimal(dt2.Rows[i][2]).ToString("0.0000");
+                        //    }
 
 
-                    richTextBox1.AppendRegular(
-                        //Ligação
-                        textBox5.Text +
-                        //Ponto
-                        " " + ponto +
-                        //Coordenadas
-                        " " + textBox2.Text + " ");
-                    //Coord X
-                    if (checkBox17.Checked == true)
-                        {
-                        richTextBox1.AppendBold(textBox3.Text + " " + X + " " + textBox8.Text);
-                        }
-                    else
-                        {
-                        richTextBox1.AppendRegular(textBox3.Text + " " + X + " " + textBox8.Text);
-                        }
-                    richTextBox1.AppendRegular(" e ");
-                    //Coord Y
-                    if (checkBox17.Checked == true)
-                        {
-                        richTextBox1.AppendBold(textBox4.Text + " " + Y + " " + textBox8.Text);
-                        }
-                    else
-                        {
-                        richTextBox1.AppendRegular(textBox4.Text + " " + Y + " " + textBox8.Text);
-                        }
-                    richTextBox1.AppendRegular(", ");
-
-                    ////Tipo coordenada X
-                    //" " + textBox3.Text +
-                    //" " + X + " " + textBox8.Text + " e " +
-                    ////Tipo coordenada Y
-                    //" " + textBox4.Text +
-                    //" " + Y + " " + textBox8.Text + ", "+ 
-
-                    //Azimute
-                    richTextBox1.AppendRegular(" " + textBox6.Text +
-                    " " + azi +
                         //Distância
-                    " " + textBox7.Text +
-                    " " + dist +
-                    " " + textBox8.Text + "; ");
+                        string dist = null;
+                        dist = Convert.ToString(dt2.Rows[i][3]);
+                        //if (numericUpDown1.Value == 0)
+                        //{
+                        //    dist = Convert.ToDecimal(dt2.Rows[i][3]).ToString("0");
+                        //}
+                        //if (numericUpDown1.Value == 1)
+                        //{
+                        //    dist = Convert.ToDecimal(dt2.Rows[i][3]).ToString("0.0");
+                        //}
+                        //if (numericUpDown1.Value == 2)
+                        //{
+                        //    dist = Convert.ToDecimal(dt2.Rows[i][3]).ToString("0.00");
+                        //}
+                        //if (numericUpDown1.Value == 3)
+                        //{
+                        //    dist = Convert.ToDecimal(dt2.Rows[i][3]).ToString("0.000");
+                        //}
+                        //if (numericUpDown1.Value == 4)
+                        //{
+                        //    dist = Convert.ToDecimal(dt2.Rows[i][3]).ToString("0.0000");
+                        //}
 
-                    if (Convert.ToString(dt2.Rows[i][5]).Length > 0)
+                        //Azimute
+                        string azi = null;
+                        azi = Convert.ToString(dt2.Rows[i][4]);
+                        //if (numericUpDown3.Value == 0)
+                        //{
+                        ////azi = Convert.ToString(dt2.Rows[i][4]);
+                        //}
+                        //if (numericUpDown3.Value == 1)
+                        //{
+                        // //   azi = Convert.ToDecimal(dt2.Rows[i][4]).ToString("0° .00´ 00','0´´");
+                        //}
+                        //if (numericUpDown3.Value == 2)
+                        //{
+                        // //   azi = Convert.ToDecimal(dt2.Rows[i][4]).ToString("0° .00´ 00','00´´");
+                        //}
+                        //if (numericUpDown3.Value == 3)
+                        //{
+                        ////    azi = Convert.ToDecimal(dt2.Rows[i][4]).ToString("0° .00´ 00','000´´");
+                        //}
+                        //if (numericUpDown3.Value == 4)
+                        //{
+                        ////    azi = Convert.ToDecimal(dt2.Rows[i][4]).ToString("0° .00´ 00','0000´´");
+                        //}
+
+
+                        //Nome ponto
+                        richTextBox1.AppendRegular(textBox5.Text + " ");
+                        if (checkBox24.Checked == true)
                         {
-                        richTextBox1.AppendRegular(textBox21.Text + " " + dt2.Rows[i][5] + ", ");
+                            richTextBox1.AppendBold(ponto);
+                        }
+                        else
+                        {
+                            richTextBox1.AppendRegular(ponto);
+                        }
+                        richTextBox1.AppendRegular(" " + textBox2.Text + " ");
+
+                        //Coord X
+                        if (checkBox17.Checked == true)
+                            {
+                            richTextBox1.AppendBold(textBox3.Text + " " + X + " " + textBox8.Text);
+                            }
+                        else
+                            {
+                            richTextBox1.AppendRegular(textBox3.Text + " " + X + " " + textBox8.Text);
+                            }
+                        richTextBox1.AppendRegular(" e ");
+                        //Coord Y
+                        if (checkBox17.Checked == true)
+                            {
+                            richTextBox1.AppendBold(textBox4.Text + " " + Y + " " + textBox8.Text);
+                            }
+                        else
+                            {
+                            richTextBox1.AppendRegular(textBox4.Text + " " + Y + " " + textBox8.Text);
+                            }
+                        richTextBox1.AppendRegular(", ");
+
+                        ////Tipo coordenada X
+                        //" " + textBox3.Text +
+                        //" " + X + " " + textBox8.Text + " e " +
+                        ////Tipo coordenada Y
+                        //" " + textBox4.Text +
+                        //" " + Y + " " + textBox8.Text + ", "+ 
+
+                        //Azimute
+                        richTextBox1.AppendRegular(" " + textBox6.Text + " ");
+                        if(checkBox19.Checked == true)
+                        {
+                            richTextBox1.AppendBold(azi);
+                        }
+                        else
+                        {
+                            richTextBox1.AppendRegular(azi);
+                        }           
+                        //Distância
+                        richTextBox1.AppendRegular(" " + textBox7.Text + " ");
+                        if(checkBox18.Checked == true)
+                        {
+                            richTextBox1.AppendBold(dist + " ");
+                        }
+                        else
+                        {
+                            richTextBox1.AppendRegular(dist + " ");
                         }
 
-                    }
+                        //Confrontante
+                        if (Convert.ToString(dt2.Rows[i][5]).Length > 0)
+                        {
+                            richTextBox1.AppendRegular(textBox21.Text);
+
+                            if (checkBox23.Checked == true)
+                            {
+                                richTextBox1.AppendBold(" " + dt2.Rows[i][5]);
+                                richTextBox1.AppendRegular(", ");
+                            }
+                            else
+                            {
+                                richTextBox1.AppendRegular(" " + dt2.Rows[i][5] + ", ");
+                            }
+                        }
+
+                        //Divisa
+                        if (Convert.ToString(dt2.Rows[i][6]).Length > 0)
+                        {
+                            richTextBox1.AppendRegular(textBox24.Text);
+
+                            if (checkBox25.Checked == true)
+                            {
+                                richTextBox1.AppendBold(" " + dt2.Rows[i][6]);
+                                richTextBox1.AppendRegular(", ");
+                            }
+                            else
+                            {
+                                richTextBox1.AppendRegular(" " + dt2.Rows[i][6] + ", ");
+                            }
+                        }
+
+                    //Barra de progresso
+                        progressBar1.Minimum = 0;
+                        progressBar1.Maximum = dt2.Rows.Count;
+                        progressBar1.Value = i;
+
+                    }                
+                
+                //Reseta barra de progresso
+                progressBar1.Value = 0;
+
                 string pontof = Convert.ToString(dt2.Rows[0][0]);
 
                 //Coodernadas
@@ -1028,8 +1133,17 @@ namespace memorial
                 //string distf = Convert.ToDecimal(dt2.Rows[0][3]).ToString("0.00");
                 //string azif = Convert.ToDecimal(dt2.Rows[0][4]).ToString("0° .00´ 00','00´´");
 
-                richTextBox1.AppendRegular(textBox5.Text + " " + pontof +
-                        " " + textBox2.Text + " ");
+                //Nome ponto
+                richTextBox1.AppendRegular(textBox5.Text + " ");
+                if (checkBox24.Checked == true)
+                {
+                    richTextBox1.AppendBold(pontof);
+                }
+                else
+                {
+                    richTextBox1.AppendRegular(pontof);
+                }            
+                richTextBox1.AppendRegular(" " + textBox2.Text + " ");
 
                 //Coord X
                 if (checkBox17.Checked == true)
@@ -1050,42 +1164,91 @@ namespace memorial
                     {
                     richTextBox1.AppendRegular(textBox4.Text + " " + Yf + " " + textBox8.Text);
                     }
+                
                 richTextBox1.AppendRegular(", ");
 
                 //" " + Xf + " " + textBox8.Text + " e " +
                 //" " + textBox4.Text +
                 //" " + Yf + " " + textBox8.Text + ", " +
 
-                richTextBox1.AppendRegular(" " + textBox6.Text +
-                " " + azif +
-                " " + textBox7.Text +
-                " " + distf +
-                " " + textBox8.Text + "; ");
+                    //Azimute
+                    richTextBox1.AppendRegular(" " + textBox6.Text + " ");
+                    if(checkBox19.Checked == true)
+                    {
+                        richTextBox1.AppendBold(azif);
+                    }
+                    else
+                    {
+                        richTextBox1.AppendRegular(azif);
+                    }           
+                    //Distância
+                    richTextBox1.AppendRegular(" " + textBox7.Text + " ");
+                    if(checkBox18.Checked == true)
+                    {
+                        richTextBox1.AppendBold(distf);
+                    }
+                    else
+                    {
+                        richTextBox1.AppendRegular(distf);
+                    }
+
+                    richTextBox1.AppendRegular(" " + textBox8.Text + "; ");
+                //    if (Convert.ToString(dt2.Rows[i][5]).Length > 0)
+                //        {
+                //        richTextBox1.AppendRegular(textBox21.Text + " " + dt2.Rows[i][5] + ", ");
+                //        }
+
+                //    }
+
+
+                //richTextBox1.AppendRegular(" " + textBox6.Text +
+                //" " + azif +
+                //" " + textBox7.Text +
+                //" " + distf +
+                //" " + textBox8.Text + "; ");
 
                 richTextBox1.AppendRegular(textBox15.Text);
 
                 //Perímetro
+                string pers = null;
                 if (numericUpDown1.Value == 0)
                     {
-                    richTextBox1.AppendRegular(" " + per.ToString("0") + " " + textBox8.Text + ".");
+                        pers = per.ToString("0");
+                        //richTextBox1.AppendRegular(" " + per.ToString("0") + " " + textBox8.Text + ".");
                     }
                 if (numericUpDown1.Value == 1)
                     {
-                    richTextBox1.AppendRegular(" " + per.ToString("0.0") + " " + textBox8.Text + ".");
+                        pers = per.ToString("0.0");
+                        //richTextBox1.AppendRegular(" " + per.ToString("0.0") + " " + textBox8.Text + ".");
                     }
                 if (numericUpDown1.Value == 2)
                     {
-                    richTextBox1.AppendRegular(" " + per.ToString("0.00") + " " + textBox8.Text + ".");
+                        pers = per.ToString("0.00");
+                        //richTextBox1.AppendRegular(" " + per.ToString("0.00") + " " + textBox8.Text + ".");
                     }
                 if (numericUpDown1.Value == 3)
                     {
-                    richTextBox1.AppendRegular(" " + per.ToString("0.000") + " " + textBox8.Text + ".");
+                        pers = per.ToString("0.000");
+                        //richTextBox1.AppendRegular(" " + per.ToString("0.000") + " " + textBox8.Text + ".");
                     }
                 if (numericUpDown1.Value == 4)
                     {
-                    richTextBox1.AppendRegular(" " + per.ToString("0.0000") + " " + textBox8.Text + ".");
+                        pers = per.ToString("0.0000");
+                        //richTextBox1.AppendRegular(" " + per.ToString("0.0000") + " " + textBox8.Text + ".");
                     }
 
+                richTextBox1.AppendRegular(" ");                
+                if (checkBox18.Checked == true)
+                {
+                    richTextBox1.AppendBold(pers);
+                }
+                else
+                {
+                    richTextBox1.AppendRegular(pers);
+                }
+                richTextBox1.AppendRegular(" " + textBox8.Text + ".");
+
+                //Espaço entre texto e assinatura
                 if (textBox22.TextLength > 0 || checkBox2.Checked == true || radioButton3.Checked == true || radioButton4.Checked == true || textBox16.TextLength > 0 || textBox17.TextLength > 0)
                     {
                     richTextBox1.AppendLine();
@@ -1097,7 +1260,14 @@ namespace memorial
                 //Cidade
                 if (textBox22.TextLength > 0)
                     {
-                    richTextBox1.AppendCenter(textBox22.Text);
+                        if (checkBox26.Checked == true)
+                        {
+                            richTextBox1.AppendCenterBold(textBox22.Text);
+                        }
+                        else
+                        {
+                            richTextBox1.AppendCenter(textBox22.Text);
+                        }                    
                     }
 
                 //Data
@@ -1118,17 +1288,39 @@ namespace memorial
 
                         if (textBox22.TextLength > 0)
                             {
-                            richTextBox1.AppendCenter(", " + data);
+                                if (checkBox27.Checked == true)
+                                {
+                                    richTextBox1.AppendCenterBold(", " + data);
+                                }
+                                else
+                                {
+                                    richTextBox1.AppendCenter(", " + data);
+                                }
+                            
                             }
                         else
                             {
-                            richTextBox1.AppendCenter(data);
+                                if (checkBox27.Checked == true)
+                                {
+                                    richTextBox1.AppendCenterBold(data);
+                                }
+                                else
+                                {
+                                    richTextBox1.AppendCenter(data);
+                                }                            
                             }
 
                         }
                     if (radioButton4.Checked == true)
                         {
-                        richTextBox1.AppendCenter(textBox23.Text);
+                            if (checkBox27.Checked == true)
+                            {
+                                richTextBox1.AppendCenterBold(textBox23.Text);
+                            }
+                            else
+                            {
+                                richTextBox1.AppendCenter(textBox23.Text);
+                            }                         
                         }
                     }
 
@@ -1143,13 +1335,27 @@ namespace memorial
                     }
                 if (textBox16.TextLength > 0)
                     {
-                    richTextBox1.AppendLine();
-                    richTextBox1.AppendCenter(textBox16.Text);
+                        richTextBox1.AppendLine();
+                        if (checkBox28.Checked == true)
+                        {
+                            richTextBox1.AppendCenterBold(textBox16.Text);
+                        }
+                        else
+                        {
+                            richTextBox1.AppendCenter(textBox16.Text);
+                        }                     
                     }
                 if (textBox17.TextLength > 0)
                     {
-                    richTextBox1.AppendLine();
-                    richTextBox1.AppendCenter(textBox17.Text);
+                        richTextBox1.AppendLine();
+                        if (checkBox29.Checked == true)
+                        {
+                            richTextBox1.AppendCenterBold(textBox17.Text);
+                        }
+                        else
+                        {
+                            richTextBox1.AppendCenter(textBox17.Text);
+                        }                    
                     }
 
                 richTextBox1.AppendLine();
@@ -1216,9 +1422,13 @@ namespace memorial
 
         private void button6_Click(object sender, EventArgs e)
             {
+
+                
+
             saveFileDialog2.Filter = "CSV separado por ponto e vírgula|*.csv";
             if (saveFileDialog2.ShowDialog() == DialogResult.OK)
                 {
+
                 System.IO.StreamWriter streamWriter = new System.IO.StreamWriter(saveFileDialog2.FileName);
 
                 string strHeader = "";
@@ -1283,7 +1493,6 @@ namespace memorial
                 textBox23.Enabled = false;
                 }
             }
-
         }
 
     public static class RichTextBoxExtensions
@@ -1342,16 +1551,25 @@ namespace memorial
 
         public static void AppendCenter(this RichTextBox ed, string s)
             {
-            int ss = ed.SelectionStart;
-            ed.AppendText(s);
-            int sl = ed.SelectionStart - ss + 1;
-
-            Font regular = new Font(ed.Font, FontStyle.Regular);
-            ed.Select(ss, sl);
-            ed.SelectionFont = regular;
-            ed.SelectionAlignment = HorizontalAlignment.Center;
-            //ed.AppendText(NewLine);
+                Font regular = new Font(ed.Font, FontStyle.Regular);
+                ed.SelectionFont = regular;
+                ed.SelectionAlignment = HorizontalAlignment.Center;
+                ed.AppendText(s);
+                ed.SelectionFont = regular;
+                //ed.SelectionAlignment = HorizontalAlignment.Left;
+                //ed.AppendText(NewLine);
+                //ed.AppendText(NewLine);
             }
+
+        public static void AppendCenterBold(this RichTextBox ed, string s)
+        {
+            Font bold = new Font(ed.Font, FontStyle.Bold);
+            Font regular = new Font(ed.Font, FontStyle.Regular);
+            ed.SelectionFont = bold;
+            ed.SelectionAlignment = HorizontalAlignment.Center;
+            ed.AppendText(s);
+            ed.SelectionFont = regular;
+        }
 
         public static void AppendRegular(this RichTextBox ed, string s)
             {
