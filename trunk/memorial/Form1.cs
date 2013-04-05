@@ -265,28 +265,28 @@ namespace memorial
             {
             if (numericUpDown2.Value == 0)
                 {
-                dataGridView1.Columns[1].DefaultCellStyle.Format = "0";
-                dataGridView1.Columns[2].DefaultCellStyle.Format = "0";
+                    dataGridView1.Columns[1].DefaultCellStyle.Format = "#,###.";
+                    dataGridView1.Columns[2].DefaultCellStyle.Format = "#,###.";
                 }
             if (numericUpDown2.Value == 1)
                 {
-                dataGridView1.Columns[1].DefaultCellStyle.Format = "0.0";
-                dataGridView1.Columns[2].DefaultCellStyle.Format = "0.0";
+                    dataGridView1.Columns[1].DefaultCellStyle.Format = "#,###0.0";
+                    dataGridView1.Columns[2].DefaultCellStyle.Format = "#,###0.0";
                 }
             if (numericUpDown2.Value == 2)
                 {
-                dataGridView1.Columns[1].DefaultCellStyle.Format = "0.00";
-                dataGridView1.Columns[2].DefaultCellStyle.Format = "0.00";
+                    dataGridView1.Columns[1].DefaultCellStyle.Format = "#,###0.00";
+                    dataGridView1.Columns[2].DefaultCellStyle.Format = "#,###0.00";
                 }
             if (numericUpDown2.Value == 3)
                 {
-                dataGridView1.Columns[1].DefaultCellStyle.Format = "0.000";
-                dataGridView1.Columns[2].DefaultCellStyle.Format = "0.000";
+                    dataGridView1.Columns[1].DefaultCellStyle.Format = "#,###0.000";
+                    dataGridView1.Columns[2].DefaultCellStyle.Format = "#,###0.000";
                 }
             if (numericUpDown2.Value == 4)
                 {
-                dataGridView1.Columns[1].DefaultCellStyle.Format = "0.0000";
-                dataGridView1.Columns[2].DefaultCellStyle.Format = "0.0000";
+                    dataGridView1.Columns[1].DefaultCellStyle.Format = "#,###0.0000";
+                    dataGridView1.Columns[2].DefaultCellStyle.Format = "#,###0.0000";
                 }
             }
 
@@ -297,22 +297,22 @@ namespace memorial
             switch (CasaDec)
                 {
                 case "0":
-                    return Convert.ToDecimal(valor.ToString("0"));
+                        return Convert.ToDecimal(valor.ToString("#,###."));
                     break;
                 case "1":
-                    return Convert.ToDecimal(valor.ToString("0.0"));
+                    return Convert.ToDecimal(valor.ToString("#,###0.0"));
                     break;
                 case "2":
-                    return Convert.ToDecimal(valor.ToString("0.00"));
+                    return Convert.ToDecimal(valor.ToString("#,###0.00"));
                     break;
                 case "3":
-                    return Convert.ToDecimal(valor.ToString("0.000"));
+                    return Convert.ToDecimal(valor.ToString("#,###0.000"));
                     break;
                 case "4":
-                    return Convert.ToDecimal(valor.ToString("0.0000"));
+                    return Convert.ToDecimal(valor.ToString("#,###0.0000"));
                     break;
                 default:
-                    return Convert.ToDecimal(valor.ToString("0.000"));
+                    return Convert.ToDecimal(valor.ToString("#,###0.000"));
                     break;
                 }
             }
@@ -324,22 +324,22 @@ namespace memorial
             switch (CasaDec)
                 {
                 case "0":
-                    return Convert.ToDecimal(valor.ToString("0"));
+                        return Convert.ToDecimal(valor.ToString("#,###."));
                     break;
                 case "1":
-                    return Convert.ToDecimal(valor.ToString("0.0"));
+                    return Convert.ToDecimal(valor.ToString("#,###0.0"));
                     break;
                 case "2":
-                    return Convert.ToDecimal(valor.ToString("0.00"));
+                    return Convert.ToDecimal(valor.ToString("#,###0.00"));
                     break;
                 case "3":
-                    return Convert.ToDecimal(valor.ToString("0.000"));
+                    return Convert.ToDecimal(valor.ToString("#,###0.000"));
                     break;
                 case "4":
-                    return Convert.ToDecimal(valor.ToString("0.0000"));
+                    return Convert.ToDecimal(valor.ToString("#,###0.0000"));
                     break;
                 default:
-                    return Convert.ToDecimal(valor.ToString("0.000"));
+                    return Convert.ToDecimal(valor.ToString("#,###0.000"));
                     break;
                 }
             }
@@ -665,55 +665,55 @@ namespace memorial
                         {
                         if (checkBox22.Checked == true)
                             {
-                            richTextBox1.AppendBold(per.ToString("0") + " " + textBox8.Text);
+                                richTextBox1.AppendBold(per.ToString("#,###.") + " " + textBox8.Text);
                             }
                         else
                             {
-                            richTextBox1.AppendRegular(per.ToString("0") + " " + textBox8.Text);
+                                richTextBox1.AppendRegular(per.ToString("#,###.") + " " + textBox8.Text);
                             }
                         }
                     if (numericUpDown1.Value == 1)
                         {
                         if (checkBox22.Checked == true)
                             {
-                            richTextBox1.AppendBold(per.ToString("0.0") + " " + textBox8.Text);
+                                richTextBox1.AppendBold(per.ToString("#,###0.0") + " " + textBox8.Text);
                             }
                         else
                             {
-                            richTextBox1.AppendRegular(per.ToString("0.0") + " " + textBox8.Text);
+                                richTextBox1.AppendRegular(per.ToString("#,###0.0") + " " + textBox8.Text);
                             }
                         }
                     if (numericUpDown1.Value == 2)
                         {
                         if (checkBox22.Checked == true)
                             {
-                            richTextBox1.AppendBold(per.ToString("0.00") + " " + textBox8.Text);
+                                richTextBox1.AppendBold(per.ToString("#,###0.00") + " " + textBox8.Text);
                             }
                         else
                             {
-                            richTextBox1.AppendRegular(per.ToString("0.00") + " " + textBox8.Text);
+                                richTextBox1.AppendRegular(per.ToString("#,###0.00") + " " + textBox8.Text);
                             }
                         }
                     if (numericUpDown1.Value == 3)
                         {
                         if (checkBox22.Checked == true)
                             {
-                            richTextBox1.AppendBold(per.ToString("0.000") + " " + textBox8.Text);
+                                richTextBox1.AppendBold(per.ToString("#,###0.000") + " " + textBox8.Text);
                             }
                         else
                             {
-                            richTextBox1.AppendRegular(per.ToString("0.000") + " " + textBox8.Text);
+                                richTextBox1.AppendRegular(per.ToString("#,###0.000") + " " + textBox8.Text);
                             }
                         }
                     if (numericUpDown1.Value == 4)
                         {
                         if (checkBox22.Checked == true)
                             {
-                            richTextBox1.AppendBold(per.ToString("0.0000") + " " + textBox8.Text);
+                                richTextBox1.AppendBold(per.ToString("#,###0.0000") + " " + textBox8.Text);
                             }
                         else
                             {
-                            richTextBox1.AppendRegular(per.ToString("0.0000") + " " + textBox8.Text);
+                                richTextBox1.AppendRegular(per.ToString("#,###0.0000") + " " + textBox8.Text);
                             }
                         }
                     richTextBox1.AppendLine();
@@ -1213,27 +1213,28 @@ namespace memorial
                 string pers = null;
                 if (numericUpDown1.Value == 0)
                     {
-                        pers = per.ToString("0");
+                        pers = per.ToString("#,###.");
                         //richTextBox1.AppendRegular(" " + per.ToString("0") + " " + textBox8.Text + ".");
                     }
                 if (numericUpDown1.Value == 1)
                     {
-                        pers = per.ToString("0.0");
+                        pers = per.ToString("#,###0.0");
                         //richTextBox1.AppendRegular(" " + per.ToString("0.0") + " " + textBox8.Text + ".");
                     }
                 if (numericUpDown1.Value == 2)
                     {
-                        pers = per.ToString("0.00");
+                        //pers = per.ToString("0.00");
+                        pers = per.ToString("#,###0.00");
                         //richTextBox1.AppendRegular(" " + per.ToString("0.00") + " " + textBox8.Text + ".");
                     }
                 if (numericUpDown1.Value == 3)
                     {
-                        pers = per.ToString("0.000");
+                        pers = per.ToString("#,###0.000");
                         //richTextBox1.AppendRegular(" " + per.ToString("0.000") + " " + textBox8.Text + ".");
                     }
                 if (numericUpDown1.Value == 4)
                     {
-                        pers = per.ToString("0.0000");
+                        pers = per.ToString("#,###0.0000");
                         //richTextBox1.AppendRegular(" " + per.ToString("0.0000") + " " + textBox8.Text + ".");
                     }
 
