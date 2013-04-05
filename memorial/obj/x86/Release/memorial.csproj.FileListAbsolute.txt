@@ -29,3 +29,17 @@ C:\Users\Beraldo\Documents\Visual Studio 2010\Projects\memorial-descritivo\memor
 C:\Users\Beraldo\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Release\memorial.pdb
 C:\Users\saldanha\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Release\memorial.exe
 C:\Users\saldanha\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Release\memorial.pdb
+D:\_Projetos_VS2008\Memorial_Descritivo_CSharp\memorial\obj\x86\Release\ResolveAssemblyReference.cache
+D:\_Projetos_VS2008\Memorial_Descritivo_CSharp\memorial\obj\x86\Release\memorial.Form1.resources
+D:\_Projetos_VS2008\Memorial_Descritivo_CSharp\memorial\obj\x86\Release\memorial.Properties.Resources.resources
+D:\_Projetos_VS2008\Memorial_Descritivo_CSharp\memorial\obj\x86\Release\GenerateResource.read.1.tlog
+D:\_Projetos_VS2008\Memorial_Descritivo_CSharp\memorial\obj\x86\Release\GenerateResource.write.1.tlog
+D:\_Projetos_VS2008\Memorial_Descritivo_CSharp\memorial\obj\x86\Release\memorial.exe
+D:\_Projetos_VS2008\Memorial_Descritivo_CSharp\memorial\bin\Release\memorial.exe.manifest
+D:\_Projetos_VS2008\Memorial_Descritivo_CSharp\memorial\bin\Release\memorial.application
+D:\_Projetos_VS2008\Memorial_Descritivo_CSharp\memorial\bin\Release\memorial.exe
+D:\_Projetos_VS2008\Memorial_Descritivo_CSharp\memorial\bin\Release\memorial.pdb
+D:\_Projetos_VS2008\Memorial_Descritivo_CSharp\memorial\obj\x86\Release\memorial.TrustInfo.xml
+D:\_Projetos_VS2008\Memorial_Descritivo_CSharp\memorial\obj\x86\Release\memorial.exe.manifest
+D:\_Projetos_VS2008\Memorial_Descritivo_CSharp\memorial\obj\x86\Release\memorial.application
+D:\_Projetos_VS2008\Memorial_Descritivo_CSharp\memorial\obj\x86\Release\memorial.pdb
