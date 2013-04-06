@@ -54,14 +54,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="memorial.exe" size="58368">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="memorial.exe" size="57856">
       <assemblyIdentity name="memorial" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>ghgUd0t++xstoIYwQ08dgLT6sRw=</dsig:DigestValue>
+        <dsig:DigestValue>SsFLgmMNB7a316S2PDv6tH4oHY4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
