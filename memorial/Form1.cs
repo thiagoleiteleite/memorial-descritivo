@@ -135,7 +135,7 @@ namespace memorial
                     formataCoordenadaTabela();
                     }
 
-                //Caso o arquivo seja apenas com Ponto;X;Y;Distância;Azimute;Confrontante;Divisa
+                //Caso o arquivo seja com Ponto;X;Y;Distância;Azimute;Confrontante;Divisa
                 else if (dt.Columns.Count == 7)
                     {
                     dt2.Clear();
@@ -745,11 +745,11 @@ namespace memorial
 
                 string X1 = null;
                 string Y1 = null;
-                
+
                 X1 = formataCoordenada(Convert.ToDouble(dt2.Rows[0][1]));
                 Y1 = formataCoordenada(Convert.ToDouble(dt2.Rows[0][2]));
 
-               // Y1 = (decimal.Parse(dt2.Rows[0][2]));
+                // Y1 = (decimal.Parse(dt2.Rows[0][2]));
 
                 //string X1 = null;
                 //string Y1 = null;
@@ -1062,7 +1062,7 @@ namespace memorial
                 //decimal Yf = 0;
                 //Xf = formataCoordenada(Convert.ToDecimal(dt2.Rows[0][1]));
                 //Yf = formataCoordenada(Convert.ToDecimal(dt2.Rows[0][2]));
-                
+
                 string Xf = null;
                 string Yf = null;
 
@@ -1442,48 +1442,51 @@ namespace memorial
             linkLabel2.Links.Add(0, 100, "http://www.codeproject.com/Articles/9258/A-Fast-CSV-Reader");
             }
 
+        //Exportar tabela para CSV
         private void button6_Click(object sender, EventArgs e)
             {
-
-
-
             saveFileDialog2.Filter = "CSV separado por ponto e vírgula|*.csv";
+
             if (saveFileDialog2.ShowDialog() == DialogResult.OK)
                 {
-
                 System.IO.StreamWriter streamWriter = new System.IO.StreamWriter(saveFileDialog2.FileName);
 
                 string strHeader = "";
 
-                for (int i = 0; i < dataGridView1.Columns.Count; i++)
+                int numcolunas = dataGridView1.Columns.Count;
+                for (int i = 0; i < numcolunas; i++)
                     {
-
-                    strHeader += dataGridView1.Columns[i].HeaderText + ";";
-
+                    if (i == (numcolunas-1))
+                        {
+                        strHeader += dataGridView1.Columns[i].HeaderText;
+                        }
+                    else
+                        {
+                        strHeader += dataGridView1.Columns[i].HeaderText + ";";
+                        }
                     }
 
                 streamWriter.WriteLine(strHeader);
 
                 for (int m = 0; m < dataGridView1.Rows.Count; m++)
                     {
-
                     string strRowValue = "";
 
-                    for (int n = 0; n < dataGridView1.Columns.Count; n++)
+                    for (int n = 0; n < numcolunas; n++)
                         {
-
-                        strRowValue += dataGridView1.Rows[m].Cells[n].Value + ";";
-
+                        if (n == (numcolunas - 1))
+                            {
+                            strRowValue += dataGridView1.Rows[m].Cells[n].Value;
+                            }
+                        else
+                            {
+                            strRowValue += dataGridView1.Rows[m].Cells[n].Value + ";";
+                            }
                         }
-
                     streamWriter.WriteLine(strRowValue);
-
                     }
-
                 streamWriter.Close();
                 }
-
-
             }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
