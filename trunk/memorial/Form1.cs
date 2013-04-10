@@ -28,7 +28,7 @@ namespace memorial
         private void button1_Click(object sender, EventArgs e)
             {
             button2.Enabled = false;
-            button6.Enabled = false;
+
 
             openFileDialog1.Filter = "Arquivo CSV (*.csv)|*.csv|Arquivo TXT (*.txt)|*.txt";
             openFileDialog1.FileName = "";
@@ -38,6 +38,7 @@ namespace memorial
                 arquivo = openFileDialog1.FileName;
                 readCsv(arquivo);
                 button2.Enabled = true;
+                button6.Enabled = true;
                 }
             }
 
@@ -369,7 +370,7 @@ namespace memorial
                     double Y = Convert.ToDouble(dt2.Rows[i][2]);
                     double Yant = Convert.ToDouble(dt2.Rows[dt2.Rows.Count - 1][2]);
                     double difY = Y - Yant;
-                    dt2.Rows[i]["Distância"] = formataDist(Math.Sqrt(Math.Pow(difX, 2) + Math.Pow(difY, 2)));
+                    dt2.Rows[dt2.Rows.Count - 1]["Distância"] = formataDist(Math.Sqrt(Math.Pow(difX, 2) + Math.Pow(difY, 2)));
 
                     //Cálculo do azimute
                     double rprov1 = Math.Atan(difX / difY) * (180 / Math.PI) * Math.Sign(difX / difY);
@@ -391,19 +392,19 @@ namespace memorial
 
                     if (difY > 0 && difX > 0)
                         {
-                        dt2.Rows[i]["Azimute"] = azprov1bf;
+                        dt2.Rows[dt2.Rows.Count - 1]["Azimute"] = azprov1bf;
                         }
                     if (difY < 0 && difX > 0)
                         {
-                        dt2.Rows[i]["Azimute"] = azprov2bf;
+                        dt2.Rows[dt2.Rows.Count - 1]["Azimute"] = azprov2bf;
                         }
                     if (difY < 0 && difX < 0)
                         {
-                        dt2.Rows[i]["Azimute"] = azprov3bf;
+                        dt2.Rows[dt2.Rows.Count - 1]["Azimute"] = azprov3bf;
                         }
                     if (difY > 0 && difX < 0)
                         {
-                        dt2.Rows[i]["Azimute"] = azprov4bf;
+                        dt2.Rows[dt2.Rows.Count - 1]["Azimute"] = azprov4bf;
                         }
 
                     //formataçao de coordenadas na tabela
@@ -418,7 +419,7 @@ namespace memorial
                     double Y = Convert.ToDouble(dt2.Rows[i][2]);
                     double Yant = Convert.ToDouble(dt2.Rows[i - 1][2]);
                     double difY = Y - Yant;
-                    dt2.Rows[i]["Distância"] = formataDist(Math.Sqrt(Math.Pow(difX, 2) + Math.Pow(difY, 2)));
+                    dt2.Rows[i - 1]["Distância"] = formataDist(Math.Sqrt(Math.Pow(difX, 2) + Math.Pow(difY, 2)));
 
                     //Cálculo do azimute
                     double rprov1 = Math.Atan(difX / difY) * (180 / Math.PI) * Math.Sign(difX / difY);
@@ -439,25 +440,25 @@ namespace memorial
 
                     if (difY > 0 && difX > 0)
                         {
-                        dt2.Rows[i]["Azimute"] = azprov1bf;
+                        dt2.Rows[i - 1]["Azimute"] = azprov1bf;
                         }
                     if (difY < 0 && difX > 0)
                         {
-                        dt2.Rows[i]["Azimute"] = azprov2bf;
+                        dt2.Rows[i - 1]["Azimute"] = azprov2bf;
                         }
                     if (difY < 0 && difX < 0)
                         {
-                        dt2.Rows[i]["Azimute"] = azprov3bf;
+                        dt2.Rows[i - 1]["Azimute"] = azprov3bf;
                         }
                     if (difY > 0 && difX < 0)
                         {
-                        dt2.Rows[i]["Azimute"] = azprov4bf;
+                        dt2.Rows[i - 1]["Azimute"] = azprov4bf;
                         }
                     //formataçao de coordenadas na tabela
                     formataCoordenadaTabela();
                     }
                 button6.Enabled = true;
-                }
+                } //fim do for
 
             //Distância
             //if (numericUpDown1.Value == 0)
@@ -510,6 +511,12 @@ namespace memorial
             {
             if (dt2.Columns.Count == 7)
                 {
+
+                //Barra de progresso
+                progressBar1.Minimum = 0;
+                progressBar1.Maximum = dt2.Rows.Count;
+                progressBar1.Value = 0;
+
                 richTextBox1.Text = "";
                 richTextBox1.Font = new Font("Times", 12);
 
@@ -518,11 +525,11 @@ namespace memorial
                 richTextBox1.AppendLine();
                 if (checkBox3.Checked == true)
                     {
-                    richTextBox1.AppendTituloNegrito(textBox9.Text);
+                    richTextBox1.AppendTituloNegrito(txtTitulo.Text);
                     }
                 else
                     {
-                    richTextBox1.AppendTitulo(textBox9.Text);
+                    richTextBox1.AppendTitulo(txtTitulo.Text);
                     }
 
                 //Cálculo perímetro
@@ -533,7 +540,7 @@ namespace memorial
                     }
 
                 //Cabeçalho
-                if (textBox10.TextLength > 0)
+                if (txtImovel.TextLength > 0)
                     {
                     if (checkBox4.Checked == true)
                         {
@@ -545,15 +552,15 @@ namespace memorial
                         }
                     if (checkBox6.Checked == true)
                         {
-                        richTextBox1.AppendBold(textBox10.Text);
+                        richTextBox1.AppendBold(txtImovel.Text);
                         }
                     else
                         {
-                        richTextBox1.AppendRegular(textBox10.Text);
+                        richTextBox1.AppendRegular(txtImovel.Text);
                         }
                     richTextBox1.AppendLine();
                     }
-                if (textBox12.TextLength > 0)
+                if (txtMunicipio.TextLength > 0)
                     {
                     if (checkBox5.Checked == true)
                         {
@@ -565,15 +572,15 @@ namespace memorial
                         }
                     if (checkBox10.Checked == true)
                         {
-                        richTextBox1.AppendBold(textBox12.Text);
+                        richTextBox1.AppendBold(txtMunicipio.Text);
                         }
                     else
                         {
-                        richTextBox1.AppendRegular(textBox12.Text);
+                        richTextBox1.AppendRegular(txtMunicipio.Text);
                         }
                     richTextBox1.AppendLine();
                     }
-                if (textBox13.TextLength > 0)
+                if (txtMatricula.TextLength > 0)
                     {
                     if (checkBox9.Checked == true)
                         {
@@ -585,15 +592,15 @@ namespace memorial
                         }
                     if (checkBox8.Checked == true)
                         {
-                        richTextBox1.AppendBold(textBox13.Text);
+                        richTextBox1.AppendBold(txtMatricula.Text);
                         }
                     else
                         {
-                        richTextBox1.AppendRegular(textBox13.Text);
+                        richTextBox1.AppendRegular(txtMatricula.Text);
                         }
                     richTextBox1.AppendLine();
                     }
-                if (textBox14.TextLength > 0)
+                if (txtComarca.TextLength > 0)
                     {
                     if (checkBox7.Checked == true)
                         {
@@ -605,15 +612,15 @@ namespace memorial
                         }
                     if (checkBox16.Checked == true)
                         {
-                        richTextBox1.AppendBold(textBox14.Text);
+                        richTextBox1.AppendBold(txtComarca.Text);
                         }
                     else
                         {
-                        richTextBox1.AppendRegular(textBox14.Text);
+                        richTextBox1.AppendRegular(txtComarca.Text);
                         }
                     richTextBox1.AppendLine();
                     }
-                if (textBox19.TextLength > 0)
+                if (txtCodIncra.TextLength > 0)
                     {
                     if (checkBox15.Checked == true)
                         {
@@ -625,15 +632,15 @@ namespace memorial
                         }
                     if (checkBox14.Checked == true)
                         {
-                        richTextBox1.AppendBold(textBox19.Text);
+                        richTextBox1.AppendBold(txtCodIncra.Text);
                         }
                     else
                         {
-                        richTextBox1.AppendRegular(textBox19.Text);
+                        richTextBox1.AppendRegular(txtCodIncra.Text);
                         }
                     richTextBox1.AppendLine();
                     }
-                if (textBox20.TextLength > 0)
+                if (txtArea.TextLength > 0)
                     {
                     if (checkBox4.Checked == true)
                         {
@@ -645,11 +652,11 @@ namespace memorial
                         }
                     if (checkBox6.Checked == true)
                         {
-                        richTextBox1.AppendBold(textBox20.Text);
+                        richTextBox1.AppendBold(txtArea.Text);
                         }
                     else
                         {
-                        richTextBox1.AppendRegular(textBox20.Text);
+                        richTextBox1.AppendRegular(txtArea.Text);
                         }
                     richTextBox1.AppendLine();
                     }
@@ -668,61 +675,61 @@ namespace memorial
                         {
                         if (checkBox22.Checked == true)
                             {
-                            richTextBox1.AppendBold(per.ToString("#,###.") + " " + textBox8.Text);
+                            richTextBox1.AppendBold(per.ToString("#,###.") + " " + txtUnidade.Text);
                             }
                         else
                             {
-                            richTextBox1.AppendRegular(per.ToString("#,###.") + " " + textBox8.Text);
+                            richTextBox1.AppendRegular(per.ToString("#,###.") + " " + txtUnidade.Text);
                             }
                         }
                     if (numericUpDown1.Value == 1)
                         {
                         if (checkBox22.Checked == true)
                             {
-                            richTextBox1.AppendBold(per.ToString("#,###0.0") + " " + textBox8.Text);
+                            richTextBox1.AppendBold(per.ToString("#,###0.0") + " " + txtUnidade.Text);
                             }
                         else
                             {
-                            richTextBox1.AppendRegular(per.ToString("#,###0.0") + " " + textBox8.Text);
+                            richTextBox1.AppendRegular(per.ToString("#,###0.0") + " " + txtUnidade.Text);
                             }
                         }
                     if (numericUpDown1.Value == 2)
                         {
                         if (checkBox22.Checked == true)
                             {
-                            richTextBox1.AppendBold(per.ToString("#,###0.00") + " " + textBox8.Text);
+                            richTextBox1.AppendBold(per.ToString("#,###0.00") + " " + txtUnidade.Text);
                             }
                         else
                             {
-                            richTextBox1.AppendRegular(per.ToString("#,###0.00") + " " + textBox8.Text);
+                            richTextBox1.AppendRegular(per.ToString("#,###0.00") + " " + txtUnidade.Text);
                             }
                         }
                     if (numericUpDown1.Value == 3)
                         {
                         if (checkBox22.Checked == true)
                             {
-                            richTextBox1.AppendBold(per.ToString("#,###0.000") + " " + textBox8.Text);
+                            richTextBox1.AppendBold(per.ToString("#,###0.000") + " " + txtUnidade.Text);
                             }
                         else
                             {
-                            richTextBox1.AppendRegular(per.ToString("#,###0.000") + " " + textBox8.Text);
+                            richTextBox1.AppendRegular(per.ToString("#,###0.000") + " " + txtUnidade.Text);
                             }
                         }
                     if (numericUpDown1.Value == 4)
                         {
                         if (checkBox22.Checked == true)
                             {
-                            richTextBox1.AppendBold(per.ToString("#,###0.0000") + " " + textBox8.Text);
+                            richTextBox1.AppendBold(per.ToString("#,###0.0000") + " " + txtUnidade.Text);
                             }
                         else
                             {
-                            richTextBox1.AppendRegular(per.ToString("#,###0.0000") + " " + textBox8.Text);
+                            richTextBox1.AppendRegular(per.ToString("#,###0.0000") + " " + txtUnidade.Text);
                             }
                         }
                     richTextBox1.AppendLine();
                     }
 
-                if (textBox11.TextLength > 0)
+                if (txtProprietario.TextLength > 0)
                     {
                     if (checkBox21.Checked == true)
                         {
@@ -734,11 +741,11 @@ namespace memorial
                         }
                     if (checkBox20.Checked == true)
                         {
-                        richTextBox1.AppendBold(textBox11.Text);
+                        richTextBox1.AppendBold(txtProprietario.Text);
                         }
                     else
                         {
-                        richTextBox1.AppendRegular(textBox11.Text);
+                        richTextBox1.AppendRegular(txtProprietario.Text);
                         }
                     richTextBox1.AppendLine();
                     }
@@ -760,35 +767,15 @@ namespace memorial
                 //    X1 = Convert.ToDecimal(dt2.Rows[0][1]).ToString("0");
                 //    Y1 = Convert.ToDecimal(dt2.Rows[0][2]).ToString("0");
                 //    }
-                //if (numericUpDown2.Value == 1)
-                //    {
-                //    X1 = Convert.ToDecimal(dt2.Rows[0][1]).ToString("0.0");
-                //    Y1 = Convert.ToDecimal(dt2.Rows[0][2]).ToString("0.0");
-                //    }
-                //if (numericUpDown2.Value == 2)
-                //    {
-                //    X1 = Convert.ToDecimal(dt2.Rows[0][1]).ToString("0.00");
-                //    Y1 = Convert.ToDecimal(dt2.Rows[0][2]).ToString("0.00");
-                //    }
-                //if (numericUpDown2.Value == 3)
-                //    {
-                //    X1 = Convert.ToDecimal(dt2.Rows[0][1]).ToString("0.000");
-                //    Y1 = Convert.ToDecimal(dt2.Rows[0][2]).ToString("0.000");
-                //    }
-                //if (numericUpDown2.Value == 4)
-                //    {
-                //    X1 = Convert.ToDecimal(dt2.Rows[0][1]).ToString("0.0000");
-                //    Y1 = Convert.ToDecimal(dt2.Rows[0][2]).ToString("0.0000");
-                //    }
 
                 //Começo do texto do memorial
 
                 richTextBox1.AppendLine();
 
                 //Parágrafo
-                richTextBox1.AppendRegular("\t" + textBox1.Text + " ");
+                richTextBox1.AppendRegular("\t" + txtInicio.Text + " ");
 
-                //Ponto
+                //Nome do Ponto
                 if (checkBox24.Checked == true)
                     {
                     richTextBox1.AppendBold(Convert.ToString(dt2.Rows[0][0]) + " ");
@@ -798,35 +785,35 @@ namespace memorial
                     richTextBox1.AppendRegular(Convert.ToString(dt2.Rows[0][0]) + " ");
                     }
 
-                //Texto coordenada
-                richTextBox1.AppendRegular(textBox2.Text + " ");
+                //Texto Coordenadas (definido pelas coordenadas)
+                richTextBox1.AppendRegular(txtCoord.Text + " ");
 
                 //Coord X
                 if (checkBox17.Checked == true)
                     {
-                    richTextBox1.AppendBold(textBox3.Text + " " + X1 + " " + textBox8.Text);
+                    richTextBox1.AppendBold(txtEste.Text + " " + X1 + " " + txtUnidade.Text);
                     }
                 else
                     {
-                    richTextBox1.AppendRegular(textBox3.Text + " " + X1 + " " + textBox8.Text);
+                    richTextBox1.AppendRegular(txtEste.Text + " " + X1 + " " + txtUnidade.Text);
                     }
                 richTextBox1.AppendRegular(" e ");
 
                 //Coord Y
                 if (checkBox17.Checked == true)
                     {
-                    richTextBox1.AppendBold(textBox4.Text + " " + Y1 + " " + textBox8.Text);
+                    richTextBox1.AppendBold(txtNorte.Text + " " + Y1 + " " + txtUnidade.Text);
                     }
                 else
                     {
-                    richTextBox1.AppendRegular(textBox4.Text + " " + Y1 + " " + textBox8.Text);
+                    richTextBox1.AppendRegular(txtNorte.Text + " " + Y1 + " " + txtUnidade.Text);
                     }
                 richTextBox1.AppendRegular(", ");
 
                 //Confrontante
-                if (Convert.ToString(dt2.Rows[0][5]).Length > 0)
+                if (Convert.ToString(dt2.Rows[0][5]).Length > 0) //Verifica se existe o confrontante
                     {
-                    richTextBox1.AppendRegular(textBox21.Text);
+                    richTextBox1.AppendRegular(txtConfronto.Text);
 
                     if (checkBox23.Checked == true)
                         {
@@ -842,7 +829,7 @@ namespace memorial
                 //Divisa
                 if (Convert.ToString(dt2.Rows[0][6]).Length > 0)
                     {
-                    richTextBox1.AppendRegular(textBox24.Text);
+                    richTextBox1.AppendRegular(txtDivisa.Text);
 
                     if (checkBox25.Checked == true)
                         {
@@ -855,8 +842,31 @@ namespace memorial
                         }
                     }
 
-                //Reseta barra de progresso
-                progressBar1.Value = 0;
+                //Azimute Inicial
+                string azi = null;
+                azi = Convert.ToString(dt2.Rows[0][4]);
+                richTextBox1.AppendRegular(txtAzimute.Text + " ");
+                if (checkBox19.Checked == true)
+                    {
+                    richTextBox1.AppendBold(azi);
+                    }
+                else
+                    {
+                    richTextBox1.AppendRegular(azi);
+                    }
+
+                //Distância Inicial
+                string dist = null;
+                dist = Convert.ToString(dt2.Rows[0][3]) + " " + txtUnidade.Text;
+                richTextBox1.AppendRegular(" " + txtDist.Text + " ");
+                if (checkBox18.Checked == true)
+                    {
+                    richTextBox1.AppendBold(dist + " ");
+                    }
+                else
+                    {
+                    richTextBox1.AppendRegular(dist + " ");
+                    }
 
                 //Percorre os pontos                
                 for (int i = 1; i < dt2.Rows.Count; i++)
@@ -880,80 +890,27 @@ namespace memorial
                     //    X = Convert.ToDecimal(dt2.Rows[i][1]).ToString("0");
                     //    Y = Convert.ToDecimal(dt2.Rows[i][2]).ToString("0");
                     //    }
-                    //if (numericUpDown2.Value == 1)
-                    //    {
-                    //    X = Convert.ToDecimal(dt2.Rows[i][1]).ToString("0.0");
-                    //    Y = Convert.ToDecimal(dt2.Rows[i][2]).ToString("0.0");
-                    //    }
-                    //if (numericUpDown2.Value == 2)
-                    //    {
-                    //    X = Convert.ToDecimal(dt2.Rows[i][1]).ToString("0.00");
-                    //    Y = Convert.ToDecimal(dt2.Rows[i][2]).ToString("0.00");
-                    //    }
-                    //if (numericUpDown2.Value == 3)
-                    //    {
-                    //    X = Convert.ToDecimal(dt2.Rows[i][1]).ToString("0.000");
-                    //    Y = Convert.ToDecimal(dt2.Rows[i][2]).ToString("0.000");
-                    //    }
-                    //if (numericUpDown2.Value == 4)
-                    //    {
-                    //    X = Convert.ToDecimal(dt2.Rows[i][1]).ToString("0.0000");
-                    //    Y = Convert.ToDecimal(dt2.Rows[i][2]).ToString("0.0000");
-                    //    }
-
 
                     //Distância
-                    string dist = null;
-                    dist = Convert.ToString(dt2.Rows[i][3]) + " " + textBox8.Text;
+                    //string dist = null;
+                    dist = Convert.ToString(dt2.Rows[i][3]) + " " + txtUnidade.Text;
 
                     //if (numericUpDown1.Value == 0)
                     //{
                     //    dist = Convert.ToDecimal(dt2.Rows[i][3]).ToString("0");
                     //}
-                    //if (numericUpDown1.Value == 1)
-                    //{
-                    //    dist = Convert.ToDecimal(dt2.Rows[i][3]).ToString("0.0");
-                    //}
-                    //if (numericUpDown1.Value == 2)
-                    //{
-                    //    dist = Convert.ToDecimal(dt2.Rows[i][3]).ToString("0.00");
-                    //}
-                    //if (numericUpDown1.Value == 3)
-                    //{
-                    //    dist = Convert.ToDecimal(dt2.Rows[i][3]).ToString("0.000");
-                    //}
-                    //if (numericUpDown1.Value == 4)
-                    //{
-                    //    dist = Convert.ToDecimal(dt2.Rows[i][3]).ToString("0.0000");
-                    //}
 
                     //Azimute
-                    string azi = null;
+                    //string azi = null;
                     azi = Convert.ToString(dt2.Rows[i][4]);
 
                     //if (numericUpDown3.Value == 0)
                     //{
                     ////azi = Convert.ToString(dt2.Rows[i][4]);
                     //}
-                    //if (numericUpDown3.Value == 1)
-                    //{
-                    // //   azi = Convert.ToDecimal(dt2.Rows[i][4]).ToString("0° .00´ 00','0´´");
-                    //}
-                    //if (numericUpDown3.Value == 2)
-                    //{
-                    // //   azi = Convert.ToDecimal(dt2.Rows[i][4]).ToString("0° .00´ 00','00´´");
-                    //}
-                    //if (numericUpDown3.Value == 3)
-                    //{
-                    ////    azi = Convert.ToDecimal(dt2.Rows[i][4]).ToString("0° .00´ 00','000´´");
-                    //}
-                    //if (numericUpDown3.Value == 4)
-                    //{
-                    ////    azi = Convert.ToDecimal(dt2.Rows[i][4]).ToString("0° .00´ 00','0000´´");
-                    //}
 
                     //Nome ponto
-                    richTextBox1.AppendRegular(textBox5.Text + " ");
+                    richTextBox1.AppendRegular(txtLigacao.Text + " ");
                     if (checkBox24.Checked == true)
                         {
                         richTextBox1.AppendBold(ponto);
@@ -962,28 +919,29 @@ namespace memorial
                         {
                         richTextBox1.AppendRegular(ponto);
                         }
-                    richTextBox1.AppendRegular(" " + textBox2.Text + " ");
+                    richTextBox1.AppendRegular(", " + txtCoord.Text + " ");
 
                     //Coord X
                     if (checkBox17.Checked == true)
                         {
-                        richTextBox1.AppendBold(textBox3.Text + " " + X + " " + textBox8.Text);
+                        richTextBox1.AppendBold(txtEste.Text + " " + X + " " + txtUnidade.Text);
                         }
                     else
                         {
-                        richTextBox1.AppendRegular(textBox3.Text + " " + X + " " + textBox8.Text);
+                        richTextBox1.AppendRegular(txtEste.Text + " " + X + " " + txtUnidade.Text);
                         }
                     richTextBox1.AppendRegular(" e ");
+
                     //Coord Y
                     if (checkBox17.Checked == true)
                         {
-                        richTextBox1.AppendBold(textBox4.Text + " " + Y + " " + textBox8.Text);
+                        richTextBox1.AppendBold(txtNorte.Text + " " + Y + " " + txtUnidade.Text);
                         }
                     else
                         {
-                        richTextBox1.AppendRegular(textBox4.Text + " " + Y + " " + textBox8.Text);
+                        richTextBox1.AppendRegular(txtNorte.Text + " " + Y + " " + txtUnidade.Text);
                         }
-                    richTextBox1.AppendRegular(", ");
+                    richTextBox1.AppendRegular("; ");
 
                     ////Tipo coordenada X
                     //" " + textBox3.Text +
@@ -992,31 +950,10 @@ namespace memorial
                     //" " + textBox4.Text +
                     //" " + Y + " " + textBox8.Text + ", "+ 
 
-                    //Azimute
-                    richTextBox1.AppendRegular(" " + textBox6.Text + " ");
-                    if (checkBox19.Checked == true)
-                        {
-                        richTextBox1.AppendBold(azi);
-                        }
-                    else
-                        {
-                        richTextBox1.AppendRegular(azi);
-                        }
-                    //Distância
-                    richTextBox1.AppendRegular(" " + textBox7.Text + " ");
-                    if (checkBox18.Checked == true)
-                        {
-                        richTextBox1.AppendBold(dist + " ");
-                        }
-                    else
-                        {
-                        richTextBox1.AppendRegular(dist + " ");
-                        }
-
                     //Confrontante
                     if (Convert.ToString(dt2.Rows[i][5]).Length > 0)
                         {
-                        richTextBox1.AppendRegular(textBox21.Text);
+                        richTextBox1.AppendRegular(txtConfronto.Text);
 
                         if (checkBox23.Checked == true)
                             {
@@ -1032,28 +969,45 @@ namespace memorial
                     //Divisa
                     if (Convert.ToString(dt2.Rows[i][6]).Length > 0)
                         {
-                        richTextBox1.AppendRegular(textBox24.Text);
+                        richTextBox1.AppendRegular(txtDivisa.Text);
 
                         if (checkBox25.Checked == true)
                             {
                             richTextBox1.AppendBold(" " + dt2.Rows[i][6]);
-                            richTextBox1.AppendRegular(", ");
+                            //richTextBox1.AppendRegular(", ");
                             }
                         else
                             {
-                            richTextBox1.AppendRegular(" " + dt2.Rows[i][6] + ", ");
+                            richTextBox1.AppendRegular(" " + dt2.Rows[i][6]);
                             }
                         }
 
-                    //Barra de progresso
-                    progressBar1.Minimum = 0;
-                    progressBar1.Maximum = dt2.Rows.Count;
+                    //Azimute
+                    richTextBox1.AppendRegular(" " + txtAzimute.Text + " ");
+                    if (checkBox19.Checked == true)
+                        {
+                        richTextBox1.AppendBold(azi);
+                        }
+                    else
+                        {
+                        richTextBox1.AppendRegular(azi);
+                        }
+
+                    //Distância
+                    richTextBox1.AppendRegular(" " + txtDist.Text + " ");
+                    if (checkBox18.Checked == true)
+                        {
+                        richTextBox1.AppendBold(dist + " ");
+                        }
+                    else
+                        {
+                        richTextBox1.AppendRegular(dist + " ");
+                        }
+                                       
+
                     progressBar1.Value = i;
 
                     }
-
-                //Reseta barra de progresso
-                progressBar1.Value = 0;
 
                 string pontof = Convert.ToString(dt2.Rows[0][0]);
 
@@ -1076,50 +1030,14 @@ namespace memorial
                 //    Xf = Convert.ToDecimal(dt2.Rows[0][1]).ToString("0.0000");
                 //    Yf = Convert.ToDecimal(dt2.Rows[0][2]).ToString("0.0000");
                 //    }
-                //if (numericUpDown2.Value == 1)
-                //    {
-                //    Xf = Convert.ToDecimal(dt2.Rows[0][1]).ToString("0.0");
-                //    Yf = Convert.ToDecimal(dt2.Rows[0][2]).ToString("0.0");
-                //    }
-                //if (numericUpDown2.Value == 2)
-                //    {
-                //    Xf = Convert.ToDecimal(dt2.Rows[0][1]).ToString("0.00");
-                //    Yf = Convert.ToDecimal(dt2.Rows[0][2]).ToString("0.00");
-                //    }
-                //if (numericUpDown2.Value == 3)
-                //    {
-                //    Xf = Convert.ToDecimal(dt2.Rows[0][1]).ToString("0.000");
-                //    Yf = Convert.ToDecimal(dt2.Rows[0][2]).ToString("0.000");
-                //    }
-                //if (numericUpDown2.Value == 4)
-                //    {
-                //    Xf = Convert.ToDecimal(dt2.Rows[0][1]).ToString("0.0000");
-                //    Yf = Convert.ToDecimal(dt2.Rows[0][2]).ToString("0.0000");
-                //    }
 
                 //Distância
                 string distf = null;
-                distf = Convert.ToString(dt2.Rows[0][3]) + " " + textBox8.Text + " ";
+                distf = Convert.ToString(dt2.Rows[0][3]) + " " + txtUnidade.Text + " ";
 
                 //if (numericUpDown1.Value == 0)
                 //    {
                 //    distf = Convert.ToDecimal(dt2.Rows[0][3]).ToString("0.00");
-                //    }
-                //if (numericUpDown1.Value == 1)
-                //    {
-                //    distf = Convert.ToDecimal(dt2.Rows[0][3]).ToString("0.0");
-                //    }
-                //if (numericUpDown1.Value == 2)
-                //    {
-                //    distf = Convert.ToDecimal(dt2.Rows[0][3]).ToString("0.00");
-                //    }
-                //if (numericUpDown1.Value == 3)
-                //    {
-                //    distf = Convert.ToDecimal(dt2.Rows[0][3]).ToString("0.000");
-                //    }
-                //if (numericUpDown1.Value == 4)
-                //    {
-                //    distf = Convert.ToDecimal(dt2.Rows[0][3]).ToString("0.0000");
                 //    }
 
                 //Azimute
@@ -1130,22 +1048,6 @@ namespace memorial
                 //{
                 //azif = Convert.ToString(dt2.Rows[0][4]);
                 //}
-                //if (numericUpDown3.Value == 1)
-                //{
-                //azif = Convert.ToString(dt2.Rows[0][4]);
-                //}
-                //if (numericUpDown3.Value == 2)
-                //{
-                //azif = Convert.ToString(dt2.Rows[0][4]);
-                //}
-                //if (numericUpDown3.Value == 3)
-                //{
-                //azif = Convert.ToString(dt2.Rows[0][4]);
-                //}
-                //if (numericUpDown3.Value == 4)
-                //{
-                //azif = Convert.ToString(dt2.Rows[0][4]);
-                //}
 
                 //string Xf = Convert.ToDecimal(dt2.Rows[0][1]).ToString("0.0000");
                 //string Yf = Convert.ToDecimal(dt2.Rows[0][2]).ToString("0.0000");
@@ -1153,7 +1055,7 @@ namespace memorial
                 //string azif = Convert.ToDecimal(dt2.Rows[0][4]).ToString("0° .00´ 00','00´´");
 
                 //Nome ponto
-                richTextBox1.AppendRegular(textBox5.Text + " ");
+                richTextBox1.AppendRegular(txtLigacao.Text + " ");
                 if (checkBox24.Checked == true)
                     {
                     richTextBox1.AppendBold(pontof);
@@ -1162,26 +1064,26 @@ namespace memorial
                     {
                     richTextBox1.AppendRegular(pontof);
                     }
-                richTextBox1.AppendRegular(" " + textBox2.Text + " ");
+                richTextBox1.AppendRegular(" " + txtCoord.Text + " ");
 
                 //Coord X
                 if (checkBox17.Checked == true)
                     {
-                    richTextBox1.AppendBold(textBox3.Text + " " + Xf + " " + textBox8.Text);
+                    richTextBox1.AppendBold(txtEste.Text + " " + Xf + " " + txtUnidade.Text);
                     }
                 else
                     {
-                    richTextBox1.AppendRegular(textBox3.Text + " " + Xf + " " + textBox8.Text);
+                    richTextBox1.AppendRegular(txtEste.Text + " " + Xf + " " + txtUnidade.Text);
                     }
                 richTextBox1.AppendRegular(" e ");
                 //Coord Y
                 if (checkBox17.Checked == true)
                     {
-                    richTextBox1.AppendBold(textBox4.Text + " " + Yf + " " + textBox8.Text);
+                    richTextBox1.AppendBold(txtNorte.Text + " " + Yf + " " + txtUnidade.Text);
                     }
                 else
                     {
-                    richTextBox1.AppendRegular(textBox4.Text + " " + Yf + " " + textBox8.Text);
+                    richTextBox1.AppendRegular(txtNorte.Text + " " + Yf + " " + txtUnidade.Text);
                     }
 
                 richTextBox1.AppendRegular(", ");
@@ -1191,7 +1093,7 @@ namespace memorial
                 //" " + Yf + " " + textBox8.Text + ", " +
 
                 //Azimute
-                richTextBox1.AppendRegular(" " + textBox6.Text + " ");
+                richTextBox1.AppendRegular(" " + txtAzimute.Text + " ");
                 if (checkBox19.Checked == true)
                     {
                     richTextBox1.AppendBold(azif);
@@ -1202,7 +1104,7 @@ namespace memorial
                     }
 
                 //Distância
-                richTextBox1.AppendRegular(" " + textBox7.Text + " ");
+                richTextBox1.AppendRegular(" " + txtDist.Text + " ");
                 if (checkBox18.Checked == true)
                     {
                     richTextBox1.AppendBold(distf);
@@ -1218,9 +1120,7 @@ namespace memorial
                 //        {
                 //        richTextBox1.AppendRegular(textBox21.Text + " " + dt2.Rows[i][5] + ", ");
                 //        }
-
                 //    }
-
 
                 //richTextBox1.AppendRegular(" " + textBox6.Text +
                 //" " + azif +
@@ -1228,7 +1128,7 @@ namespace memorial
                 //" " + distf +
                 //" " + textBox8.Text + "; ");
 
-                richTextBox1.AppendRegular(textBox15.Text);
+                richTextBox1.AppendRegular(txtFim.Text);
 
                 //Perímetro
                 string pers = null;
@@ -1268,10 +1168,10 @@ namespace memorial
                     {
                     richTextBox1.AppendRegular(pers);
                     }
-                richTextBox1.AppendRegular(" " + textBox8.Text + ".");
+                richTextBox1.AppendRegular(" " + txtUnidade.Text + ".");
 
                 //Espaço entre texto e assinatura
-                if (textBox22.TextLength > 0 || checkBox2.Checked == true || radioButton3.Checked == true || radioButton4.Checked == true || textBox16.TextLength > 0 || textBox17.TextLength > 0)
+                if (txtCidade.TextLength > 0 || checkBox2.Checked == true || radioButton3.Checked == true || radioButton4.Checked == true || textBox16.TextLength > 0 || txtRegistro.TextLength > 0)
                     {
                     richTextBox1.AppendLine();
                     richTextBox1.AppendLine();
@@ -1280,15 +1180,15 @@ namespace memorial
                     }
 
                 //Cidade
-                if (textBox22.TextLength > 0)
+                if (txtCidade.TextLength > 0)
                     {
                     if (checkBox26.Checked == true)
                         {
-                        richTextBox1.AppendCenterBold(textBox22.Text);
+                        richTextBox1.AppendCenterBold(txtCidade.Text);
                         }
                     else
                         {
-                        richTextBox1.AppendCenter(textBox22.Text);
+                        richTextBox1.AppendCenter(txtCidade.Text);
                         }
                     }
 
@@ -1308,7 +1208,7 @@ namespace memorial
                         string diasemana = culture.TextInfo.ToTitleCase(dtfi.GetDayName(DateTime.Now.DayOfWeek));
                         string data = diasemana + ", " + dia + " de " + mes + " de " + ano;
 
-                        if (textBox22.TextLength > 0)
+                        if (txtCidade.TextLength > 0)
                             {
                             if (checkBox27.Checked == true)
                                 {
@@ -1318,7 +1218,6 @@ namespace memorial
                                 {
                                 richTextBox1.AppendCenter(", " + data);
                                 }
-
                             }
                         else
                             {
@@ -1331,17 +1230,16 @@ namespace memorial
                                 richTextBox1.AppendCenter(data);
                                 }
                             }
-
                         }
                     if (radioButton4.Checked == true)
                         {
                         if (checkBox27.Checked == true)
                             {
-                            richTextBox1.AppendCenterBold(textBox23.Text);
+                            richTextBox1.AppendCenterBold(txtData.Text);
                             }
                         else
                             {
-                            richTextBox1.AppendCenter(textBox23.Text);
+                            richTextBox1.AppendCenter(txtData.Text);
                             }
                         }
                     }
@@ -1353,7 +1251,7 @@ namespace memorial
                     richTextBox1.AppendLine();
                     richTextBox1.AppendLine();
                     richTextBox1.AppendLine();
-                    richTextBox1.AppendCenter(textBox18.Text);
+                    richTextBox1.AppendCenter(txtAssinatura.Text);
                     }
                 if (textBox16.TextLength > 0)
                     {
@@ -1367,24 +1265,25 @@ namespace memorial
                         richTextBox1.AppendCenter(textBox16.Text);
                         }
                     }
-                if (textBox17.TextLength > 0)
+                if (txtRegistro.TextLength > 0)
                     {
                     richTextBox1.AppendLine();
                     if (checkBox29.Checked == true)
                         {
-                        richTextBox1.AppendCenterBold(textBox17.Text);
+                        richTextBox1.AppendCenterBold(txtRegistro.Text);
                         }
                     else
                         {
-                        richTextBox1.AppendCenter(textBox17.Text);
+                        richTextBox1.AppendCenter(txtRegistro.Text);
                         }
                     }
 
                 richTextBox1.AppendLine();
 
+                //Reseta barra de progresso
+                progressBar1.Value = 0;
 
-
-                //    //Cálculo da área
+                //Cálculo da área
                 //    double p1 = 0;
                 //    for (int i = 0; i < dt2.Rows.Count-1; i++)
                 //    {
@@ -1404,8 +1303,6 @@ namespace memorial
                 {
                 MessageBox.Show("Necessário importar arquivo CSV e cálcular distâncias e azimutes para escrever o memorial descritivo");
                 }
-
-
             }
 
         private void button5_Click(object sender, EventArgs e)
@@ -1420,7 +1317,6 @@ namespace memorial
                 {
                 richTextBox1.SaveFile(saveFileDialog1.FileName);
                 }
-
             }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -1456,7 +1352,7 @@ namespace memorial
                 int numcolunas = dataGridView1.Columns.Count;
                 for (int i = 0; i < numcolunas; i++)
                     {
-                    if (i == (numcolunas-1))
+                    if (i == (numcolunas - 1))
                         {
                         strHeader += dataGridView1.Columns[i].HeaderText;
                         }
@@ -1502,7 +1398,7 @@ namespace memorial
                 radioButton3.Enabled = false;
                 radioButton3.Checked = false;
                 radioButton4.Enabled = false;
-                textBox23.Enabled = false;
+                txtData.Enabled = false;
                 }
             }
 
@@ -1510,12 +1406,12 @@ namespace memorial
             {
             if (radioButton4.Checked == true)
                 {
-                textBox23.Enabled = true;
+                txtData.Enabled = true;
                 }
 
             if (radioButton4.Checked == false)
                 {
-                textBox23.Enabled = false;
+                txtData.Enabled = false;
                 }
             }
         }
