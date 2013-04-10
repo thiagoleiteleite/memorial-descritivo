@@ -4,7 +4,7 @@
     <PublishUrlHistory>publish\</PublishUrlHistory>
     <InstallUrlHistory />
     <SupportUrlHistory>http://code.google.com/p/memorial-descritivo/w/list|http://code.google.com/p/memorial-descritivo/</SupportUrlHistory>
-    <UpdateUrlHistory />
+    <UpdateUrlHistory>http://memorial-descritivo.googlecode.com/svn/trunk/memorial/publish/</UpdateUrlHistory>
     <BootstrapperUrlHistory />
     <ErrorReportUrlHistory />
     <FallbackCulture>en-US</FallbackCulture>
