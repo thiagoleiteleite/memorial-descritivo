@@ -714,7 +714,7 @@
         // 
         // txtDivisa
         // 
-        this.txtDivisa.Location = new System.Drawing.Point(387, 138);
+        this.txtDivisa.Location = new System.Drawing.Point(385, 165);
         this.txtDivisa.Margin = new System.Windows.Forms.Padding(2);
         this.txtDivisa.Name = "txtDivisa";
         this.txtDivisa.Size = new System.Drawing.Size(426, 20);
@@ -724,7 +724,7 @@
         // label35
         // 
         this.label35.AutoSize = true;
-        this.label35.Location = new System.Drawing.Point(387, 123);
+        this.label35.Location = new System.Drawing.Point(385, 150);
         this.label35.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
         this.label35.Name = "label35";
         this.label35.Size = new System.Drawing.Size(58, 13);
@@ -733,7 +733,7 @@
         // 
         // txtConfronto
         // 
-        this.txtConfronto.Location = new System.Drawing.Point(9, 138);
+        this.txtConfronto.Location = new System.Drawing.Point(7, 165);
         this.txtConfronto.Margin = new System.Windows.Forms.Padding(2);
         this.txtConfronto.Name = "txtConfronto";
         this.txtConfronto.Size = new System.Drawing.Size(374, 20);
@@ -743,7 +743,7 @@
         // label29
         // 
         this.label29.AutoSize = true;
-        this.label29.Location = new System.Drawing.Point(8, 123);
+        this.label29.Location = new System.Drawing.Point(6, 150);
         this.label29.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
         this.label29.Name = "label29";
         this.label29.Size = new System.Drawing.Size(68, 13);
@@ -772,7 +772,7 @@
         // label1
         // 
         this.label1.AutoSize = true;
-        this.label1.Location = new System.Drawing.Point(6, 46);
+        this.label1.Location = new System.Drawing.Point(6, 55);
         this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
         this.label1.Name = "label1";
         this.label1.Size = new System.Drawing.Size(63, 13);
@@ -781,7 +781,7 @@
         // 
         // txtUnidade
         // 
-        this.txtUnidade.Location = new System.Drawing.Point(817, 101);
+        this.txtUnidade.Location = new System.Drawing.Point(816, 119);
         this.txtUnidade.Margin = new System.Windows.Forms.Padding(2);
         this.txtUnidade.Name = "txtUnidade";
         this.txtUnidade.Size = new System.Drawing.Size(90, 20);
@@ -791,7 +791,7 @@
         // label5
         // 
         this.label5.AutoSize = true;
-        this.label5.Location = new System.Drawing.Point(7, 85);
+        this.label5.Location = new System.Drawing.Point(6, 103);
         this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
         this.label5.Name = "label5";
         this.label5.Size = new System.Drawing.Size(45, 13);
@@ -800,16 +800,16 @@
         // 
         // txtFim
         // 
-        this.txtFim.Location = new System.Drawing.Point(9, 177);
+        this.txtFim.Location = new System.Drawing.Point(8, 212);
         this.txtFim.Margin = new System.Windows.Forms.Padding(2);
         this.txtFim.Name = "txtFim";
         this.txtFim.Size = new System.Drawing.Size(374, 20);
         this.txtFim.TabIndex = 21;
-        this.txtFim.Text = "encerrando este perímetro com";
+        this.txtFim.Text = "encerrando este perímetro.";
         // 
         // txtLigacao
         // 
-        this.txtLigacao.Location = new System.Drawing.Point(9, 101);
+        this.txtLigacao.Location = new System.Drawing.Point(8, 119);
         this.txtLigacao.Margin = new System.Windows.Forms.Padding(2);
         this.txtLigacao.Name = "txtLigacao";
         this.txtLigacao.Size = new System.Drawing.Size(374, 20);
@@ -819,7 +819,7 @@
         // label8
         // 
         this.label8.AutoSize = true;
-        this.label8.Location = new System.Drawing.Point(815, 85);
+        this.label8.Location = new System.Drawing.Point(814, 103);
         this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
         this.label8.Name = "label8";
         this.label8.Size = new System.Drawing.Size(92, 13);
@@ -829,7 +829,7 @@
         // label4
         // 
         this.label4.AutoSize = true;
-        this.label4.Location = new System.Drawing.Point(700, 44);
+        this.label4.Location = new System.Drawing.Point(700, 53);
         this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
         this.label4.Name = "label4";
         this.label4.Size = new System.Drawing.Size(38, 13);
@@ -838,7 +838,7 @@
         // 
         // txtDist
         // 
-        this.txtDist.Location = new System.Drawing.Point(586, 101);
+        this.txtDist.Location = new System.Drawing.Point(585, 119);
         this.txtDist.Margin = new System.Windows.Forms.Padding(2);
         this.txtDist.Name = "txtDist";
         this.txtDist.Size = new System.Drawing.Size(227, 20);
@@ -847,7 +847,7 @@
         // 
         // txtNorte
         // 
-        this.txtNorte.Location = new System.Drawing.Point(700, 63);
+        this.txtNorte.Location = new System.Drawing.Point(700, 72);
         this.txtNorte.Margin = new System.Windows.Forms.Padding(2);
         this.txtNorte.Name = "txtNorte";
         this.txtNorte.Size = new System.Drawing.Size(113, 20);
@@ -857,7 +857,7 @@
         // label15
         // 
         this.label15.AutoSize = true;
-        this.label15.Location = new System.Drawing.Point(8, 162);
+        this.label15.Location = new System.Drawing.Point(5, 197);
         this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
         this.label15.Name = "label15";
         this.label15.Size = new System.Drawing.Size(62, 13);
@@ -867,7 +867,7 @@
         // label6
         // 
         this.label6.AutoSize = true;
-        this.label6.Location = new System.Drawing.Point(384, 85);
+        this.label6.Location = new System.Drawing.Point(383, 103);
         this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
         this.label6.Name = "label6";
         this.label6.Size = new System.Drawing.Size(44, 13);
@@ -877,7 +877,7 @@
         // label7
         // 
         this.label7.AutoSize = true;
-        this.label7.Location = new System.Drawing.Point(584, 85);
+        this.label7.Location = new System.Drawing.Point(583, 103);
         this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
         this.label7.Name = "label7";
         this.label7.Size = new System.Drawing.Size(51, 13);
@@ -886,7 +886,7 @@
         // 
         // txtAzimute
         // 
-        this.txtAzimute.Location = new System.Drawing.Point(387, 101);
+        this.txtAzimute.Location = new System.Drawing.Point(386, 119);
         this.txtAzimute.Margin = new System.Windows.Forms.Padding(2);
         this.txtAzimute.Name = "txtAzimute";
         this.txtAzimute.Size = new System.Drawing.Size(194, 20);
@@ -895,7 +895,7 @@
         // 
         // txtInicio
         // 
-        this.txtInicio.Location = new System.Drawing.Point(9, 63);
+        this.txtInicio.Location = new System.Drawing.Point(9, 72);
         this.txtInicio.Margin = new System.Windows.Forms.Padding(2);
         this.txtInicio.Name = "txtInicio";
         this.txtInicio.Size = new System.Drawing.Size(374, 20);
@@ -905,7 +905,7 @@
         // label3
         // 
         this.label3.AutoSize = true;
-        this.label3.Location = new System.Drawing.Point(583, 47);
+        this.label3.Location = new System.Drawing.Point(583, 56);
         this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
         this.label3.Name = "label3";
         this.label3.Size = new System.Drawing.Size(38, 13);
@@ -914,7 +914,7 @@
         // 
         // txtEste
         // 
-        this.txtEste.Location = new System.Drawing.Point(586, 63);
+        this.txtEste.Location = new System.Drawing.Point(586, 72);
         this.txtEste.Margin = new System.Windows.Forms.Padding(2);
         this.txtEste.Name = "txtEste";
         this.txtEste.Size = new System.Drawing.Size(110, 20);
@@ -923,7 +923,7 @@
         // 
         // txtCoord
         // 
-        this.txtCoord.Location = new System.Drawing.Point(387, 63);
+        this.txtCoord.Location = new System.Drawing.Point(387, 72);
         this.txtCoord.Margin = new System.Windows.Forms.Padding(2);
         this.txtCoord.Name = "txtCoord";
         this.txtCoord.Size = new System.Drawing.Size(194, 20);
@@ -933,7 +933,7 @@
         // label2
         // 
         this.label2.AutoSize = true;
-        this.label2.Location = new System.Drawing.Point(384, 46);
+        this.label2.Location = new System.Drawing.Point(384, 55);
         this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
         this.label2.Name = "label2";
         this.label2.Size = new System.Drawing.Size(70, 13);
