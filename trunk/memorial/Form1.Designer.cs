@@ -1115,7 +1115,7 @@
         this.groupBox7.Controls.Add(this.checkBox28);
         this.groupBox7.Controls.Add(this.checkBox27);
         this.groupBox7.Controls.Add(this.checkBox26);
-        this.groupBox7.Location = new System.Drawing.Point(382, 15);
+        this.groupBox7.Location = new System.Drawing.Point(410, 15);
         this.groupBox7.Margin = new System.Windows.Forms.Padding(2);
         this.groupBox7.Name = "groupBox7";
         this.groupBox7.Padding = new System.Windows.Forms.Padding(2);
@@ -1180,7 +1180,7 @@
         this.groupBox6.Controls.Add(this.checkBox18);
         this.groupBox6.Controls.Add(this.checkBox19);
         this.groupBox6.Controls.Add(this.checkBox23);
-        this.groupBox6.Location = new System.Drawing.Point(228, 15);
+        this.groupBox6.Location = new System.Drawing.Point(242, 15);
         this.groupBox6.Margin = new System.Windows.Forms.Padding(2);
         this.groupBox6.Name = "groupBox6";
         this.groupBox6.Padding = new System.Windows.Forms.Padding(2);
