@@ -350,7 +350,7 @@ namespace memorial
                     break;
                 }
             }
-
+      
         //Cálculo de Azimute e distância
         private void button2_Click(object sender, EventArgs e)
             {
@@ -358,11 +358,30 @@ namespace memorial
             //dt2.Columns.Add(new DataColumn("Distância", typeof(decimal)));
             //dt2.Columns.Add(new DataColumn("Azimute", typeof(decimal)));
 
+            //Número total de pontos ou número da linha do último ponto
+            dataGridView1.Refresh();  
+
+            int numPontos = dt2.Rows.Count - 1;
+
+            //Coordenadas primeiro ponto
+            double xInicio = Convert.ToDouble(dt2.Rows[0][1]);
+            double yInicio = Convert.ToDouble(dt2.Rows[0][2]);
+
+            //Coordenadas último ponto
+            double xUltimo = Convert.ToDouble(dt2.Rows[numPontos][1]);
+            double yUlitmo = Convert.ToDouble(dt2.Rows[numPontos][2]);
+
+            //verifica se o primeiro ponto é igual ao último. Caso for, não calcula
+            if ((xInicio == xUltimo) && (yInicio == yUlitmo))
+                {
+                MessageBox.Show("A coordenada do último ponto é igual ao primeiro ponto, favor deletar último ponto no arquivo de origem.", "Memorial Descritivo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+                }
+
             for (int i = 0; i < dt2.Rows.Count; i++)
                 {
                 if (i == 0)
                     {
-
                     //Cálculo da distância
                     double X = Convert.ToDouble(dt2.Rows[i][1]);
                     double Xant = Convert.ToDouble(dt2.Rows[dt2.Rows.Count - 1][1]);
