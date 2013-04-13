@@ -15,14 +15,14 @@
     <framework targetVersion="4.0" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="memorial.exe.manifest" size="4917">
+    <dependentAssembly dependencyType="install" codebase="memorial.exe.manifest" size="4918">
       <assemblyIdentity name="memorial.exe" version="1.0.0.10" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>z/13hHdiSCjGHUnA9nmfuFA3VnQ=</dsig:DigestValue>
+        <dsig:DigestValue>hW5hqTq65DqUe9C88gpZDW3IOyo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
