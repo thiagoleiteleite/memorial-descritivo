@@ -350,7 +350,7 @@ namespace memorial
                     break;
                 }
             }
-      
+
         //Cálculo de Azimute e distância
         private void button2_Click(object sender, EventArgs e)
             {
@@ -359,7 +359,7 @@ namespace memorial
             //dt2.Columns.Add(new DataColumn("Azimute", typeof(decimal)));
 
             //Número total de pontos ou número da linha do último ponto
-            dataGridView1.Refresh();  
+            dataGridView1.Refresh();
 
             int numPontos = dt2.Rows.Count - 1;
 
@@ -378,6 +378,10 @@ namespace memorial
                 return;
                 }
 
+            //Variáveis de área e perímetro
+            double Aream2 = 0;
+            double per = 0;
+
             for (int i = 0; i < dt2.Rows.Count; i++)
                 {
                 if (i == 0)
@@ -389,7 +393,15 @@ namespace memorial
                     double Y = Convert.ToDouble(dt2.Rows[i][2]);
                     double Yant = Convert.ToDouble(dt2.Rows[dt2.Rows.Count - 1][2]);
                     double difY = Y - Yant;
+                    double dist = Math.Sqrt(Math.Pow(difX, 2) + Math.Pow(difY, 2));
+
                     dt2.Rows[dt2.Rows.Count - 1]["Distância"] = formataDist(Math.Sqrt(Math.Pow(difX, 2) + Math.Pow(difY, 2)));
+
+                    //Cálculo da área
+                    Aream2 = (Xant * Y) - (Yant * X);
+
+                    //Perimetro
+                    per = dist;
 
                     //Cálculo do azimute
                     double rprov1 = Math.Atan(difX / difY) * (180 / Math.PI) * Math.Sign(difX / difY);
@@ -426,6 +438,24 @@ namespace memorial
                         dt2.Rows[dt2.Rows.Count - 1]["Azimute"] = azprov4bf;
                         }
 
+                    //Casos especiais no cálculo do Azimute
+                    if (difX < 0 && difY == 0)
+                        {
+                        dt2.Rows[dt2.Rows.Count - 1]["Azimute"] = "270°";
+                        }
+                    if (difX > 0 && difY == 0)
+                        {
+                        dt2.Rows[dt2.Rows.Count - 1]["Azimute"] = "90°";
+                        }
+                    if (difX == 0 && difY > 0)
+                        {
+                        dt2.Rows[dt2.Rows.Count - 1]["Azimute"] = "0°";
+                        }
+                    if (difX == 0 && difY < 0)
+                        {
+                        dt2.Rows[dt2.Rows.Count - 1]["Azimute"] = "180°";
+                        }
+
                     //formataçao de coordenadas na tabela
                     formataCoordenadaTabela();
                     }
@@ -438,7 +468,15 @@ namespace memorial
                     double Y = Convert.ToDouble(dt2.Rows[i][2]);
                     double Yant = Convert.ToDouble(dt2.Rows[i - 1][2]);
                     double difY = Y - Yant;
+                    double dist = (Math.Sqrt(Math.Pow(difX, 2) + Math.Pow(difY, 2)));
+
                     dt2.Rows[i - 1]["Distância"] = formataDist(Math.Sqrt(Math.Pow(difX, 2) + Math.Pow(difY, 2)));
+
+                    //Cálculo da área
+                    Aream2 = Aream2 + (Xant * Y) - (Yant * X);
+
+                    //Perimetro
+                    per = per + dist;
 
                     //Cálculo do azimute
                     double rprov1 = Math.Atan(difX / difY) * (180 / Math.PI) * Math.Sign(difX / difY);
@@ -473,55 +511,43 @@ namespace memorial
                         {
                         dt2.Rows[i - 1]["Azimute"] = azprov4bf;
                         }
+
+                    //Casos especiais no cálculo do Azimute
+                    if (difX < 0 && difY == 0)
+                        {
+                        dt2.Rows[i - 1]["Azimute"] = "270°";
+                        }
+                    if (difX > 0 && difY == 0)
+                        {
+                        dt2.Rows[i - 1]["Azimute"] = "90°";
+                        }
+                    if (difX == 0 && difY > 0)
+                        {
+                        dt2.Rows[i - 1]["Azimute"] = "0°";
+                        }
+                    if (difX == 0 && difY < 0)
+                        {
+                        dt2.Rows[i - 1]["Azimute"] = "180°";
+                        }
+
                     //formataçao de coordenadas na tabela
                     formataCoordenadaTabela();
                     }
-                button6.Enabled = true;
-                } //fim do for
 
-            //Distância
-            //if (numericUpDown1.Value == 0)
-            //    {
-            //    dataGridView1.Columns[3].DefaultCellStyle.Format = "0";
-            //    }
-            //if (numericUpDown1.Value == 1)
-            //    {
-            //    dataGridView1.Columns[3].DefaultCellStyle.Format = "0.0";
-            //    }
-            //if (numericUpDown1.Value == 2)
-            //    {
-            //    dataGridView1.Columns[3].DefaultCellStyle.Format = "0.00";
-            //    }
-            //if (numericUpDown1.Value == 3)
-            //    {
-            //    dataGridView1.Columns[3].DefaultCellStyle.Format = "0.000";
-            //    }
-            //if (numericUpDown1.Value == 4)
-            //    {
-            //    dataGridView1.Columns[3].DefaultCellStyle.Format = "0.0000";
-            //    }
+                }//fim do for
 
-            //Azimute - Não precisa mais
-            //if (numericUpDown3.Value == 0)
-            //{
-            //  //  dataGridView1.Columns[4].DefaultCellStyle.Format = "0° .00´ 00´´";           
-            //}
-            //if (numericUpDown3.Value == 1)
-            //{
-            ////    dataGridView1.Columns[4].DefaultCellStyle.Format = "0° .00´ 00','0´´";
-            //}
-            //if (numericUpDown3.Value == 2)
-            //{
-            //  //  dataGridView1.Columns[4].DefaultCellStyle.Format = "0° .00´ 00','00´´";
-            //}
-            //if (numericUpDown3.Value == 3)
-            //{
-            //   // dataGridView1.Columns[4].DefaultCellStyle.Format = "0° .00´ 00','000´´";
-            //}
-            //if (numericUpDown3.Value == 4)
-            //{
-            ////    dataGridView1.Columns[4].DefaultCellStyle.Format = "0° .00´ 00','0000´´";
-            //}
+            button6.Enabled = true;
+
+            //Colocar o valor de área e perímetro nas Caixas de Texto
+
+            //Área em m²
+            Aream2 = Math.Abs(Aream2 / 2);
+            txtArea.Text = formataDist(Aream2);
+            //Área em ha
+            txtAreaha.Text = formataDist(Aream2 / 10000);
+
+            //Perimetro
+            textBox2.Text = formataDist(per);
 
             }
 
@@ -552,11 +578,11 @@ namespace memorial
                     }
 
                 //Cálculo perímetro
-                double per = 0;
-                for (int i = 0; i < dt2.Rows.Count; i++)
-                    {
-                    per = per + Convert.ToDouble(dt2.Rows[i][3]);
-                    }
+                //double per = 0;
+                //for (int i = 0; i < dt2.Rows.Count; i++)
+                //    {
+                //    per = per + Convert.ToDouble(dt2.Rows[i][3]);
+                //    }
 
                 //Cabeçalho
                 if (txtImovel.TextLength > 0)
@@ -668,97 +694,124 @@ namespace memorial
                     richTextBox1.AppendLine();
                     }
 
-                //Área
-                if (txtArea.TextLength > 0)
+                //Área m²
+                if (chkArea.Checked == true)
                     {
-                    if (checkBox4.Checked == true)
+                    if (txtArea.TextLength > 0)
                         {
-                        richTextBox1.AppendBold("Área: ");
+                        if (checkBox13.Checked == true)
+                            {
+                            richTextBox1.AppendBold("Área: ");
+                            }
+                        else
+                            {
+                            richTextBox1.AppendRegular("Área: ");
+                            }
+
+                        //Área ha
+                        string TextoArea = "";
+                        if (chkAreaha.Checked == true)
+                            {
+                            TextoArea = txtArea.Text + " m²" + " ou " + txtAreaha.Text + " ha";
+                            }
+                        else
+                            {
+                            TextoArea = txtArea.Text + " m²";
+                            }
+
+                        if (checkBox12.Checked == true)
+                            {
+                            richTextBox1.AppendBold(TextoArea);
+                            }
+                        else
+                            {
+                            richTextBox1.AppendRegular(TextoArea);
+                            }
+                        richTextBox1.AppendLine();
                         }
-                    else
-                        {
-                        richTextBox1.AppendRegular("Área: ");
-                        }
-                    if (checkBox6.Checked == true)
-                        {
-                        richTextBox1.AppendBold(txtArea.Text);
-                        }
-                    else
-                        {
-                        richTextBox1.AppendRegular(txtArea.Text);
-                        }
-                    richTextBox1.AppendLine();
                     }
 
                 //Perímetro
-                if (checkBox1.Checked == true)
+                if (chkPer.Checked == true)
                     {
-                    if (checkBox11.Checked == true)
+                    if (textBox2.TextLength > 0)
                         {
-                        richTextBox1.AppendBold("Perímetro: ");
-                        }
-                    else
-                        {
-                        richTextBox1.AppendRegular("Perímetro: ");
-                        }
-
-                    if (numericUpDown1.Value == 0)
-                        {
-                        if (checkBox22.Checked == true)
+                        if (checkBox13.Checked == true)
                             {
-                            richTextBox1.AppendBold(per.ToString("#,###.") + " " + txtUnidade.Text);
+                            richTextBox1.AppendBold("Perímetro: ");
                             }
                         else
                             {
-                            richTextBox1.AppendRegular(per.ToString("#,###.") + " " + txtUnidade.Text);
+                            richTextBox1.AppendRegular("Perímetro: ");
                             }
-                        }
-                    if (numericUpDown1.Value == 1)
-                        {
-                        if (checkBox22.Checked == true)
+                        if (checkBox12.Checked == true)
                             {
-                            richTextBox1.AppendBold(per.ToString("#,###0.0") + " " + txtUnidade.Text);
+                            richTextBox1.AppendBold(textBox2.Text + " m");
                             }
                         else
                             {
-                            richTextBox1.AppendRegular(per.ToString("#,###0.0") + " " + txtUnidade.Text);
+                            richTextBox1.AppendRegular(textBox2.Text + " m");
                             }
+                        richTextBox1.AppendLine();
                         }
-                    if (numericUpDown1.Value == 2)
-                        {
-                        if (checkBox22.Checked == true)
-                            {
-                            richTextBox1.AppendBold(per.ToString("#,###0.00") + " " + txtUnidade.Text);
-                            }
-                        else
-                            {
-                            richTextBox1.AppendRegular(per.ToString("#,###0.00") + " " + txtUnidade.Text);
-                            }
-                        }
-                    if (numericUpDown1.Value == 3)
-                        {
-                        if (checkBox22.Checked == true)
-                            {
-                            richTextBox1.AppendBold(per.ToString("#,###0.000") + " " + txtUnidade.Text);
-                            }
-                        else
-                            {
-                            richTextBox1.AppendRegular(per.ToString("#,###0.000") + " " + txtUnidade.Text);
-                            }
-                        }
-                    if (numericUpDown1.Value == 4)
-                        {
-                        if (checkBox22.Checked == true)
-                            {
-                            richTextBox1.AppendBold(per.ToString("#,###0.0000") + " " + txtUnidade.Text);
-                            }
-                        else
-                            {
-                            richTextBox1.AppendRegular(per.ToString("#,###0.0000") + " " + txtUnidade.Text);
-                            }
-                        }
-                    richTextBox1.AppendLine();
                     }
+
+                //if (numericUpDown1.Value == 0)
+                //    {
+                //    if (checkBox22.Checked == true)
+                //        {
+                //        richTextBox1.AppendBold(per.ToString("#,###.") + " " + txtUnidade.Text);
+                //        }
+                //    else
+                //        {
+                //        richTextBox1.AppendRegular(per.ToString("#,###.") + " " + txtUnidade.Text);
+                //        }
+                //    }
+                //if (numericUpDown1.Value == 1)
+                //    {
+                //    if (checkBox22.Checked == true)
+                //        {
+                //        richTextBox1.AppendBold(per.ToString("#,###0.0") + " " + txtUnidade.Text);
+                //        }
+                //    else
+                //        {
+                //        richTextBox1.AppendRegular(per.ToString("#,###0.0") + " " + txtUnidade.Text);
+                //        }
+                //    }
+                //if (numericUpDown1.Value == 2)
+                //    {
+                //    if (checkBox22.Checked == true)
+                //        {
+                //        richTextBox1.AppendBold(per.ToString("#,###0.00") + " " + txtUnidade.Text);
+                //        }
+                //    else
+                //        {
+                //        richTextBox1.AppendRegular(per.ToString("#,###0.00") + " " + txtUnidade.Text);
+                //        }
+                //    }
+                //if (numericUpDown1.Value == 3)
+                //    {
+                //    if (checkBox22.Checked == true)
+                //        {
+                //        richTextBox1.AppendBold(per.ToString("#,###0.000") + " " + txtUnidade.Text);
+                //        }
+                //    else
+                //        {
+                //        richTextBox1.AppendRegular(per.ToString("#,###0.000") + " " + txtUnidade.Text);
+                //        }
+                //    }
+                //if (numericUpDown1.Value == 4)
+                //    {
+                //    if (checkBox22.Checked == true)
+                //        {
+                //        richTextBox1.AppendBold(per.ToString("#,###0.0000") + " " + txtUnidade.Text);
+                //        }
+                //    else
+                //        {
+                //        richTextBox1.AppendRegular(per.ToString("#,###0.0000") + " " + txtUnidade.Text);
+                //        }
+                //    }
+
 
                 //Proprietário
                 if (txtProprietario.TextLength > 0)
@@ -1015,33 +1068,33 @@ namespace memorial
                 richTextBox1.AppendRegular(", " + txtFim.Text);
 
                 //Perímetro
-                string pers = null;
-                if (numericUpDown1.Value == 0)
-                    {
-                    pers = per.ToString("#,###.");
-                    //richTextBox1.AppendRegular(" " + per.ToString("0") + " " + textBox8.Text + ".");
-                    }
-                if (numericUpDown1.Value == 1)
-                    {
-                    pers = per.ToString("#,###0.0");
-                    //richTextBox1.AppendRegular(" " + per.ToString("0.0") + " " + textBox8.Text + ".");
-                    }
-                if (numericUpDown1.Value == 2)
-                    {
-                    //pers = per.ToString("0.00");
-                    pers = per.ToString("#,###0.00");
-                    //richTextBox1.AppendRegular(" " + per.ToString("0.00") + " " + textBox8.Text + ".");
-                    }
-                if (numericUpDown1.Value == 3)
-                    {
-                    pers = per.ToString("#,###0.000");
-                    //richTextBox1.AppendRegular(" " + per.ToString("0.000") + " " + textBox8.Text + ".");
-                    }
-                if (numericUpDown1.Value == 4)
-                    {
-                    pers = per.ToString("#,###0.0000");
-                    //richTextBox1.AppendRegular(" " + per.ToString("0.0000") + " " + textBox8.Text + ".");
-                    }
+                //string pers = null;
+                //if (numericUpDown1.Value == 0)
+                //    {
+                //    pers = per.ToString("#,###.");
+                //    //richTextBox1.AppendRegular(" " + per.ToString("0") + " " + textBox8.Text + ".");
+                //    }
+                //if (numericUpDown1.Value == 1)
+                //    {
+                //    pers = per.ToString("#,###0.0");
+                //    //richTextBox1.AppendRegular(" " + per.ToString("0.0") + " " + textBox8.Text + ".");
+                //    }
+                //if (numericUpDown1.Value == 2)
+                //    {
+                //    //pers = per.ToString("0.00");
+                //    pers = per.ToString("#,###0.00");
+                //    //richTextBox1.AppendRegular(" " + per.ToString("0.00") + " " + textBox8.Text + ".");
+                //    }
+                //if (numericUpDown1.Value == 3)
+                //    {
+                //    pers = per.ToString("#,###0.000");
+                //    //richTextBox1.AppendRegular(" " + per.ToString("0.000") + " " + textBox8.Text + ".");
+                //    }
+                //if (numericUpDown1.Value == 4)
+                //    {
+                //    pers = per.ToString("#,###0.0000");
+                //    //richTextBox1.AppendRegular(" " + per.ToString("0.0000") + " " + textBox8.Text + ".");
+                //    }
 
                 //Perímetro no fim do texto - Acho que não precisa estar no texto
                 //richTextBox1.AppendRegular(" ");
@@ -1232,7 +1285,6 @@ namespace memorial
         //Exportar tabela para CSV
         private void button6_Click(object sender, EventArgs e)
             {
-            saveFileDialog2.Filter = "CSV separado por ponto e vírgula|*.csv";
 
             if (saveFileDialog2.ShowDialog() == DialogResult.OK)
                 {
@@ -1305,6 +1357,27 @@ namespace memorial
                 txtData.Enabled = false;
                 }
             }
+
+        private void txtArea_TextChanged(object sender, EventArgs e)
+            {
+            if (txtArea.TextLength > 0)
+                {
+                txtAreaha.Text = formataDist(Convert.ToDouble(txtArea.Text) / 10000);
+                }
+            else
+                {
+                txtAreaha.Text = formataDist(0);
+                }
+            }
+
+        private void txtArea_KeyPress(object sender, KeyPressEventArgs e)
+            {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+                {
+                e.Handled = true;
+                }
+            }
+
         }
 
     public static class RichTextBoxExtensions

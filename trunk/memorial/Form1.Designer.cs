@@ -53,12 +53,18 @@
         this.tabPage3 = new System.Windows.Forms.TabPage();
         this.tabControl2 = new System.Windows.Forms.TabControl();
         this.tabPage5 = new System.Windows.Forms.TabPage();
+        this.chkAreaha = new System.Windows.Forms.CheckBox();
+        this.chkArea = new System.Windows.Forms.CheckBox();
+        this.textBox2 = new System.Windows.Forms.TextBox();
+        this.label39 = new System.Windows.Forms.Label();
+        this.txtAreaha = new System.Windows.Forms.TextBox();
+        this.label38 = new System.Windows.Forms.Label();
         this.label37 = new System.Windows.Forms.Label();
         this.txtMC = new System.Windows.Forms.TextBox();
         this.label34 = new System.Windows.Forms.Label();
         this.txtDatum = new System.Windows.Forms.TextBox();
         this.label36 = new System.Windows.Forms.Label();
-        this.checkBox1 = new System.Windows.Forms.CheckBox();
+        this.chkPer = new System.Windows.Forms.CheckBox();
         this.txtArea = new System.Windows.Forms.TextBox();
         this.label28 = new System.Windows.Forms.Label();
         this.txtCodIncra = new System.Windows.Forms.TextBox();
@@ -466,12 +472,18 @@
         // 
         // tabPage5
         // 
+        this.tabPage5.Controls.Add(this.chkAreaha);
+        this.tabPage5.Controls.Add(this.chkArea);
+        this.tabPage5.Controls.Add(this.textBox2);
+        this.tabPage5.Controls.Add(this.label39);
+        this.tabPage5.Controls.Add(this.txtAreaha);
+        this.tabPage5.Controls.Add(this.label38);
         this.tabPage5.Controls.Add(this.label37);
         this.tabPage5.Controls.Add(this.txtMC);
         this.tabPage5.Controls.Add(this.label34);
         this.tabPage5.Controls.Add(this.txtDatum);
         this.tabPage5.Controls.Add(this.label36);
-        this.tabPage5.Controls.Add(this.checkBox1);
+        this.tabPage5.Controls.Add(this.chkPer);
         this.tabPage5.Controls.Add(this.txtArea);
         this.tabPage5.Controls.Add(this.label28);
         this.tabPage5.Controls.Add(this.txtCodIncra);
@@ -494,10 +506,68 @@
         this.tabPage5.Text = "Informações do imóvel";
         this.tabPage5.UseVisualStyleBackColor = true;
         // 
+        // chkAreaha
+        // 
+        this.chkAreaha.AutoSize = true;
+        this.chkAreaha.Location = new System.Drawing.Point(186, 132);
+        this.chkAreaha.Name = "chkAreaha";
+        this.chkAreaha.Size = new System.Drawing.Size(99, 17);
+        this.chkAreaha.TabIndex = 41;
+        this.chkAreaha.Text = "Inserir área (ha)";
+        this.chkAreaha.UseVisualStyleBackColor = true;
+        // 
+        // chkArea
+        // 
+        this.chkArea.AutoSize = true;
+        this.chkArea.Location = new System.Drawing.Point(8, 132);
+        this.chkArea.Name = "chkArea";
+        this.chkArea.Size = new System.Drawing.Size(98, 17);
+        this.chkArea.TabIndex = 40;
+        this.chkArea.Text = "Inserir área (m²)";
+        this.chkArea.UseVisualStyleBackColor = true;
+        // 
+        // textBox2
+        // 
+        this.textBox2.Location = new System.Drawing.Point(342, 107);
+        this.textBox2.Margin = new System.Windows.Forms.Padding(2);
+        this.textBox2.Name = "textBox2";
+        this.textBox2.Size = new System.Drawing.Size(150, 20);
+        this.textBox2.TabIndex = 38;
+        this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtArea_KeyPress);
+        // 
+        // label39
+        // 
+        this.label39.AutoSize = true;
+        this.label39.Location = new System.Drawing.Point(339, 90);
+        this.label39.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+        this.label39.Name = "label39";
+        this.label39.Size = new System.Drawing.Size(70, 13);
+        this.label39.TabIndex = 39;
+        this.label39.Text = "Perímetro (m)";
+        // 
+        // txtAreaha
+        // 
+        this.txtAreaha.Location = new System.Drawing.Point(186, 107);
+        this.txtAreaha.Margin = new System.Windows.Forms.Padding(2);
+        this.txtAreaha.Name = "txtAreaha";
+        this.txtAreaha.Size = new System.Drawing.Size(150, 20);
+        this.txtAreaha.TabIndex = 36;
+        this.txtAreaha.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtArea_KeyPress);
+        // 
+        // label38
+        // 
+        this.label38.AutoSize = true;
+        this.label38.Location = new System.Drawing.Point(183, 90);
+        this.label38.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+        this.label38.Name = "label38";
+        this.label38.Size = new System.Drawing.Size(50, 13);
+        this.label38.TabIndex = 37;
+        this.label38.Text = "Área (ha)";
+        // 
         // label37
         // 
         this.label37.AutoSize = true;
-        this.label37.Location = new System.Drawing.Point(8, 182);
+        this.label37.Location = new System.Drawing.Point(5, 239);
         this.label37.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
         this.label37.Name = "label37";
         this.label37.Size = new System.Drawing.Size(130, 13);
@@ -506,7 +576,7 @@
         // 
         // txtMC
         // 
-        this.txtMC.Location = new System.Drawing.Point(11, 223);
+        this.txtMC.Location = new System.Drawing.Point(8, 280);
         this.txtMC.Margin = new System.Windows.Forms.Padding(2);
         this.txtMC.Name = "txtMC";
         this.txtMC.Size = new System.Drawing.Size(71, 20);
@@ -516,7 +586,7 @@
         // label34
         // 
         this.label34.AutoSize = true;
-        this.label34.Location = new System.Drawing.Point(8, 206);
+        this.label34.Location = new System.Drawing.Point(5, 263);
         this.label34.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
         this.label34.Name = "label34";
         this.label34.Size = new System.Drawing.Size(89, 13);
@@ -525,7 +595,7 @@
         // 
         // txtDatum
         // 
-        this.txtDatum.Location = new System.Drawing.Point(120, 223);
+        this.txtDatum.Location = new System.Drawing.Point(117, 280);
         this.txtDatum.Margin = new System.Windows.Forms.Padding(2);
         this.txtDatum.Name = "txtDatum";
         this.txtDatum.Size = new System.Drawing.Size(156, 20);
@@ -535,30 +605,32 @@
         // label36
         // 
         this.label36.AutoSize = true;
-        this.label36.Location = new System.Drawing.Point(120, 208);
+        this.label36.Location = new System.Drawing.Point(117, 265);
         this.label36.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
         this.label36.Name = "label36";
         this.label36.Size = new System.Drawing.Size(38, 13);
         this.label36.TabIndex = 33;
         this.label36.Text = "Datum";
         // 
-        // checkBox1
+        // chkPer
         // 
-        this.checkBox1.AutoSize = true;
-        this.checkBox1.Location = new System.Drawing.Point(234, 110);
-        this.checkBox1.Name = "checkBox1";
-        this.checkBox1.Size = new System.Drawing.Size(102, 17);
-        this.checkBox1.TabIndex = 6;
-        this.checkBox1.Text = "Inserir perímetro";
-        this.checkBox1.UseVisualStyleBackColor = true;
+        this.chkPer.AutoSize = true;
+        this.chkPer.Location = new System.Drawing.Point(342, 132);
+        this.chkPer.Name = "chkPer";
+        this.chkPer.Size = new System.Drawing.Size(102, 17);
+        this.chkPer.TabIndex = 6;
+        this.chkPer.Text = "Inserir perímetro";
+        this.chkPer.UseVisualStyleBackColor = true;
         // 
         // txtArea
         // 
         this.txtArea.Location = new System.Drawing.Point(8, 107);
         this.txtArea.Margin = new System.Windows.Forms.Padding(2);
         this.txtArea.Name = "txtArea";
-        this.txtArea.Size = new System.Drawing.Size(221, 20);
+        this.txtArea.Size = new System.Drawing.Size(150, 20);
         this.txtArea.TabIndex = 5;
+        this.txtArea.TextChanged += new System.EventHandler(this.txtArea_TextChanged);
+        this.txtArea.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtArea_KeyPress);
         // 
         // label28
         // 
@@ -566,9 +638,9 @@
         this.label28.Location = new System.Drawing.Point(5, 90);
         this.label28.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
         this.label28.Name = "label28";
-        this.label28.Size = new System.Drawing.Size(29, 13);
+        this.label28.Size = new System.Drawing.Size(49, 13);
         this.label28.TabIndex = 30;
-        this.label28.Text = "Área";
+        this.label28.Text = "Área (m²)";
         // 
         // txtCodIncra
         // 
@@ -624,7 +696,7 @@
         // 
         // txtProprietario
         // 
-        this.txtProprietario.Location = new System.Drawing.Point(8, 145);
+        this.txtProprietario.Location = new System.Drawing.Point(5, 202);
         this.txtProprietario.Margin = new System.Windows.Forms.Padding(2);
         this.txtProprietario.Name = "txtProprietario";
         this.txtProprietario.Size = new System.Drawing.Size(899, 20);
@@ -643,7 +715,7 @@
         // label11
         // 
         this.label11.AutoSize = true;
-        this.label11.Location = new System.Drawing.Point(8, 130);
+        this.label11.Location = new System.Drawing.Point(5, 187);
         this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
         this.label11.Name = "label11";
         this.label11.Size = new System.Drawing.Size(71, 13);
@@ -1832,7 +1904,7 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.TextBox txtCodIncra;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chkPer;
         private System.Windows.Forms.TextBox txtConfronto;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -1898,6 +1970,12 @@
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.TextBox txtDatum;
         private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.CheckBox chkArea;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.TextBox txtAreaha;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.CheckBox chkAreaha;
     }
 }
 
