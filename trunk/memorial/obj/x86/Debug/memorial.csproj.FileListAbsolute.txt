@@ -57,11 +57,10 @@ D:\_Projetos_VS2008\Memorial_Descritivo_CSharp\memorial\bin\Debug\memorial.exe.m
 D:\_Projetos_VS2008\Memorial_Descritivo_CSharp\memorial\bin\Debug\memorial.application
 D:\_Projetos_VS2008\Memorial_Descritivo_CSharp\memorial\bin\Debug\memorial.exe
 D:\_Projetos_VS2008\Memorial_Descritivo_CSharp\memorial\bin\Debug\memorial.pdb
-D:\_Projetos_VS2008\Memorial_Descritivo_CSharp\memorial\obj\x86\Debug\ResolveAssemblyReference.cache
 D:\_Projetos_VS2008\Memorial_Descritivo_CSharp\memorial\obj\x86\Debug\memorial.Form1.resources
 D:\_Projetos_VS2008\Memorial_Descritivo_CSharp\memorial\obj\x86\Debug\memorial.Properties.Resources.resources
-D:\_Projetos_VS2008\Memorial_Descritivo_CSharp\memorial\obj\x86\Debug\GenerateResource.read.1.tlog
-D:\_Projetos_VS2008\Memorial_Descritivo_CSharp\memorial\obj\x86\Debug\GenerateResource.write.1.tlog
 D:\_Projetos_VS2008\Memorial_Descritivo_CSharp\memorial\obj\x86\Debug\memorial.TrustInfo.xml
 D:\_Projetos_VS2008\Memorial_Descritivo_CSharp\memorial\obj\x86\Debug\memorial.exe.manifest
 D:\_Projetos_VS2008\Memorial_Descritivo_CSharp\memorial\obj\x86\Debug\memorial.application
+D:\_Projetos_VS2008\Memorial_Descritivo_CSharp\memorial\obj\x86\Debug\memorial.csprojResolveAssemblyReference.cache
+D:\_Projetos_VS2008\Memorial_Descritivo_CSharp\memorial\obj\x86\Debug\memorial.csproj.GenerateResource.Cache
