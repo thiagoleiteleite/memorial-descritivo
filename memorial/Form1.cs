@@ -787,7 +787,7 @@ namespace memorial
                 //}
 
                 //Se as duas áreas forem marcadas
-                if (chkArea.Checked == true && chkAreaha.Checked == true) 
+                if (chkArea.Checked == true && chkAreaha.Checked == true)
                 {
                     if (txtArea.TextLength > 0)
                     {
@@ -809,7 +809,8 @@ namespace memorial
                         }
                         richTextBox1.AppendLine();
                     }
-                }else if (chkArea.Checked == true)
+                }
+                else if (chkArea.Checked == true)
                 {
                     if (txtArea.TextLength > 0)
                     {
@@ -995,7 +996,16 @@ namespace memorial
 
                     //Nome ponto
                     ponto = Convert.ToString(dt2.Rows[i][0]);
-                    richTextBox1.AppendRegular(txtLigacao.Text + " ");
+
+                    if (i == 0) //Caso for o primeiro ponto, não coloca o texto de ligação
+                    {
+                        richTextBox1.AppendRegular("");
+                    }
+                    else
+                    {
+                        richTextBox1.AppendRegular(txtLigacao.Text + " ");
+                    }
+
                     if (checkBox24.Checked == true)
                     {
                         richTextBox1.AppendBold(ponto);
@@ -1004,6 +1014,7 @@ namespace memorial
                     {
                         richTextBox1.AppendRegular(ponto);
                     }
+
                     richTextBox1.AppendRegular(", " + txtCoord.Text + " ");
 
                     //Coodernadas
