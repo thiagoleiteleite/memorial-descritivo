@@ -26,18 +26,6 @@
             If you want to utilize File and Registry Virtualization for backward 
             compatibility then delete the requestedExecutionLevel node.
         -->
-        <!-- UAC Manifest Options
-            If you want to change the Windows User Account Control level replace the 
-            requestedExecutionLevel node with one of the following.
-
-        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
-        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
-        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
-
-            Specifying requestedExecutionLevel node will disable file and registry virtualization.
-            If you want to utilize File and Registry Virtualization for backward 
-            compatibility then delete the requestedExecutionLevel node.
-        -->
         <requestedExecutionLevel level="asInvoker" uiAccess="false" />
       </requestedPrivileges>
     </security>
@@ -67,14 +55,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="memorial.exe" size="200704">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="memorial.exe" size="217088">
       <assemblyIdentity name="memorial" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>7oEZRSOma2v/MDtq3EH7PQRlZmc=</dsig:DigestValue>
+        <dsig:DigestValue>wxR79/kwyPP8dOPELS1eyH+0Mgg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -85,6 +73,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>fT+CH5yUIEOHyDUI5jGu4Sfln84=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="memorial.exe.config" size="2760">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>r5i4B39Q2khXQZszMf7OZtd1FxU=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
