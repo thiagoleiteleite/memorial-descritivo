@@ -53,6 +53,8 @@
 			this.tabPage3 = new System.Windows.Forms.TabPage();
 			this.tabControl2 = new System.Windows.Forms.TabControl();
 			this.tabPage5 = new System.Windows.Forms.TabPage();
+			this.label47 = new System.Windows.Forms.Label();
+			this.txtCartorio = new System.Windows.Forms.TextBox();
 			this.cboFuso = new System.Windows.Forms.ComboBox();
 			this.cboMC = new System.Windows.Forms.ComboBox();
 			this.label46 = new System.Windows.Forms.Label();
@@ -497,6 +499,8 @@
 			// 
 			// tabPage5
 			// 
+			this.tabPage5.Controls.Add(this.label47);
+			this.tabPage5.Controls.Add(this.txtCartorio);
 			this.tabPage5.Controls.Add(this.cboFuso);
 			this.tabPage5.Controls.Add(this.cboMC);
 			this.tabPage5.Controls.Add(this.label46);
@@ -544,6 +548,24 @@
 			this.tabPage5.TabIndex = 0;
 			this.tabPage5.Text = "Informações do imóvel";
 			this.tabPage5.UseVisualStyleBackColor = true;
+			// 
+			// label47
+			// 
+			this.label47.AutoSize = true;
+			this.label47.Location = new System.Drawing.Point(437, 87);
+			this.label47.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+			this.label47.Name = "label47";
+			this.label47.Size = new System.Drawing.Size(43, 13);
+			this.label47.TabIndex = 60;
+			this.label47.Text = "Cartório";
+			// 
+			// txtCartorio
+			// 
+			this.txtCartorio.Location = new System.Drawing.Point(439, 104);
+			this.txtCartorio.Margin = new System.Windows.Forms.Padding(2);
+			this.txtCartorio.Name = "txtCartorio";
+			this.txtCartorio.Size = new System.Drawing.Size(210, 20);
+			this.txtCartorio.TabIndex = 59;
 			// 
 			// cboFuso
 			// 
@@ -660,7 +682,7 @@
 			// NumDecPer
 			// 
 			this.NumDecPer.Enabled = false;
-			this.NumDecPer.Location = new System.Drawing.Point(166, 249);
+			this.NumDecPer.Location = new System.Drawing.Point(165, 253);
 			this.NumDecPer.Maximum = new decimal(new int[] {
 									4,
 									0,
@@ -679,7 +701,7 @@
 			// label42
 			// 
 			this.label42.AutoSize = true;
-			this.label42.Location = new System.Drawing.Point(163, 233);
+			this.label42.Location = new System.Drawing.Point(162, 237);
 			this.label42.Name = "label42";
 			this.label42.Size = new System.Drawing.Size(83, 13);
 			this.label42.TabIndex = 46;
@@ -688,7 +710,7 @@
 			// NumDecAreaha
 			// 
 			this.NumDecAreaha.Enabled = false;
-			this.NumDecAreaha.Location = new System.Drawing.Point(500, 176);
+			this.NumDecAreaha.Location = new System.Drawing.Point(499, 180);
 			this.NumDecAreaha.Maximum = new decimal(new int[] {
 									4,
 									0,
@@ -707,7 +729,7 @@
 			// label41
 			// 
 			this.label41.AutoSize = true;
-			this.label41.Location = new System.Drawing.Point(497, 160);
+			this.label41.Location = new System.Drawing.Point(496, 164);
 			this.label41.Name = "label41";
 			this.label41.Size = new System.Drawing.Size(83, 13);
 			this.label41.TabIndex = 44;
@@ -716,7 +738,7 @@
 			// NumDecAream
 			// 
 			this.NumDecAream.Enabled = false;
-			this.NumDecAream.Location = new System.Drawing.Point(166, 176);
+			this.NumDecAream.Location = new System.Drawing.Point(165, 180);
 			this.NumDecAream.Maximum = new decimal(new int[] {
 									4,
 									0,
@@ -735,7 +757,7 @@
 			// label40
 			// 
 			this.label40.AutoSize = true;
-			this.label40.Location = new System.Drawing.Point(163, 160);
+			this.label40.Location = new System.Drawing.Point(162, 164);
 			this.label40.Name = "label40";
 			this.label40.Size = new System.Drawing.Size(83, 13);
 			this.label40.TabIndex = 42;
@@ -744,7 +766,7 @@
 			// chkAreaha
 			// 
 			this.chkAreaha.AutoSize = true;
-			this.chkAreaha.Location = new System.Drawing.Point(341, 140);
+			this.chkAreaha.Location = new System.Drawing.Point(340, 144);
 			this.chkAreaha.Name = "chkAreaha";
 			this.chkAreaha.Size = new System.Drawing.Size(99, 17);
 			this.chkAreaha.TabIndex = 41;
@@ -755,7 +777,7 @@
 			// chkArea
 			// 
 			this.chkArea.AutoSize = true;
-			this.chkArea.Location = new System.Drawing.Point(8, 140);
+			this.chkArea.Location = new System.Drawing.Point(7, 144);
 			this.chkArea.Name = "chkArea";
 			this.chkArea.Size = new System.Drawing.Size(98, 17);
 			this.chkArea.TabIndex = 40;
@@ -766,7 +788,7 @@
 			// textBox2
 			// 
 			this.textBox2.Enabled = false;
-			this.textBox2.Location = new System.Drawing.Point(8, 249);
+			this.textBox2.Location = new System.Drawing.Point(7, 253);
 			this.textBox2.Margin = new System.Windows.Forms.Padding(2);
 			this.textBox2.Name = "textBox2";
 			this.textBox2.Size = new System.Drawing.Size(150, 20);
@@ -776,7 +798,7 @@
 			// label39
 			// 
 			this.label39.AutoSize = true;
-			this.label39.Location = new System.Drawing.Point(9, 234);
+			this.label39.Location = new System.Drawing.Point(8, 238);
 			this.label39.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.label39.Name = "label39";
 			this.label39.Size = new System.Drawing.Size(70, 13);
@@ -786,7 +808,7 @@
 			// txtAreaha
 			// 
 			this.txtAreaha.Enabled = false;
-			this.txtAreaha.Location = new System.Drawing.Point(341, 176);
+			this.txtAreaha.Location = new System.Drawing.Point(340, 180);
 			this.txtAreaha.Margin = new System.Windows.Forms.Padding(2);
 			this.txtAreaha.Name = "txtAreaha";
 			this.txtAreaha.Size = new System.Drawing.Size(150, 20);
@@ -796,7 +818,7 @@
 			// label38
 			// 
 			this.label38.AutoSize = true;
-			this.label38.Location = new System.Drawing.Point(339, 160);
+			this.label38.Location = new System.Drawing.Point(338, 164);
 			this.label38.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.label38.Name = "label38";
 			this.label38.Size = new System.Drawing.Size(50, 13);
@@ -845,7 +867,7 @@
 			// chkPer
 			// 
 			this.chkPer.AutoSize = true;
-			this.chkPer.Location = new System.Drawing.Point(8, 214);
+			this.chkPer.Location = new System.Drawing.Point(7, 218);
 			this.chkPer.Name = "chkPer";
 			this.chkPer.Size = new System.Drawing.Size(102, 17);
 			this.chkPer.TabIndex = 6;
@@ -856,7 +878,7 @@
 			// txtArea
 			// 
 			this.txtArea.Enabled = false;
-			this.txtArea.Location = new System.Drawing.Point(8, 176);
+			this.txtArea.Location = new System.Drawing.Point(7, 180);
 			this.txtArea.Margin = new System.Windows.Forms.Padding(2);
 			this.txtArea.Name = "txtArea";
 			this.txtArea.Size = new System.Drawing.Size(150, 20);
@@ -866,7 +888,7 @@
 			// label28
 			// 
 			this.label28.AutoSize = true;
-			this.label28.Location = new System.Drawing.Point(5, 160);
+			this.label28.Location = new System.Drawing.Point(4, 164);
 			this.label28.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.label28.Name = "label28";
 			this.label28.Size = new System.Drawing.Size(49, 13);
@@ -875,16 +897,16 @@
 			// 
 			// txtCodIncra
 			// 
-			this.txtCodIncra.Location = new System.Drawing.Point(630, 104);
+			this.txtCodIncra.Location = new System.Drawing.Point(653, 104);
 			this.txtCodIncra.Margin = new System.Windows.Forms.Padding(2);
 			this.txtCodIncra.Name = "txtCodIncra";
-			this.txtCodIncra.Size = new System.Drawing.Size(277, 20);
+			this.txtCodIncra.Size = new System.Drawing.Size(254, 20);
 			this.txtCodIncra.TabIndex = 4;
 			// 
 			// label27
 			// 
 			this.label27.AutoSize = true;
-			this.label27.Location = new System.Drawing.Point(627, 87);
+			this.label27.Location = new System.Drawing.Point(653, 87);
 			this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.label27.Name = "label27";
 			this.label27.Size = new System.Drawing.Size(76, 13);
@@ -922,7 +944,7 @@
 			this.txtMatricula.Location = new System.Drawing.Point(7, 104);
 			this.txtMatricula.Margin = new System.Windows.Forms.Padding(2);
 			this.txtMatricula.Name = "txtMatricula";
-			this.txtMatricula.Size = new System.Drawing.Size(329, 20);
+			this.txtMatricula.Size = new System.Drawing.Size(210, 20);
 			this.txtMatricula.TabIndex = 2;
 			// 
 			// txtProprietario
@@ -956,7 +978,7 @@
 			// label14
 			// 
 			this.label14.AutoSize = true;
-			this.label14.Location = new System.Drawing.Point(339, 87);
+			this.label14.Location = new System.Drawing.Point(221, 87);
 			this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.label14.Name = "label14";
 			this.label14.Size = new System.Drawing.Size(49, 13);
@@ -965,10 +987,10 @@
 			// 
 			// txtComarca
 			// 
-			this.txtComarca.Location = new System.Drawing.Point(341, 104);
+			this.txtComarca.Location = new System.Drawing.Point(223, 104);
 			this.txtComarca.Margin = new System.Windows.Forms.Padding(2);
 			this.txtComarca.Name = "txtComarca";
-			this.txtComarca.Size = new System.Drawing.Size(284, 20);
+			this.txtComarca.Size = new System.Drawing.Size(210, 20);
 			this.txtComarca.TabIndex = 3;
 			// 
 			// label12
@@ -1503,7 +1525,7 @@
 			this.groupBox7.Margin = new System.Windows.Forms.Padding(2);
 			this.groupBox7.Name = "groupBox7";
 			this.groupBox7.Padding = new System.Windows.Forms.Padding(2);
-			this.groupBox7.Size = new System.Drawing.Size(146, 220);
+			this.groupBox7.Size = new System.Drawing.Size(146, 246);
 			this.groupBox7.TabIndex = 22;
 			this.groupBox7.TabStop = false;
 			this.groupBox7.Text = "Cidade, data e assinatura";
@@ -1568,7 +1590,7 @@
 			this.groupBox6.Margin = new System.Windows.Forms.Padding(2);
 			this.groupBox6.Name = "groupBox6";
 			this.groupBox6.Padding = new System.Windows.Forms.Padding(2);
-			this.groupBox6.Size = new System.Drawing.Size(150, 220);
+			this.groupBox6.Size = new System.Drawing.Size(150, 246);
 			this.groupBox6.TabIndex = 21;
 			this.groupBox6.TabStop = false;
 			this.groupBox6.Text = "Memorial";
@@ -1674,7 +1696,7 @@
 			this.groupBox5.Margin = new System.Windows.Forms.Padding(2);
 			this.groupBox5.Name = "groupBox5";
 			this.groupBox5.Padding = new System.Windows.Forms.Padding(2);
-			this.groupBox5.Size = new System.Drawing.Size(211, 220);
+			this.groupBox5.Size = new System.Drawing.Size(211, 246);
 			this.groupBox5.TabIndex = 20;
 			this.groupBox5.TabStop = false;
 			this.groupBox5.Text = "Título e cabeçalho";
@@ -2147,6 +2169,8 @@
 			this.tabPage9.PerformLayout();
 			this.ResumeLayout(false);
 		}
+		private System.Windows.Forms.TextBox txtCartorio;
+		private System.Windows.Forms.Label label47;
 		private System.Windows.Forms.ComboBox cboMC;
 		private System.Windows.Forms.ComboBox cboFuso;
 		private System.Windows.Forms.Button btnRestPadrao;

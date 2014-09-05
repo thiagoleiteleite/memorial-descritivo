@@ -1130,31 +1130,37 @@ namespace memorial
 						//Se a opção de ocultar confrontante e tipo de divisa estiver selecionada
 						if (chkRepeticao.Checked == true)
 						{
-							
-							
 							if (i == 0)
 							{
 								richTextBox1.AppendRegular(", " + txtConfronto.Text);
-								if (checkBox23.Checked == true) //negrito
+								
+								if (checkBox23.Checked == true) //negrito em Confrontante
 								{
 									richTextBox1.AppendBold(" " + dt2.Rows[i][5]);
 									richTextBox1.AppendRegular(", ");
+								}
+								else
+								{
+									richTextBox1.AppendRegular(" " + dt2.Rows[i][5]);
+									richTextBox1.AppendRegular(", ");
+								}
+								
+								if (checkBox25.Checked == true){//negrito em Tipo de Divisa
 									richTextBox1.AppendRegular(txtDivisa.Text);
 									richTextBox1.AppendBold(" " + dt2.Rows[i][6]);
 								}
 								else
 								{
-									richTextBox1.AppendRegular(" " + dt2.Rows[i][5] + ", ");
 									richTextBox1.AppendRegular(txtDivisa.Text);
 									richTextBox1.AppendRegular(" " + dt2.Rows[i][6]);
 								}
+//								richTextBox1.AppendRegular(" ");
 							}
 						}
 						
 						//Se a opção de ocultar confrontante e tipo de divisa estiver selecionada
 						if (chkRepeticao.Checked == true)
 						{
-							
 							//Verifica se o nome anterior é igual, para não repetir o nome no texto
 							if (nome == nome2)
 							{
@@ -1162,19 +1168,21 @@ namespace memorial
 								{
 									if (divisa == divisa2)
 									{
-										if (checkBox25.Checked == true)
-										{
-											richTextBox1.AppendBold(",");
-										}
-										else
-										{
-											richTextBox1.AppendRegular(",");
+										if (i > 0) {
+											if (checkBox25.Checked == true)//negrito em Tipo de Divisa
+											{
+												richTextBox1.AppendBold(",");
+											}
+											else
+											{
+												richTextBox1.AppendRegular(",");
+											}
 										}
 									}
 									else
 									{
 										richTextBox1.AppendRegular(", " + txtDivisa.Text);
-										if (checkBox25.Checked == true)
+										if (checkBox25.Checked == true) //negrito em Tipo de Divisa
 										{
 											richTextBox1.AppendBold(" " + dt2.Rows[i][6]);
 										}
@@ -1185,39 +1193,39 @@ namespace memorial
 									}
 
 									//Nome
-									if (checkBox23.Checked == true) //negrito
-									{
-										richTextBox1.AppendBold("");
-									}
-									else
-									{
-										richTextBox1.AppendRegular(" " + dt2.Rows[i][5] + ", ");
-									}
+//									if (checkBox23.Checked == true) //negrito
+//									{
+//										richTextBox1.AppendBold("" + dt2.Rows[i][5]);
+//									}
+//									else
+//									{
+//										richTextBox1.AppendRegular(" " + dt2.Rows[i][5] + ", ");
+//									}
 								}
 							}
 							else
 							{
 								richTextBox1.AppendRegular("; " + txtConfronto.Text);
-								if (checkBox23.Checked == true) //negrito
+								if (checkBox23.Checked == true) //negrito em Confrontante
 								{
 									richTextBox1.AppendBold(" " + dt2.Rows[i][5]);
 									richTextBox1.AppendRegular(", ");
+								}
+								else
+								{
+									richTextBox1.AppendRegular(" " + dt2.Rows[i][5]);
+									richTextBox1.AppendRegular(", ");
+								}
+								//Nome
+								if (checkBox25.Checked == true) //negrito em Tipo de Divisa
+								{
 									richTextBox1.AppendRegular(txtDivisa.Text);
 									richTextBox1.AppendBold(" " + dt2.Rows[i][6]);
 								}
 								else
 								{
-									richTextBox1.AppendRegular(" " + dt2.Rows[i][5] + ", ");
+									richTextBox1.AppendRegular(txtDivisa.Text);
 									richTextBox1.AppendRegular(" " + dt2.Rows[i][6]);
-								}
-								//Nome
-								if (checkBox23.Checked == true) //negrito
-								{
-									richTextBox1.AppendBold("");
-								}
-								else
-								{
-									richTextBox1.AppendRegular(" " + dt2.Rows[i][5] + ", ");
 								}
 							}
 						}
@@ -1226,20 +1234,30 @@ namespace memorial
 							
 							richTextBox1.AppendRegular("; " + txtConfronto.Text);
 							
-							if (checkBox23.Checked == true) //negrito
+							if (checkBox23.Checked == true) //negrito em Confrontante
 							{
 								richTextBox1.AppendBold(" " + dt2.Rows[i][5]);
-								richTextBox1.AppendRegular(", ");
-								richTextBox1.AppendRegular(txtDivisa.Text);
+								//richTextBox1.AppendRegular(", ");
+								//richTextBox1.AppendRegular(txtDivisa.Text);
+								//richTextBox1.AppendBold(" " + dt2.Rows[i][6]);
+							}
+							else
+							{
+								richTextBox1.AppendRegular(" " + dt2.Rows[i][5]);
+								//richTextBox1.AppendRegular(txtDivisa.Text);
+								//richTextBox1.AppendRegular(" " + dt2.Rows[i][6]);
+							}
+							
+							//negrito em Tipo de Divisa - coloquei em 28/08/14
+							richTextBox1.AppendRegular(", " + txtDivisa.Text);
+							if (checkBox25.Checked == true)
+							{
 								richTextBox1.AppendBold(" " + dt2.Rows[i][6]);
 							}
 							else
 							{
-								richTextBox1.AppendRegular(" " + dt2.Rows[i][5] + ", ");
 								richTextBox1.AppendRegular(" " + dt2.Rows[i][6]);
 							}
-							
-							
 						}
 					}
 
@@ -1814,7 +1832,7 @@ namespace memorial
 					System.IO.StreamWriter streamWriter = new System.IO.StreamWriter(arquivo);
 					string strHeader = "";
 					
-					strHeader += "imovel;municipio;matricula;comarca;cod_incra;area_m2;area_ha;perimetro;proprietarios;mc;longitude;fuso;hemisferio;datum";
+					strHeader += "imovel;municipio;matricula;comarca;cartorio;cod_incra;area_m2;area_ha;perimetro;proprietarios;mc;longitude;fuso;hemisferio;datum";
 					
 					streamWriter.WriteLine(strHeader);
 					
@@ -1824,6 +1842,7 @@ namespace memorial
 					strRowValue += ";" + txtMunicipio.Text;
 					strRowValue += ";" + txtMatricula.Text;
 					strRowValue += ";" + txtComarca.Text;
+					strRowValue += ";" + txtCartorio.Text;
 					strRowValue += ";" + txtCodIncra.Text;
 					strRowValue += ";" + txtArea.Text;
 					strRowValue += ";" + txtAreaha.Text;
@@ -1877,8 +1896,8 @@ namespace memorial
 				{
 					dttemp.Load(csv);
 					
-					//Verifica se o arquivo tem 14 campos, para o caso de o usuário selecionar um arquivo errado
-					if (dttemp.Columns.Count == 14)
+					//Verifica se o arquivo tem 15 campos, para o caso de o usuário selecionar um arquivo errado
+					if (dttemp.Columns.Count == 15)
 					{
 						csv.ReadNextRecord();
 						
@@ -1886,16 +1905,17 @@ namespace memorial
 						txtMunicipio.Text = csv[1];
 						txtMatricula.Text = csv[2];
 						txtComarca.Text = csv[3];
-						txtCodIncra.Text = csv[4];
-						txtArea.Text = csv[5];
-						txtAreaha.Text = csv[6];
-						textBox2.Text = csv[7];
-						txtProprietario.Text = csv[8];
-						cboMC.Text = csv[9];
-						cboLongitude.Text = csv[10];
-						cboFuso.Text = csv[11];
-						cboHemisferio.Text = csv[12];
-						txtDatum.Text = csv[13];
+						txtCartorio.Text = csv[4];
+						txtCodIncra.Text = csv[5];
+						txtArea.Text = csv[6];
+						txtAreaha.Text = csv[7];
+						textBox2.Text = csv[8];
+						txtProprietario.Text = csv[9];
+						cboMC.Text = csv[10];
+						cboLongitude.Text = csv[11];
+						cboFuso.Text = csv[12];
+						cboHemisferio.Text = csv[13];
+						txtDatum.Text = csv[14];
 					}
 					else
 					{
