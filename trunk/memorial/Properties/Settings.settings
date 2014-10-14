@@ -1,71 +1,73 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<SettingsFile CurrentProfile="(Default)" GeneratedClassNamespace="memorial.Properties" GeneratedClassName="Settings" xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="memorial.Properties" GeneratedClassName="Settings">
+  <Profiles />
   <Settings>
-    <Setting Name="CasasAzimute" Type="System.String" Scope="User" Roaming="false">
+    <Setting Name="CasasAzimute" Type="System.String" Scope="User">
       <Value Profile="(Default)">2</Value>
     </Setting>
-    <Setting Name="CasasCoordenadas" Type="System.String" Scope="User" Roaming="false">
+    <Setting Name="CasasCoordenadas" Type="System.String" Scope="User">
       <Value Profile="(Default)">3</Value>
     </Setting>
-    <Setting Name="CasasDistancia" Type="System.String" Scope="User" Roaming="false">
+    <Setting Name="CasasDistancia" Type="System.String" Scope="User">
       <Value Profile="(Default)">2</Value>
     </Setting>
-    <Setting Name="cidade" Type="System.String" Scope="User" Roaming="false">
+    <Setting Name="Delimitador" Type="System.Char" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="Codificacao" Type="System.String" Scope="User" Roaming="false">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="Delimitador" Type="System.Char" Scope="User" Roaming="false">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="Mazimute" Type="System.String" Scope="User" Roaming="false">
+    <Setting Name="Mazimute" Type="System.String" Scope="User">
       <Value Profile="(Default)">com azimute</Value>
     </Setting>
-    <Setting Name="Mconfronto" Type="System.String" Scope="User" Roaming="false">
+    <Setting Name="Mconfronto" Type="System.String" Scope="User">
       <Value Profile="(Default)">confrontando com terras de</Value>
     </Setting>
-    <Setting Name="MCoord" Type="System.String" Scope="User" Roaming="false">
+    <Setting Name="MCoord" Type="System.String" Scope="User">
       <Value Profile="(Default)">definido pelas coordenadas</Value>
     </Setting>
-    <Setting Name="Mdist" Type="System.String" Scope="User" Roaming="false">
+    <Setting Name="Mdist" Type="System.String" Scope="User">
       <Value Profile="(Default)">e distância de</Value>
     </Setting>
-    <Setting Name="Mdivisa" Type="System.String" Scope="User" Roaming="false">
+    <Setting Name="Mdivisa" Type="System.String" Scope="User">
       <Value Profile="(Default)">segue por</Value>
     </Setting>
-    <Setting Name="Meste" Type="System.String" Scope="User" Roaming="false">
+    <Setting Name="Meste" Type="System.String" Scope="User">
       <Value Profile="(Default)">E:</Value>
     </Setting>
-    <Setting Name="Mfim" Type="System.String" Scope="User" Roaming="false">
+    <Setting Name="Mfim" Type="System.String" Scope="User">
       <Value Profile="(Default)">encerrando este perímetro.</Value>
     </Setting>
-    <Setting Name="Minicio" Type="System.String" Scope="User" Roaming="false">
+    <Setting Name="Minicio" Type="System.String" Scope="User">
       <Value Profile="(Default)">Inicia-se a descrição deste perímetro no vértice</Value>
     </Setting>
-    <Setting Name="Mligacao" Type="System.String" Scope="User" Roaming="false">
+    <Setting Name="Mligacao" Type="System.String" Scope="User">
       <Value Profile="(Default)">até o vértice</Value>
     </Setting>
-    <Setting Name="Mnorte" Type="System.String" Scope="User" Roaming="false">
+    <Setting Name="Mnorte" Type="System.String" Scope="User">
       <Value Profile="(Default)">N:</Value>
     </Setting>
-    <Setting Name="Mrepeticao" Type="System.String" Scope="User" Roaming="false">
+    <Setting Name="Mrepeticao" Type="System.String" Scope="User">
       <Value Profile="(Default)">nao</Value>
     </Setting>
-    <Setting Name="Mtitulo" Type="System.String" Scope="User" Roaming="false">
+    <Setting Name="Mtitulo" Type="System.String" Scope="User">
       <Value Profile="(Default)">Memorial descritivo</Value>
     </Setting>
-    <Setting Name="Munidade" Type="System.String" Scope="User" Roaming="false">
+    <Setting Name="Munidade" Type="System.String" Scope="User">
       <Value Profile="(Default)">m</Value>
     </Setting>
-    <Setting Name="profissional" Type="System.String" Scope="User" Roaming="false">
-      <Value Profile="(Default)" />
+    <Setting Name="cidade" Type="System.String" Scope="User">
+      <Value Profile="(Default)">
+                </Value>
     </Setting>
-    <Setting Name="registro" Type="System.String" Scope="User" Roaming="false">
-      <Value Profile="(Default)" />
+    <Setting Name="Codificacao" Type="System.String" Scope="User">
+      <Value Profile="(Default)">
+                </Value>
+    </Setting>
+    <Setting Name="profissional" Type="System.String" Scope="User">
+      <Value Profile="(Default)">
+                </Value>
+    </Setting>
+    <Setting Name="registro" Type="System.String" Scope="User">
+      <Value Profile="(Default)">
+                </Value>
     </Setting>
   </Settings>
 </SettingsFile>
