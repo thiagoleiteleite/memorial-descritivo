@@ -55,3 +55,4 @@ C:\Users\saldanha\Documents\Visual Studio 2010\Projects\memorial-descritivo\memo
 C:\Users\saldanha\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Release\memorial.TrustInfo.xml
 C:\Users\saldanha\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Release\memorial.exe.manifest
 C:\Users\saldanha\Documents\Visual Studio 2010\Projects\memorial-descritivo\memorial\obj\x86\Release\memorial.application
+D:\_Projetos_VS2008\Memorial_Descritivo_CSharp\memorial\bin\Release\memorial.exe.config

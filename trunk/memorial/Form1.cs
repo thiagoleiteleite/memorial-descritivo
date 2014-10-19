@@ -10,11 +10,28 @@ using System.IO;
 using LumenWorks.Framework.IO.Csv;
 using System.Globalization;
 
+//Para pegar a versão do publish
+using System.Deployment;
+using System.Reflection;
+
 namespace memorial
 {
-
-	public partial class Form1 : Form
+    public partial class Form1 : Form
 	{
+        public string PublishVersion
+        {
+            get
+            {
+                if (System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed)
+                {
+                    Version ver = System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion;
+                    return string.Format("{0}.{1}.{2}.{3}", ver.Major, ver.Minor, ver.Build, ver.Revision);
+                }
+                else
+                    return "Not Published";
+            }
+        }
+
 
 		//Código para não mostrar os erros de script do WebBrowser
 		//Fonte: http://msdn.microsoft.com/pt-br/library/system.windows.forms.webbrowser.scripterrorssuppressed(v=vs.110).aspx?cs-save-lang=1&cs-lang=csharp#code-snippet-2
@@ -768,6 +785,28 @@ namespace memorial
 					else
 					{
 						richTextBox1.AppendRegular(txtComarca.Text);
+					}
+					richTextBox1.AppendLine();
+				}
+				
+				//Cartório
+				if (txtCartorio.TextLength > 0)
+				{
+					if (chkcartorio.Checked == true) //negrito
+					{
+						richTextBox1.AppendBold("Cartório: ");
+					}
+					else
+					{
+						richTextBox1.AppendRegular ("Cartório: ");
+					}
+					if (chkvalorcartorio.Checked == true)
+					{
+						richTextBox1.AppendBold(txtCartorio.Text);
+					}
+					else
+					{
+						richTextBox1.AppendRegular(txtCartorio.Text);
 					}
 					richTextBox1.AppendLine();
 				}
@@ -1539,7 +1578,7 @@ namespace memorial
 				richTextBox1.SaveFile(saveFileDialog1.FileName);
 			}
 		}
-
+	
 		private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
 			System.Diagnostics.Process.Start(e.Link.LinkData.ToString());
@@ -1550,7 +1589,7 @@ namespace memorial
 			System.Diagnostics.Process.Start(e.Link.LinkData.ToString());
 		}
 
-		//Abertura do Formulário
+   		//Abertura do Formulário
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			linkLabel1.Text = "http://code.google.com/p/memorial-descritivo/";
@@ -1559,6 +1598,11 @@ namespace memorial
 			linkLabel2.Text = "- LumenWorks.Framework.IO.Csv";
 			linkLabel2.Links.Add(0, 100, "http://www.codeproject.com/Articles/9258/A-Fast-CSV-Reader");
 			
+			//Versão do aplicativo no título
+            string version = Application.ProductVersion;
+            this.Text = this.Text + " v" + version; //Versão no título do Form
+            lblversao.Text =  version; //Versão na Aba Sobre
+						
 			//Carregar configurações caso estejam salvas
 			
 			//Delimitador

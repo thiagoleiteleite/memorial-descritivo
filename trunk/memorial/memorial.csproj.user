@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <PublishUrlHistory>C:\Users\saldanha\Desktop\|publish\</PublishUrlHistory>
+    <PublishUrlHistory>publish\</PublishUrlHistory>
     <InstallUrlHistory />
     <SupportUrlHistory>http://code.google.com/p/memorial-descritivo/w/list|http://code.google.com/p/memorial-descritivo/</SupportUrlHistory>
     <UpdateUrlHistory>http://memorial-descritivo.googlecode.com/svn/trunk/memorial/publish/</UpdateUrlHistory>
