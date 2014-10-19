@@ -29,7 +29,7 @@
     <ProductName>Memorial Descritivo</ProductName>
     <PublisherName>Memorial Descritivo</PublisherName>
     <SuiteName>Memorial Descritivo</SuiteName>
-    <ApplicationRevision>15</ApplicationRevision>
+    <ApplicationRevision>16</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -55,10 +55,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>1B40B5B24E4F2C3F6619F0440DC034583BD64BD3</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>6D2424E74585E4FE132B4B08B8E06C4E6C8AD17B</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>memorial_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>memorial_2_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -115,6 +115,7 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="memorial_2_TemporaryKey.pfx" />
     <None Include="memorial_TemporaryKey.pfx" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
