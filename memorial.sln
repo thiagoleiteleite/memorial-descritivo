@@ -1,6 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual C# Express 2010
+# Visual Studio 2010
+# SharpDevelop 4.4
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "memorial", "memorial\memorial.csproj", "{3BE11D33-C09C-4559-88D7-C76BF5DD2600}"
 EndProject
 Global

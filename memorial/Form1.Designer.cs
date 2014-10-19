@@ -156,6 +156,8 @@
 			this.checkBox19 = new System.Windows.Forms.CheckBox();
 			this.checkBox23 = new System.Windows.Forms.CheckBox();
 			this.groupBox5 = new System.Windows.Forms.GroupBox();
+			this.chkcartorio = new System.Windows.Forms.CheckBox();
+			this.chkvalorcartorio = new System.Windows.Forms.CheckBox();
 			this.checkBox3 = new System.Windows.Forms.CheckBox();
 			this.checkBox4 = new System.Windows.Forms.CheckBox();
 			this.checkBox6 = new System.Windows.Forms.CheckBox();
@@ -180,6 +182,8 @@
 			this.button3 = new System.Windows.Forms.Button();
 			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
 			this.tabPage4 = new System.Windows.Forms.TabPage();
+			this.label48 = new System.Windows.Forms.Label();
+			this.lblversao = new System.Windows.Forms.Label();
 			this.label32 = new System.Windows.Forms.Label();
 			this.label31 = new System.Windows.Forms.Label();
 			this.label23 = new System.Windows.Forms.Label();
@@ -240,7 +244,7 @@
 			this.button1.Location = new System.Drawing.Point(5, 6);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(101, 52);
-			this.button1.TabIndex = 1;
+			this.button1.TabIndex = 0;
 			this.button1.Text = "Abrir CSV ou TXT";
 			this.button1.UseVisualStyleBackColor = true;
 			this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -255,7 +259,7 @@
 			this.button2.Location = new System.Drawing.Point(725, 7);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(114, 52);
-			this.button2.TabIndex = 2;
+			this.button2.TabIndex = 9;
 			this.button2.Text = "Calcular distância e azimute entre pontos";
 			this.button2.UseVisualStyleBackColor = true;
 			this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -272,7 +276,7 @@
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
 			this.tabControl1.Size = new System.Drawing.Size(934, 540);
-			this.tabControl1.TabIndex = 3;
+			this.tabControl1.TabIndex = 0;
 			// 
 			// tabPage1
 			// 
@@ -310,7 +314,7 @@
 			this.radioButton7.Location = new System.Drawing.Point(64, 14);
 			this.radioButton7.Name = "radioButton7";
 			this.radioButton7.Size = new System.Drawing.Size(76, 17);
-			this.radioButton7.TabIndex = 2;
+			this.radioButton7.TabIndex = 4;
 			this.radioButton7.Text = "ISO8859-1";
 			this.radioButton7.UseVisualStyleBackColor = true;
 			// 
@@ -321,7 +325,7 @@
 			this.radioButton5.Location = new System.Drawing.Point(7, 32);
 			this.radioButton5.Name = "radioButton5";
 			this.radioButton5.Size = new System.Drawing.Size(55, 17);
-			this.radioButton5.TabIndex = 1;
+			this.radioButton5.TabIndex = 5;
 			this.radioButton5.TabStop = true;
 			this.radioButton5.Text = "UTF-8";
 			this.radioButton5.UseVisualStyleBackColor = true;
@@ -331,7 +335,7 @@
 			this.radioButton6.Location = new System.Drawing.Point(7, 14);
 			this.radioButton6.Name = "radioButton6";
 			this.radioButton6.Size = new System.Drawing.Size(55, 17);
-			this.radioButton6.TabIndex = 0;
+			this.radioButton6.TabIndex = 3;
 			this.radioButton6.Text = "ANSI";
 			this.radioButton6.UseVisualStyleBackColor = true;
 			// 
@@ -360,7 +364,7 @@
 									0});
 			this.numericUpDown3.Name = "numericUpDown3";
 			this.numericUpDown3.Size = new System.Drawing.Size(40, 20);
-			this.numericUpDown3.TabIndex = 5;
+			this.numericUpDown3.TabIndex = 8;
 			this.numericUpDown3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			this.numericUpDown3.Value = new decimal(new int[] {
 									2,
@@ -378,7 +382,7 @@
 									0});
 			this.numericUpDown2.Name = "numericUpDown2";
 			this.numericUpDown2.Size = new System.Drawing.Size(40, 20);
-			this.numericUpDown2.TabIndex = 4;
+			this.numericUpDown2.TabIndex = 6;
 			this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			this.numericUpDown2.Value = new decimal(new int[] {
 									3,
@@ -396,7 +400,7 @@
 									0});
 			this.numericUpDown1.Name = "numericUpDown1";
 			this.numericUpDown1.Size = new System.Drawing.Size(40, 20);
-			this.numericUpDown1.TabIndex = 3;
+			this.numericUpDown1.TabIndex = 7;
 			this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			this.numericUpDown1.Value = new decimal(new int[] {
 									2,
@@ -437,7 +441,7 @@
 			this.button6.Location = new System.Drawing.Point(845, 8);
 			this.button6.Name = "button6";
 			this.button6.Size = new System.Drawing.Size(74, 52);
-			this.button6.TabIndex = 4;
+			this.button6.TabIndex = 10;
 			this.button6.Text = "Exportar tabela CSV";
 			this.button6.UseVisualStyleBackColor = true;
 			this.button6.Click += new System.EventHandler(this.button6_Click);
@@ -459,7 +463,7 @@
 			this.radioButton2.Location = new System.Drawing.Point(7, 32);
 			this.radioButton2.Name = "radioButton2";
 			this.radioButton2.Size = new System.Drawing.Size(76, 17);
-			this.radioButton2.TabIndex = 1;
+			this.radioButton2.TabIndex = 2;
 			this.radioButton2.Text = "Tabulação";
 			this.radioButton2.UseVisualStyleBackColor = true;
 			// 
@@ -469,7 +473,7 @@
 			this.radioButton1.Location = new System.Drawing.Point(7, 14);
 			this.radioButton1.Name = "radioButton1";
 			this.radioButton1.Size = new System.Drawing.Size(98, 17);
-			this.radioButton1.TabIndex = 0;
+			this.radioButton1.TabIndex = 1;
 			this.radioButton1.TabStop = true;
 			this.radioButton1.Text = "Ponto e vírgula";
 			this.radioButton1.UseVisualStyleBackColor = true;
@@ -495,7 +499,7 @@
 			this.tabControl2.Name = "tabControl2";
 			this.tabControl2.SelectedIndex = 0;
 			this.tabControl2.Size = new System.Drawing.Size(920, 497);
-			this.tabControl2.TabIndex = 32;
+			this.tabControl2.TabIndex = 0;
 			// 
 			// tabPage5
 			// 
@@ -565,7 +569,7 @@
 			this.txtCartorio.Margin = new System.Windows.Forms.Padding(2);
 			this.txtCartorio.Name = "txtCartorio";
 			this.txtCartorio.Size = new System.Drawing.Size(210, 20);
-			this.txtCartorio.TabIndex = 59;
+			this.txtCartorio.TabIndex = 6;
 			// 
 			// cboFuso
 			// 
@@ -582,7 +586,7 @@
 			this.cboFuso.Location = new System.Drawing.Point(8, 434);
 			this.cboFuso.Name = "cboFuso";
 			this.cboFuso.Size = new System.Drawing.Size(48, 21);
-			this.cboFuso.TabIndex = 58;
+			this.cboFuso.TabIndex = 20;
 			this.cboFuso.Text = "22";
 			this.cboFuso.SelectedIndexChanged += new System.EventHandler(this.CboFusoSelectedIndexChanged);
 			// 
@@ -601,7 +605,7 @@
 			this.cboMC.Location = new System.Drawing.Point(9, 381);
 			this.cboMC.Name = "cboMC";
 			this.cboMC.Size = new System.Drawing.Size(47, 21);
-			this.cboMC.TabIndex = 57;
+			this.cboMC.TabIndex = 18;
 			this.cboMC.Text = "51";
 			this.cboMC.SelectedIndexChanged += new System.EventHandler(this.CboMCSelectedIndexChanged);
 			// 
@@ -624,7 +628,7 @@
 			this.cboLongitude.Location = new System.Drawing.Point(104, 383);
 			this.cboLongitude.Name = "cboLongitude";
 			this.cboLongitude.Size = new System.Drawing.Size(56, 21);
-			this.cboLongitude.TabIndex = 55;
+			this.cboLongitude.TabIndex = 19;
 			this.cboLongitude.Text = "W";
 			// 
 			// label45
@@ -646,7 +650,7 @@
 			this.cboHemisferio.Location = new System.Drawing.Point(102, 435);
 			this.cboHemisferio.Name = "cboHemisferio";
 			this.cboHemisferio.Size = new System.Drawing.Size(56, 21);
-			this.cboHemisferio.TabIndex = 52;
+			this.cboHemisferio.TabIndex = 21;
 			this.cboHemisferio.Text = "Sul";
 			// 
 			// label44
@@ -664,7 +668,7 @@
 			this.btnLoadImo.Location = new System.Drawing.Point(94, 6);
 			this.btnLoadImo.Name = "btnLoadImo";
 			this.btnLoadImo.Size = new System.Drawing.Size(82, 40);
-			this.btnLoadImo.TabIndex = 49;
+			this.btnLoadImo.TabIndex = 1;
 			this.btnLoadImo.Text = "Carregar Imóvel";
 			this.btnLoadImo.UseVisualStyleBackColor = true;
 			this.btnLoadImo.Click += new System.EventHandler(this.BtnLoadImoClick);
@@ -690,7 +694,7 @@
 									0});
 			this.NumDecPer.Name = "NumDecPer";
 			this.NumDecPer.Size = new System.Drawing.Size(40, 20);
-			this.NumDecPer.TabIndex = 47;
+			this.NumDecPer.TabIndex = 16;
 			this.NumDecPer.Value = new decimal(new int[] {
 									2,
 									0,
@@ -718,7 +722,7 @@
 									0});
 			this.NumDecAreaha.Name = "NumDecAreaha";
 			this.NumDecAreaha.Size = new System.Drawing.Size(40, 20);
-			this.NumDecAreaha.TabIndex = 45;
+			this.NumDecAreaha.TabIndex = 13;
 			this.NumDecAreaha.Value = new decimal(new int[] {
 									4,
 									0,
@@ -746,7 +750,7 @@
 									0});
 			this.NumDecAream.Name = "NumDecAream";
 			this.NumDecAream.Size = new System.Drawing.Size(40, 20);
-			this.NumDecAream.TabIndex = 43;
+			this.NumDecAream.TabIndex = 10;
 			this.NumDecAream.Value = new decimal(new int[] {
 									2,
 									0,
@@ -769,7 +773,7 @@
 			this.chkAreaha.Location = new System.Drawing.Point(340, 144);
 			this.chkAreaha.Name = "chkAreaha";
 			this.chkAreaha.Size = new System.Drawing.Size(99, 17);
-			this.chkAreaha.TabIndex = 41;
+			this.chkAreaha.TabIndex = 11;
 			this.chkAreaha.Text = "Inserir área (ha)";
 			this.chkAreaha.UseVisualStyleBackColor = true;
 			this.chkAreaha.CheckedChanged += new System.EventHandler(this.chkAreaha_CheckedChanged);
@@ -780,7 +784,7 @@
 			this.chkArea.Location = new System.Drawing.Point(7, 144);
 			this.chkArea.Name = "chkArea";
 			this.chkArea.Size = new System.Drawing.Size(98, 17);
-			this.chkArea.TabIndex = 40;
+			this.chkArea.TabIndex = 8;
 			this.chkArea.Text = "Inserir área (m²)";
 			this.chkArea.UseVisualStyleBackColor = true;
 			this.chkArea.CheckedChanged += new System.EventHandler(this.chkArea_CheckedChanged);
@@ -792,7 +796,7 @@
 			this.textBox2.Margin = new System.Windows.Forms.Padding(2);
 			this.textBox2.Name = "textBox2";
 			this.textBox2.Size = new System.Drawing.Size(150, 20);
-			this.textBox2.TabIndex = 38;
+			this.textBox2.TabIndex = 15;
 			this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtArea_KeyPress);
 			// 
 			// label39
@@ -812,7 +816,7 @@
 			this.txtAreaha.Margin = new System.Windows.Forms.Padding(2);
 			this.txtAreaha.Name = "txtAreaha";
 			this.txtAreaha.Size = new System.Drawing.Size(150, 20);
-			this.txtAreaha.TabIndex = 36;
+			this.txtAreaha.TabIndex = 12;
 			this.txtAreaha.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtArea_KeyPress);
 			// 
 			// label38
@@ -851,7 +855,7 @@
 			this.txtDatum.Margin = new System.Windows.Forms.Padding(2);
 			this.txtDatum.Name = "txtDatum";
 			this.txtDatum.Size = new System.Drawing.Size(193, 20);
-			this.txtDatum.TabIndex = 32;
+			this.txtDatum.TabIndex = 22;
 			this.txtDatum.Text = "SIRGAS-2000";
 			// 
 			// label36
@@ -870,7 +874,7 @@
 			this.chkPer.Location = new System.Drawing.Point(7, 218);
 			this.chkPer.Name = "chkPer";
 			this.chkPer.Size = new System.Drawing.Size(102, 17);
-			this.chkPer.TabIndex = 6;
+			this.chkPer.TabIndex = 14;
 			this.chkPer.Text = "Inserir perímetro";
 			this.chkPer.UseVisualStyleBackColor = true;
 			this.chkPer.CheckedChanged += new System.EventHandler(this.chkPer_CheckedChanged);
@@ -882,7 +886,7 @@
 			this.txtArea.Margin = new System.Windows.Forms.Padding(2);
 			this.txtArea.Name = "txtArea";
 			this.txtArea.Size = new System.Drawing.Size(150, 20);
-			this.txtArea.TabIndex = 5;
+			this.txtArea.TabIndex = 9;
 			this.txtArea.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtArea_KeyPress);
 			// 
 			// label28
@@ -901,7 +905,7 @@
 			this.txtCodIncra.Margin = new System.Windows.Forms.Padding(2);
 			this.txtCodIncra.Name = "txtCodIncra";
 			this.txtCodIncra.Size = new System.Drawing.Size(254, 20);
-			this.txtCodIncra.TabIndex = 4;
+			this.txtCodIncra.TabIndex = 7;
 			// 
 			// label27
 			// 
@@ -919,7 +923,7 @@
 			this.txtImovel.Margin = new System.Windows.Forms.Padding(2);
 			this.txtImovel.Name = "txtImovel";
 			this.txtImovel.Size = new System.Drawing.Size(506, 20);
-			this.txtImovel.TabIndex = 0;
+			this.txtImovel.TabIndex = 2;
 			// 
 			// label10
 			// 
@@ -937,7 +941,7 @@
 			this.txtMunicipio.Margin = new System.Windows.Forms.Padding(2);
 			this.txtMunicipio.Name = "txtMunicipio";
 			this.txtMunicipio.Size = new System.Drawing.Size(390, 20);
-			this.txtMunicipio.TabIndex = 1;
+			this.txtMunicipio.TabIndex = 3;
 			// 
 			// txtMatricula
 			// 
@@ -945,7 +949,7 @@
 			this.txtMatricula.Margin = new System.Windows.Forms.Padding(2);
 			this.txtMatricula.Name = "txtMatricula";
 			this.txtMatricula.Size = new System.Drawing.Size(210, 20);
-			this.txtMatricula.TabIndex = 2;
+			this.txtMatricula.TabIndex = 4;
 			// 
 			// txtProprietario
 			// 
@@ -953,7 +957,7 @@
 			this.txtProprietario.Margin = new System.Windows.Forms.Padding(2);
 			this.txtProprietario.Name = "txtProprietario";
 			this.txtProprietario.Size = new System.Drawing.Size(899, 20);
-			this.txtProprietario.TabIndex = 7;
+			this.txtProprietario.TabIndex = 17;
 			// 
 			// label13
 			// 
@@ -991,7 +995,7 @@
 			this.txtComarca.Margin = new System.Windows.Forms.Padding(2);
 			this.txtComarca.Name = "txtComarca";
 			this.txtComarca.Size = new System.Drawing.Size(210, 20);
-			this.txtComarca.TabIndex = 3;
+			this.txtComarca.TabIndex = 5;
 			// 
 			// label12
 			// 
@@ -1046,7 +1050,7 @@
 			this.btnRestPadrao.Location = new System.Drawing.Point(127, 6);
 			this.btnRestPadrao.Name = "btnRestPadrao";
 			this.btnRestPadrao.Size = new System.Drawing.Size(111, 40);
-			this.btnRestPadrao.TabIndex = 54;
+			this.btnRestPadrao.TabIndex = 0;
 			this.btnRestPadrao.Text = "Restaurar definições padrão";
 			this.btnRestPadrao.UseVisualStyleBackColor = true;
 			this.btnRestPadrao.Click += new System.EventHandler(this.BtnRestPadraoClick);
@@ -1056,7 +1060,7 @@
 			this.btnSavDefMemo.Location = new System.Drawing.Point(6, 6);
 			this.btnSavDefMemo.Name = "btnSavDefMemo";
 			this.btnSavDefMemo.Size = new System.Drawing.Size(111, 40);
-			this.btnSavDefMemo.TabIndex = 53;
+			this.btnSavDefMemo.TabIndex = 14;
 			this.btnSavDefMemo.Text = "Salvar definições na memória";
 			this.btnSavDefMemo.UseVisualStyleBackColor = true;
 			this.btnSavDefMemo.Click += new System.EventHandler(this.BtnSavDefMemoClick);
@@ -1076,7 +1080,7 @@
 			this.chkRepeticao.Location = new System.Drawing.Point(700, 215);
 			this.chkRepeticao.Name = "chkRepeticao";
 			this.chkRepeticao.Size = new System.Drawing.Size(206, 45);
-			this.chkRepeticao.TabIndex = 34;
+			this.chkRepeticao.TabIndex = 12;
 			this.chkRepeticao.Text = "Se confrontante e tipo de divisa for consecutivo, é exibido uma única vez.";
 			this.chkRepeticao.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
 			this.chkRepeticao.UseVisualStyleBackColor = true;
@@ -1087,7 +1091,7 @@
 			this.txtDivisa.Margin = new System.Windows.Forms.Padding(2);
 			this.txtDivisa.Name = "txtDivisa";
 			this.txtDivisa.Size = new System.Drawing.Size(297, 20);
-			this.txtDivisa.TabIndex = 20;
+			this.txtDivisa.TabIndex = 11;
 			this.txtDivisa.Text = "segue por";
 			// 
 			// label35
@@ -1106,7 +1110,7 @@
 			this.txtConfronto.Margin = new System.Windows.Forms.Padding(2);
 			this.txtConfronto.Name = "txtConfronto";
 			this.txtConfronto.Size = new System.Drawing.Size(374, 20);
-			this.txtConfronto.TabIndex = 19;
+			this.txtConfronto.TabIndex = 10;
 			this.txtConfronto.Text = "confrontando com terras de";
 			// 
 			// label29
@@ -1125,7 +1129,7 @@
 			this.txtTitulo.Margin = new System.Windows.Forms.Padding(2);
 			this.txtTitulo.Name = "txtTitulo";
 			this.txtTitulo.Size = new System.Drawing.Size(230, 20);
-			this.txtTitulo.TabIndex = 10;
+			this.txtTitulo.TabIndex = 1;
 			this.txtTitulo.Text = "Memorial descritivo";
 			this.txtTitulo.TextChanged += new System.EventHandler(this.StatusMemorial);
 			// 
@@ -1155,7 +1159,7 @@
 			this.txtUnidade.Margin = new System.Windows.Forms.Padding(2);
 			this.txtUnidade.Name = "txtUnidade";
 			this.txtUnidade.Size = new System.Drawing.Size(90, 20);
-			this.txtUnidade.TabIndex = 18;
+			this.txtUnidade.TabIndex = 9;
 			this.txtUnidade.Text = "m";
 			// 
 			// label5
@@ -1174,7 +1178,7 @@
 			this.txtFim.Margin = new System.Windows.Forms.Padding(2);
 			this.txtFim.Name = "txtFim";
 			this.txtFim.Size = new System.Drawing.Size(374, 20);
-			this.txtFim.TabIndex = 21;
+			this.txtFim.TabIndex = 13;
 			this.txtFim.Text = "encerrando este perímetro.";
 			// 
 			// txtLigacao
@@ -1183,7 +1187,7 @@
 			this.txtLigacao.Margin = new System.Windows.Forms.Padding(2);
 			this.txtLigacao.Name = "txtLigacao";
 			this.txtLigacao.Size = new System.Drawing.Size(374, 20);
-			this.txtLigacao.TabIndex = 15;
+			this.txtLigacao.TabIndex = 6;
 			this.txtLigacao.Text = "até o vértice";
 			// 
 			// label8
@@ -1212,7 +1216,7 @@
 			this.txtDist.Margin = new System.Windows.Forms.Padding(2);
 			this.txtDist.Name = "txtDist";
 			this.txtDist.Size = new System.Drawing.Size(227, 20);
-			this.txtDist.TabIndex = 17;
+			this.txtDist.TabIndex = 8;
 			this.txtDist.Text = "e distância de";
 			// 
 			// txtNorte
@@ -1221,7 +1225,7 @@
 			this.txtNorte.Margin = new System.Windows.Forms.Padding(2);
 			this.txtNorte.Name = "txtNorte";
 			this.txtNorte.Size = new System.Drawing.Size(113, 20);
-			this.txtNorte.TabIndex = 14;
+			this.txtNorte.TabIndex = 5;
 			this.txtNorte.Text = "N:";
 			// 
 			// label15
@@ -1260,7 +1264,7 @@
 			this.txtAzimute.Margin = new System.Windows.Forms.Padding(2);
 			this.txtAzimute.Name = "txtAzimute";
 			this.txtAzimute.Size = new System.Drawing.Size(194, 20);
-			this.txtAzimute.TabIndex = 16;
+			this.txtAzimute.TabIndex = 7;
 			this.txtAzimute.Text = "com azimute";
 			// 
 			// txtInicio
@@ -1269,7 +1273,7 @@
 			this.txtInicio.Margin = new System.Windows.Forms.Padding(2);
 			this.txtInicio.Name = "txtInicio";
 			this.txtInicio.Size = new System.Drawing.Size(374, 20);
-			this.txtInicio.TabIndex = 11;
+			this.txtInicio.TabIndex = 2;
 			this.txtInicio.Text = "Inicia-se a descrição deste perímetro no vértice";
 			this.txtInicio.TextChanged += new System.EventHandler(this.StatusMemorial);
 			// 
@@ -1289,7 +1293,7 @@
 			this.txtEste.Margin = new System.Windows.Forms.Padding(2);
 			this.txtEste.Name = "txtEste";
 			this.txtEste.Size = new System.Drawing.Size(110, 20);
-			this.txtEste.TabIndex = 13;
+			this.txtEste.TabIndex = 4;
 			this.txtEste.Text = "E:";
 			// 
 			// txtCoord
@@ -1298,7 +1302,7 @@
 			this.txtCoord.Margin = new System.Windows.Forms.Padding(2);
 			this.txtCoord.Name = "txtCoord";
 			this.txtCoord.Size = new System.Drawing.Size(194, 20);
-			this.txtCoord.TabIndex = 12;
+			this.txtCoord.TabIndex = 3;
 			this.txtCoord.Text = "definido pelas coordenadas";
 			// 
 			// label2
@@ -1330,7 +1334,7 @@
 			this.btnSaveProf2.Location = new System.Drawing.Point(240, 6);
 			this.btnSaveProf2.Name = "btnSaveProf2";
 			this.btnSaveProf2.Size = new System.Drawing.Size(111, 40);
-			this.btnSaveProf2.TabIndex = 52;
+			this.btnSaveProf2.TabIndex = 10;
 			this.btnSaveProf2.Text = "Salvar definições na memória";
 			this.btnSaveProf2.UseVisualStyleBackColor = true;
 			this.btnSaveProf2.Click += new System.EventHandler(this.btnSaveProf2_Click);
@@ -1340,7 +1344,7 @@
 			this.btnLerProf.Location = new System.Drawing.Point(123, 6);
 			this.btnLerProf.Name = "btnLerProf";
 			this.btnLerProf.Size = new System.Drawing.Size(111, 40);
-			this.btnLerProf.TabIndex = 51;
+			this.btnLerProf.TabIndex = 0;
 			this.btnLerProf.Text = "Carregar dados de arquivo";
 			this.btnLerProf.UseVisualStyleBackColor = true;
 			this.btnLerProf.Click += new System.EventHandler(this.BtnLerProfClick);
@@ -1350,7 +1354,7 @@
 			this.btnSaveProf.Location = new System.Drawing.Point(6, 6);
 			this.btnSaveProf.Name = "btnSaveProf";
 			this.btnSaveProf.Size = new System.Drawing.Size(111, 40);
-			this.btnSaveProf.TabIndex = 50;
+			this.btnSaveProf.TabIndex = 9;
 			this.btnSaveProf.Text = "Salvar dados em arquivo";
 			this.btnSaveProf.UseVisualStyleBackColor = true;
 			this.btnSaveProf.Click += new System.EventHandler(this.BtnSaveProfClick);
@@ -1396,7 +1400,7 @@
 			this.txtAssinatura.Margin = new System.Windows.Forms.Padding(2);
 			this.txtAssinatura.Name = "txtAssinatura";
 			this.txtAssinatura.Size = new System.Drawing.Size(409, 20);
-			this.txtAssinatura.TabIndex = 32;
+			this.txtAssinatura.TabIndex = 6;
 			this.txtAssinatura.Text = "____________________________________________";
 			// 
 			// textBox16
@@ -1405,7 +1409,7 @@
 			this.textBox16.Margin = new System.Windows.Forms.Padding(2);
 			this.textBox16.Name = "textBox16";
 			this.textBox16.Size = new System.Drawing.Size(409, 20);
-			this.textBox16.TabIndex = 30;
+			this.textBox16.TabIndex = 7;
 			this.textBox16.TextChanged += new System.EventHandler(this.TextBox16TextChanged);
 			// 
 			// txtRegistro
@@ -1414,7 +1418,7 @@
 			this.txtRegistro.Margin = new System.Windows.Forms.Padding(2);
 			this.txtRegistro.Name = "txtRegistro";
 			this.txtRegistro.Size = new System.Drawing.Size(411, 20);
-			this.txtRegistro.TabIndex = 31;
+			this.txtRegistro.TabIndex = 8;
 			this.txtRegistro.TextChanged += new System.EventHandler(this.TxtRegistroTextChanged);
 			// 
 			// label16
@@ -1456,7 +1460,7 @@
 			this.txtCidade.Location = new System.Drawing.Point(52, 19);
 			this.txtCidade.Name = "txtCidade";
 			this.txtCidade.Size = new System.Drawing.Size(365, 20);
-			this.txtCidade.TabIndex = 4;
+			this.txtCidade.TabIndex = 1;
 			this.txtCidade.TextChanged += new System.EventHandler(this.TxtCidadeTextChanged);
 			// 
 			// txtData
@@ -1465,7 +1469,7 @@
 			this.txtData.Location = new System.Drawing.Point(63, 90);
 			this.txtData.Name = "txtData";
 			this.txtData.Size = new System.Drawing.Size(355, 20);
-			this.txtData.TabIndex = 3;
+			this.txtData.TabIndex = 5;
 			// 
 			// radioButton4
 			// 
@@ -1474,7 +1478,7 @@
 			this.radioButton4.Location = new System.Drawing.Point(6, 91);
 			this.radioButton4.Name = "radioButton4";
 			this.radioButton4.Size = new System.Drawing.Size(51, 17);
-			this.radioButton4.TabIndex = 2;
+			this.radioButton4.TabIndex = 4;
 			this.radioButton4.TabStop = true;
 			this.radioButton4.Text = "Outra";
 			this.radioButton4.UseVisualStyleBackColor = true;
@@ -1486,7 +1490,7 @@
 			this.radioButton3.Location = new System.Drawing.Point(6, 68);
 			this.radioButton3.Name = "radioButton3";
 			this.radioButton3.Size = new System.Drawing.Size(51, 17);
-			this.radioButton3.TabIndex = 1;
+			this.radioButton3.TabIndex = 3;
 			this.radioButton3.TabStop = true;
 			this.radioButton3.Text = "Hoje";
 			this.radioButton3.UseVisualStyleBackColor = true;
@@ -1497,7 +1501,7 @@
 			this.checkBox2.Location = new System.Drawing.Point(6, 45);
 			this.checkBox2.Name = "checkBox2";
 			this.checkBox2.Size = new System.Drawing.Size(78, 17);
-			this.checkBox2.TabIndex = 0;
+			this.checkBox2.TabIndex = 2;
 			this.checkBox2.Text = "Inserir data";
 			this.checkBox2.UseVisualStyleBackColor = true;
 			this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
@@ -1675,6 +1679,8 @@
 			// 
 			// groupBox5
 			// 
+			this.groupBox5.Controls.Add(this.chkcartorio);
+			this.groupBox5.Controls.Add(this.chkvalorcartorio);
 			this.groupBox5.Controls.Add(this.checkBox3);
 			this.groupBox5.Controls.Add(this.checkBox4);
 			this.groupBox5.Controls.Add(this.checkBox6);
@@ -1700,6 +1706,30 @@
 			this.groupBox5.TabIndex = 20;
 			this.groupBox5.TabStop = false;
 			this.groupBox5.Text = "Título e cabeçalho";
+			// 
+			// chkcartorio
+			// 
+			this.chkcartorio.AutoSize = true;
+			this.chkcartorio.Checked = true;
+			this.chkcartorio.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.chkcartorio.Location = new System.Drawing.Point(4, 127);
+			this.chkcartorio.Margin = new System.Windows.Forms.Padding(2);
+			this.chkcartorio.Name = "chkcartorio";
+			this.chkcartorio.Size = new System.Drawing.Size(62, 17);
+			this.chkcartorio.TabIndex = 17;
+			this.chkcartorio.Text = "Cartório";
+			this.chkcartorio.UseVisualStyleBackColor = true;
+			// 
+			// chkvalorcartorio
+			// 
+			this.chkvalorcartorio.AutoSize = true;
+			this.chkvalorcartorio.Location = new System.Drawing.Point(91, 127);
+			this.chkvalorcartorio.Margin = new System.Windows.Forms.Padding(2);
+			this.chkvalorcartorio.Name = "chkvalorcartorio";
+			this.chkvalorcartorio.Size = new System.Drawing.Size(88, 17);
+			this.chkvalorcartorio.TabIndex = 18;
+			this.chkvalorcartorio.Text = "Valor cartório";
+			this.chkvalorcartorio.UseVisualStyleBackColor = true;
 			// 
 			// checkBox3
 			// 
@@ -1778,7 +1808,7 @@
 			// checkBox20
 			// 
 			this.checkBox20.AutoSize = true;
-			this.checkBox20.Location = new System.Drawing.Point(91, 193);
+			this.checkBox20.Location = new System.Drawing.Point(91, 215);
 			this.checkBox20.Margin = new System.Windows.Forms.Padding(2);
 			this.checkBox20.Name = "checkBox20";
 			this.checkBox20.Size = new System.Drawing.Size(105, 17);
@@ -1802,7 +1832,7 @@
 			this.checkBox21.AutoSize = true;
 			this.checkBox21.Checked = true;
 			this.checkBox21.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.checkBox21.Location = new System.Drawing.Point(4, 193);
+			this.checkBox21.Location = new System.Drawing.Point(4, 215);
 			this.checkBox21.Margin = new System.Windows.Forms.Padding(2);
 			this.checkBox21.Name = "checkBox21";
 			this.checkBox21.Size = new System.Drawing.Size(79, 17);
@@ -1826,7 +1856,7 @@
 			// checkBox22
 			// 
 			this.checkBox22.AutoSize = true;
-			this.checkBox22.Location = new System.Drawing.Point(91, 171);
+			this.checkBox22.Location = new System.Drawing.Point(91, 193);
 			this.checkBox22.Margin = new System.Windows.Forms.Padding(2);
 			this.checkBox22.Name = "checkBox22";
 			this.checkBox22.Size = new System.Drawing.Size(98, 17);
@@ -1850,7 +1880,7 @@
 			this.checkBox11.AutoSize = true;
 			this.checkBox11.Checked = true;
 			this.checkBox11.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.checkBox11.Location = new System.Drawing.Point(4, 171);
+			this.checkBox11.Location = new System.Drawing.Point(4, 193);
 			this.checkBox11.Margin = new System.Windows.Forms.Padding(2);
 			this.checkBox11.Name = "checkBox11";
 			this.checkBox11.Size = new System.Drawing.Size(72, 17);
@@ -1863,7 +1893,7 @@
 			this.checkBox15.AutoSize = true;
 			this.checkBox15.Checked = true;
 			this.checkBox15.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.checkBox15.Location = new System.Drawing.Point(4, 127);
+			this.checkBox15.Location = new System.Drawing.Point(4, 149);
 			this.checkBox15.Margin = new System.Windows.Forms.Padding(2);
 			this.checkBox15.Name = "checkBox15";
 			this.checkBox15.Size = new System.Drawing.Size(86, 17);
@@ -1874,7 +1904,7 @@
 			// checkBox12
 			// 
 			this.checkBox12.AutoSize = true;
-			this.checkBox12.Location = new System.Drawing.Point(91, 149);
+			this.checkBox12.Location = new System.Drawing.Point(91, 171);
 			this.checkBox12.Margin = new System.Windows.Forms.Padding(2);
 			this.checkBox12.Name = "checkBox12";
 			this.checkBox12.Size = new System.Drawing.Size(74, 17);
@@ -1885,7 +1915,7 @@
 			// checkBox14
 			// 
 			this.checkBox14.AutoSize = true;
-			this.checkBox14.Location = new System.Drawing.Point(91, 127);
+			this.checkBox14.Location = new System.Drawing.Point(91, 149);
 			this.checkBox14.Margin = new System.Windows.Forms.Padding(2);
 			this.checkBox14.Name = "checkBox14";
 			this.checkBox14.Size = new System.Drawing.Size(112, 17);
@@ -1898,7 +1928,7 @@
 			this.checkBox13.AutoSize = true;
 			this.checkBox13.Checked = true;
 			this.checkBox13.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.checkBox13.Location = new System.Drawing.Point(4, 149);
+			this.checkBox13.Location = new System.Drawing.Point(4, 171);
 			this.checkBox13.Margin = new System.Windows.Forms.Padding(2);
 			this.checkBox13.Name = "checkBox13";
 			this.checkBox13.Size = new System.Drawing.Size(48, 17);
@@ -1975,6 +2005,8 @@
 			// 
 			// tabPage4
 			// 
+			this.tabPage4.Controls.Add(this.label48);
+			this.tabPage4.Controls.Add(this.lblversao);
 			this.tabPage4.Controls.Add(this.label32);
 			this.tabPage4.Controls.Add(this.label31);
 			this.tabPage4.Controls.Add(this.label23);
@@ -1990,6 +2022,26 @@
 			this.tabPage4.TabIndex = 3;
 			this.tabPage4.Text = "Sobre";
 			this.tabPage4.UseVisualStyleBackColor = true;
+			// 
+			// label48
+			// 
+			this.label48.AutoSize = true;
+			this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label48.Location = new System.Drawing.Point(351, 82);
+			this.label48.Name = "label48";
+			this.label48.Size = new System.Drawing.Size(45, 15);
+			this.label48.TabIndex = 11;
+			this.label48.Text = "Versão";
+			// 
+			// lblversao
+			// 
+			this.lblversao.AutoSize = true;
+			this.lblversao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblversao.Location = new System.Drawing.Point(394, 82);
+			this.lblversao.Name = "lblversao";
+			this.lblversao.Size = new System.Drawing.Size(43, 15);
+			this.lblversao.TabIndex = 10;
+			this.lblversao.Text = "versao";
 			// 
 			// label32
 			// 
@@ -2169,6 +2221,10 @@
 			this.tabPage9.PerformLayout();
 			this.ResumeLayout(false);
 		}
+		private System.Windows.Forms.CheckBox chkvalorcartorio;
+		private System.Windows.Forms.CheckBox chkcartorio;
+		private System.Windows.Forms.Label lblversao;
+		private System.Windows.Forms.Label label48;
 		private System.Windows.Forms.TextBox txtCartorio;
 		private System.Windows.Forms.Label label47;
 		private System.Windows.Forms.ComboBox cboMC;
