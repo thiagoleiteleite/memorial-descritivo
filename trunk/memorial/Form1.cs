@@ -16,21 +16,21 @@ using System.Reflection;
 
 namespace memorial
 {
-    public partial class Form1 : Form
+	public partial class Form1 : Form
 	{
-        public string PublishVersion
-        {
-            get
-            {
-                if (System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed)
-                {
-                    Version ver = System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion;
-                    return string.Format("{0}.{1}.{2}.{3}", ver.Major, ver.Minor, ver.Build, ver.Revision);
-                }
-                else
-                    return "Not Published";
-            }
-        }
+		public string PublishVersion
+		{
+			get
+			{
+				if (System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed)
+				{
+					Version ver = System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion;
+					return string.Format("{0}.{1}.{2}.{3}", ver.Major, ver.Minor, ver.Build, ver.Revision);
+				}
+				else
+					return "Not Published";
+			}
+		}
 
 
 		//Código para não mostrar os erros de script do WebBrowser
@@ -69,6 +69,12 @@ namespace memorial
 		public static double per { set; get; }
 
 		string arquivo;
+        string nome_arquivo;
+        Boolean verifica_salvo = true;
+
+        //Versão do aplicativo no título
+        string version = Application.ProductVersion;
+
 		DataTable dt = new DataTable();
 		DataTable dt2 = new DataTable();
 		DataTable dt3 = new DataTable();
@@ -100,10 +106,12 @@ namespace memorial
 			if (result == DialogResult.OK)
 			{
 				arquivo = openFileDialog1.FileName;
+                nome_arquivo = Path.GetFileName(arquivo);
 				readCsv(arquivo);
 				button2.Enabled = true;
 				button6.Enabled = true;
-			}
+                this.Text = "Memorial Descritivo v" + version + " - " + nome_arquivo;
+    		}
 		}
 
 		//Ler arquivo
@@ -165,14 +173,14 @@ namespace memorial
 						}
 
 						//adiciona as colunas
-						if (dt2.Columns.Contains("Distância") == true)
+						if (dt2.Columns.Contains("Distancia") == true)
 						{
-							dt2.Columns.Remove("Distância");
-							dt2.Columns.Add(new DataColumn("Distância", typeof(string)));
+							dt2.Columns.Remove("Distancia");
+							dt2.Columns.Add(new DataColumn("Distancia", typeof(string)));
 						}
-						else if (dt2.Columns.Contains("Distância") == false)
+						else if (dt2.Columns.Contains("Distancia") == false)
 						{
-							dt2.Columns.Add(new DataColumn("Distância", typeof(string)));
+							dt2.Columns.Add(new DataColumn("Distancia", typeof(string)));
 						}
 
 						if (dt2.Columns.Contains("Azimute") == true)
@@ -211,7 +219,7 @@ namespace memorial
 						formataCoordenadaTabela();
 					}
 
-					//Caso o arquivo seja com Ponto;X;Y;Distância;Azimute;Confrontante;Divisa
+					//Caso o arquivo seja com Ponto;X;Y;Distancia;Azimute;Confrontante;Divisa
 					else if (dt.Columns.Count == 7)
 					{
 						dt2.Clear();
@@ -227,13 +235,13 @@ namespace memorial
 						//Deixando as colunas editáveis
 						foreach (DataGridViewColumn column in dataGridView1.Columns)
 						{
-							if ((column.Name == "Distância") || (column.Name == "Azimute") || (column.Name == "Confrontante") || (column.Name == "Divisa"))
+							if ((column.Name == "Distancia") || (column.Name == "Azimute") || (column.Name == "Confrontante") || (column.Name == "Divisa"))
 							{
 								column.ReadOnly = false;
 							}
 						}
 
-						dt2.Columns["Distância"].ReadOnly = false;
+						dt2.Columns["Distancia"].ReadOnly = false;
 						dt2.Columns["Azimute"].ReadOnly = false;
 						dt2.Columns["Confrontante"].ReadOnly = false;
 						dt2.Columns["Divisa"].ReadOnly = false;
@@ -463,13 +471,18 @@ namespace memorial
 		//Cálculo de Azimute e distância
 		private void button2_Click(object sender, EventArgs e)
 		{
-			//Salvar configurações das casas decimais na memória
+            //Como o evento de alteração do valor da célula não funcionou para o cálculo do azimute,
+            //resolvi colocar a verificação aqui antes.
+            verifica_salvo = false;
+            verifica(verifica_salvo);
+            
+            //Salvar configurações das casas decimais na memória
 			Properties.Settings.Default.CasasCoordenadas = numericUpDown2.Text;
 			Properties.Settings.Default.CasasDistancia  = numericUpDown1.Text;
 			Properties.Settings.Default.CasasAzimute  = numericUpDown3.Text;
 			Properties.Settings.Default.Save();
 			
-			//dt2.Columns.Add(new DataColumn("Distância", typeof(decimal)));
+			//dt2.Columns.Add(new DataColumn("Distancia", typeof(decimal)));
 			//dt2.Columns.Add(new DataColumn("Azimute", typeof(decimal)));
 
 			//Número total de pontos ou número da linha do último ponto
@@ -509,7 +522,7 @@ namespace memorial
 					double difY = Y - Yant;
 					double dist = Math.Sqrt(Math.Pow(difX, 2) + Math.Pow(difY, 2));
 
-					dt2.Rows[dt2.Rows.Count - 1]["Distância"] = formataDist(Math.Sqrt(Math.Pow(difX, 2) + Math.Pow(difY, 2)));
+					dt2.Rows[dt2.Rows.Count - 1]["Distancia"] = formataDist(Math.Sqrt(Math.Pow(difX, 2) + Math.Pow(difY, 2)));
 
 					//Cálculo da área
 					Aream2 = (Xant * Y) - (Yant * X);
@@ -584,7 +597,7 @@ namespace memorial
 					double difY = Y - Yant;
 					double dist = (Math.Sqrt(Math.Pow(difX, 2) + Math.Pow(difY, 2)));
 
-					dt2.Rows[i - 1]["Distância"] = formataDist(Math.Sqrt(Math.Pow(difX, 2) + Math.Pow(difY, 2)));
+					dt2.Rows[i - 1]["Distancia"] = formataDist(Math.Sqrt(Math.Pow(difX, 2) + Math.Pow(difY, 2)));
 
 					//Cálculo da área
 					Aream2 = Aream2 + (Xant * Y) - (Yant * X);
@@ -1578,7 +1591,7 @@ namespace memorial
 				richTextBox1.SaveFile(saveFileDialog1.FileName);
 			}
 		}
-	
+		
 		private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
 			System.Diagnostics.Process.Start(e.Link.LinkData.ToString());
@@ -1589,7 +1602,7 @@ namespace memorial
 			System.Diagnostics.Process.Start(e.Link.LinkData.ToString());
 		}
 
-   		//Abertura do Formulário
+		//Abertura do Formulário
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			linkLabel1.Text = "http://code.google.com/p/memorial-descritivo/";
@@ -1598,11 +1611,9 @@ namespace memorial
 			linkLabel2.Text = "- LumenWorks.Framework.IO.Csv";
 			linkLabel2.Links.Add(0, 100, "http://www.codeproject.com/Articles/9258/A-Fast-CSV-Reader");
 			
-			//Versão do aplicativo no título
-            string version = Application.ProductVersion;
-            this.Text = this.Text + " v" + version; //Versão no título do Form
-            lblversao.Text =  version; //Versão na Aba Sobre
-						
+			this.Text = "Memorial Descritivo v" + version; //Versão no título do Form
+			lblversao.Text = version; //Versão na Aba Sobre
+			
 			//Carregar configurações caso estejam salvas
 			
 			//Delimitador
@@ -1667,49 +1678,67 @@ namespace memorial
 		//Exportar tabela para CSV
 		private void button6_Click(object sender, EventArgs e)
 		{
+			saveFileDialog2.Title = "Exportar tabela para CSV ou texto...";
+			saveFileDialog2.Filter = "Arquivo texto (*.txt)|*.txt|Arquivo csv (*.csv)|*.csv";
+			saveFileDialog2.FilterIndex = 2;
+			saveFileDialog2.RestoreDirectory = true;
 
 			if (saveFileDialog2.ShowDialog() == DialogResult.OK)
 			{
-				System.IO.StreamWriter streamWriter = new System.IO.StreamWriter(saveFileDialog2.FileName);
-
-				string strHeader = "";
-
-				int numcolunas = dataGridView1.Columns.Count;
-				for (int i = 0; i < numcolunas; i++)
-				{
-					if (i == (numcolunas - 1))
-					{
-						strHeader += dataGridView1.Columns[i].HeaderText;
-					}
-					else
-					{
-						strHeader += dataGridView1.Columns[i].HeaderText + ";";
-					}
-				}
-
-				streamWriter.WriteLine(strHeader);
-
-				for (int m = 0; m < dataGridView1.Rows.Count; m++)
-				{
-					string strRowValue = "";
-
-					for (int n = 0; n < numcolunas; n++)
-					{
-						if (n == (numcolunas - 1))
-						{
-							strRowValue += dataGridView1.Rows[m].Cells[n].Value;
-						}
-						else
-						{
-							strRowValue += dataGridView1.Rows[m].Cells[n].Value + ";";
-						}
-					}
-					streamWriter.WriteLine(strRowValue);
-				}
-				streamWriter.Close();
+                salvargrid(saveFileDialog2.FileName);
 			}
 		}
 
+        //Botão para salvar os dados da grid
+        private void btnsalvagrid_Click(object sender, EventArgs e)
+        {
+            salvargrid(arquivo);
+            verifica_salvo = true;
+            verifica(verifica_salvo);
+        }
+
+        //Salva os dados da grid
+        public void salvargrid(string arquivo)
+        {
+            System.IO.StreamWriter streamWriter = new System.IO.StreamWriter(arquivo);
+
+            string strHeader = "";
+
+            int numcolunas = dataGridView1.Columns.Count;
+            for (int i = 0; i < numcolunas; i++)
+            {
+                if (i == (numcolunas - 1))
+                {
+                    strHeader += dataGridView1.Columns[i].HeaderText;
+                }
+                else
+                {
+                    strHeader += dataGridView1.Columns[i].HeaderText + ";";
+                }
+            }
+
+            streamWriter.WriteLine(strHeader);
+
+            for (int m = 0; m < dataGridView1.Rows.Count; m++)
+            {
+                string strRowValue = "";
+
+                for (int n = 0; n < numcolunas; n++)
+                {
+                    if (n == (numcolunas - 1))
+                    {
+                        strRowValue += dataGridView1.Rows[m].Cells[n].Value;
+                    }
+                    else
+                    {
+                        strRowValue += dataGridView1.Rows[m].Cells[n].Value + ";";
+                    }
+                }
+                streamWriter.WriteLine(strRowValue);
+            }
+            streamWriter.Close();
+        }
+        
 		private void checkBox2_CheckedChanged(object sender, EventArgs e)
 		{
 			if (checkBox2.Checked == true)
@@ -2185,7 +2214,31 @@ namespace memorial
 			mc =  183 - 6 * int.Parse(cboFuso.Text);
 			cboMC.Text =  Convert.ToString(mc);
 		}
-	}
+
+        //Se alterar algum valor de alguma célula do grid, mostra que o arquivo não foi salvo no título do form
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            verifica_salvo = false;
+            verifica(verifica_salvo);
+        }
+
+        //Alterar o nome do arquivo com um '*' caso não tenha savlo
+        public void verifica(Boolean verifica2)
+        {
+            if (verifica2 == false && this.Text.Contains("*") == true)
+            {
+               
+            }
+            else if(verifica2 == false && this.Text.Contains("*") == false)
+            {
+                this.Text = this.Text + " *";
+            }
+            else if (verifica2 == true)
+            {
+                this.Text = "Memorial Descritivo v" + version + " - " + nome_arquivo;
+            }
+        }
+    }
 
 	public static class RichTextBoxExtensions
 	{
