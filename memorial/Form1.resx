@@ -120,6 +120,83 @@
   <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="richTextBox2.Text" xml:space="preserve">
+    <value>1)  Introdução 
+  Este software visa atender uma demanda crescente de geração de memoriais descritivos, com base em coordenadas obtidas em campo, sendo utilizável para a criação de memoriais descritivos de perímetros de propriedades rurais, reservas legais e etc.
+
+2)  Requisitos
+  Atualmente, o software opera importando uma tabela contendo os pontos e suas coordenadas, e gerando por fim o memorial descritivo dos mesmos. 
+
+  2.1)  Formato do arquivo
+  A tabela contendo os pontos deve obedecer as seguintes características:
+   • O formato do arquivo deve ter a extensão CSV ou TXT;
+   • A primeira linha da tabela deve conter o cabeçalho da tabela (nome dos campos); 
+   • Colunas separadas por ponto-e-vírgula ou tabulação (tab).
+   • A tabela deve ter exatamente três colunas (não menos e não mais); 
+   • A primeira coluna deve ter os nomes dos pontos, nenhuma célula pode estar em branco; 
+   • A segunda coluna deve ter as coordenadas X (este), nenhuma célula pode estar em branco; 
+   • A terceira coluna deve ter as coordenadas Y (norte), nenhuma célula pode estar em branco. 
+      Exemplo de nome das colunas:  Ponto;E;Y
+
+3)  Instruções de uso 
+  Ao abrir o software, caso haja alguma atualização do software, ele o irá informar neste momento (requer conexão com a Internet).
+
+  3.1)  Abrir arquivo CSV ou TXT
+  Antes de abrir o arquivo CSV ou TXT contendo os pontos e suas coordenadas, escolha o tipo de separação das colunas (ponto-e-vírgula ou tabulação) e também a codificação (ANSI, ISO8859-1 e UTF-8). Esta codificação é utilizada para reconhecimento de caracteres especiais, por exemplo, palavras com acentuação. Se a tabela estiver nas especificações corretas, vai abrir normalmente, caso contrário, é necessário verificar se o número de colunas está correto.
+
+  3.2) Cálculo de distâncias e azimutes
+  Se a tabela contendo os pontos abrir corretamente, é possível calcular as distâncias e azimutes, clicando no botão Calcular distância e azimute. É possível definir o número de casas decimais para as coordenadas, distâncias e azimute, separadamente.
+
+  3.3) Cadastro de confrontantes e tipos de divisa
+  Cadastre os confrontantes, no mesmo sentido dos pontos. Exemplo: se o confrontante A está entre os pontos 01 a 03, digite "A" na célula correspondente do ponto 01. Na célula correspondente do ponto 03, digite o nome do próximo confrontante.
+  Cadastre o tipo de divisa entre os confrontantes, por exemplo: cerca, estrada municipal, etc.
+
+  3.4) Salvar os dados
+  É possível salvar os dados calculados (distância e azimute) e digitados (confrontantes e tipos de divisa). Ao clicar no botão Salvar dados, automaticamente os dados serão salvos no arquivo CSV ou TXT. 
+  Se clicar no botão Exportar tabela CSV, pode substituir o arquivo e/ou salvar um novo arquivo CSV ou TXT Outra forma de copiar a tabela é selecionar todas as linhas, pressionar Ctrl + C, e colar em algum editor de planilhas ou de texto de sua preferência;
+  Nota: indiferente da opção, o arquivo salvo ficara com 7 (sete) colunas, conforme mostra abaixo:
+  Ponto;E;Y;Distancia;Azimute;Confrontante;Divisa
+
+4)  Definições
+  Na aba Definições, é possível configurar os seguintes itens: Informações do imóvel, Memorial Descritivo, Profissional e Negritos.
+  Nenhum destes itens é obrigatório para gerar o memorial descritivo.
+  
+  4.1) Informações do imóvel
+  Caso deseje, complete as informações do imóvel, sendo possível salvar num arquivo texto. É possível carregar estes dados posteriormente.
+  Nota: A área e o perímetro são calculados automaticamente ao clicar no botão Calcular distância e azimute.
+  
+  4.2) Memorial Descritivo
+  Nesta aba, é possível definir os textos padrões de ligação do memorial. 
+  O item “Ocultar confrontante e divisa consecutiva” são para evitar que nomes iguais consecutivos se repitam no memorial gerado, a fim de minimizar o tamanho do texto gerado.
+  
+  4.3) Data e Profissional
+  Nesta aba é possível informar os detalhes do profissional e data. 
+  
+  4.4) Negritos
+  Nesta aba é possível definir os textos em negrito ou não no memorial gerado.
+
+5)  Gerar o Memorial Descritivo
+  Na aba Memorial Descritivo é gerado o memorial descritivo, clicando no botão Gerar memorial. Para salvar o memorial descritivo como arquivo RTF, clique em Gravar arquivo RTF. Para copiar o memorial descritivo para a área de transferência, clique em Copiar para área de transferência.
+
+6)  Dúvidas frequentes
+  6.1) O que é Codificação?
+  R.: Uma codificação de caracteres é um conjunto de relações entre os bytes que representam números no computador e caracteres no conjunto de caracteres codificado. Mais informações pode ser encontrado aqui.
+
+  6.2) Como cadastrar os confrontantes ou divisas?
+  R.: Basta dar um duplo clique na célula que receberá o nome do confrontante e digitar o nome. O mesmo vale para o tipo de divisa.
+
+  6.3) Não consigo abrir um arquivo de pontos CSV ou TXT?
+  R.: Este erro provavelmente acontece pelo número de colunas existentes no mesmo. Ao abrir pela primeira vez um arquivo de pontos e suas coordenadas, o arquivo CSV ou TXT OBRIGATORIAMENTE deve ter 3 colunas, contendo o nome do ponto, coordenada X (Este) e coordenadas Y (Norte).
+
+  6.4) Não consigo abrir um arquivo CSV gerado anteriormente no programa.
+  R.: Este erro pode ser devido uma atualização na versão 1.0.0.17 do software. Nesta versão foram retirados os acentos dos títulos das colunas, pois usuários relataram problemas ao abrir o CSV quando este foi editado no EXCEL. O EXCEL salva numa codificação diferente, fazendo com que os acentos não sejam reconhecidos corretamente pelo programa.
+
+7)  Histórico
+  v1.0.0.17: 
+  • Adicionado botão "Salvar dados" para salvar os dados quando estiver editando os confrontantes e/ou tipo de divisas na tabela;
+  • Títulos das colunas alterado para sem acento, pois usuários relataram problemas ao importar uma tabela de pontos. Isso deve-se ao fato da codificação selecionado;
+  • Pequenas correções de bugs.</value>
+  </data>
   <metadata name="saveFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>157, 17</value>
   </metadata>
